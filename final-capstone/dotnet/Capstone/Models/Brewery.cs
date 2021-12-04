@@ -16,6 +16,7 @@ namespace Capstone.Models
         public string Address { get; set; }
         public string HoursOfOperation { get; set; }
         public string DaysOfOperation { get; set; }
+        public bool IsActive { get; set; }
 
     }
 }
