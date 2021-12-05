@@ -15,17 +15,28 @@ USE final_capstone
 GO
 
 --create tables
+CREATE TABLE reviews(
+	review_id int IDENTITY(1,1) NOT NULL,
+	user_id int NOT NULL,
+	beer_id int NOT NULL,
+	rating int NOT NULL,
+	review_description varchar(300) NOT NULL,
+	PRIMARY KEY (review_id),
+	--FOREIGN KEY (user_id) REFERENCES users(user_id)
+	)
+
 CREATE TABLE users (
 	user_id int IDENTITY(1,1) NOT NULL,
 	username varchar(50) NOT NULL,
 	password_hash varchar(200) NOT NULL,
 	salt varchar(200) NOT NULL,
-	user_role varchar(50) NOT NULL
-	CONSTRAINT PK_user PRIMARY KEY (user_id)
+	user_role varchar(50) NOT NULL,
+	PRIMARY KEY (user_id),
+	--CONSTRAINT FK_UserReview FOREIGN KEY (user_id) REFERENCES Reviews(user_id),
 )
-CREATE TABLE Breweries (
+CREATE TABLE breweries (
 	brewery_id int IDENTITY(1,1) NOT NULL,
-	brewery_owner_id int IDENTITY(1,1) NOT NULL, --foreign key of user?
+	brewery_owner_id int NOT NULL, --foreign key of user?
 	email varchar(50) NULL,
 	phone varchar(12)  NULL,
 	website varchar(2083) NULL,
@@ -33,27 +44,21 @@ CREATE TABLE Breweries (
 	hours_operations varchar(100) NULL,
 	address varchar(50) NULL,
 	isActive bit NOT NULL,
-	CONSTRAINT PK_brewery PRIMARY KEY (brewery_id)
+	PRIMARY KEY (brewery_id)
 	)
-CREATE TABLE Beer(
+CREATE TABLE beer(
 	beer_id int IDENTITY(1,1) NOT NULL,
 	beer_name varchar(30) NOT NULL,
 	description varchar(150) NOT NULL,
 	abv varchar(5) NOT NULL,
 	beer_type varchar(25) NOT NULL,
-	CONSTRAINT PK_beer PRIMARY KEY (beer_id)
+	PRIMARY KEY (beer_id)
 	)
---CREATE TABLE BreweryBeer(
-	--beer_id int IDENTITY(1,1) NOT NULL,
-	-- int IDENTITY(1,1) NOT NULL,
-	--CONSTRAINT 
-CREATE TABLE Reviews(
-	review_id int IDENTITY(1,1) NOT NULL,
-	--user_id
-	--beer_id
-	--rating
-	review_description charvar(300) NOT NULL,
-	Constraint PK_reviews PRIMARY KEY (review_id)
+CREATE TABLE beers_by_brewery(
+	beer_id int NOT NULL,
+	brewery_id int NOT NULL,)
+	
+
 
 
 --populate default data
