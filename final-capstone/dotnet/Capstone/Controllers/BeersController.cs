@@ -44,5 +44,35 @@ namespace Capstone.Controllers
                 return NotFound();
             }
         }
+
+        [HttpPost]
+        public IActionResult AddBeer(Beer beer)
+        {
+            Beer result = beerDao.AddBeer(beer);
+            if (result != null)
+            {
+                return Ok(result);
+            }
+            else
+            {
+                return BadRequest();
+            }
+        }
+
+        [HttpDelete("{beerId}")]
+        public IActionResult DeleteBeer(int beerId)
+        {
+            Beer beerToDelete = beerDao.GetBeerById(beerId);
+            if (beerToDelete != null)
+            {
+                beerDao.DeleteBeer(beerId);
+                return Ok();
+            }
+            else
+            {
+                return NotFound();
+            }
+            
+        }
     }
 }
