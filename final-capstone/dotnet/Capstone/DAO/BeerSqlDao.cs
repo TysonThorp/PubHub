@@ -17,21 +17,23 @@ namespace Capstone.DAO
 
         public Beer AddBeer(Beer beer)
         {
+            Beer returnBeer = null;
             try
             {
                 using (SqlConnection conn = new SqlConnection(connectionString))
                 {
                     conn.Open();
 
-                    SqlCommand cmd = new SqlCommand("INSERT INTO beer (beer_name, description, image, abv, beer_type) " +
-                        "OUTPUT INSERTED.beer_id VALUES (@beer_id, @beer_name, @description, @image, @abv, @beer_type)", conn);
+                    SqlCommand cmd = new SqlCommand("INSERT INTO beer (beer_name, description, image, abv, beer_type) OUTPUT INSERTED.beer_id VALUES(@beer_name, @description, @image, @abv, @beer_type)", conn);
+
                     cmd.Parameters.AddWithValue("@beer_name", beer.Name);
                     cmd.Parameters.AddWithValue("@description", beer.Description);
                     cmd.Parameters.AddWithValue("@image", beer.Image);
                     cmd.Parameters.AddWithValue("@abv", beer.ABV);
                     cmd.Parameters.AddWithValue("@beer_type", beer.BeerType);
 
-                    beer.BeerID = Convert.ToInt32(cmd.ExecuteScalar());
+                    int returnBeerId = Convert.ToInt32(cmd.ExecuteScalar());
+                    returnBeer = GetBeerById(returnBeerId);
                 }
             }
             catch (SqlException)
@@ -39,21 +41,29 @@ namespace Capstone.DAO
                 throw;
             }
 
-            return beer;
+            return returnBeer;
         }
 
         public void DeleteBeer(int beerId)
         {
 
-            using (SqlConnection conn = new SqlConnection(connectionString))
+            try
             {
-                conn.Open();
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();
 
-                SqlCommand cmd = new SqlCommand("DELETE FROM beers_by_brewery WHERE beer_id = @beer_id " +
-                    "DELETE FROM beer WHERE beer_id = @beer_id", conn);
-                cmd.Parameters.AddWithValue("@beer_id", beerId);
+                    SqlCommand cmd = new SqlCommand("DELETE FROM beers_by_brewery WHERE beer_id = @beer_id " +
+                        "DELETE FROM beer WHERE beer_id = @beer_id", conn);
+                    cmd.Parameters.AddWithValue("@beer_id", beerId);
 
-                cmd.ExecuteNonQuery();
+                    cmd.ExecuteNonQuery();
+                }
+            }
+            catch (SqlException)
+            {
+
+                throw;
             }
         }
 
