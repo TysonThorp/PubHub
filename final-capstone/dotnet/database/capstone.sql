@@ -50,6 +50,7 @@ CREATE TABLE beer(
 	beer_id int IDENTITY(1,1) NOT NULL,
 	beer_name varchar(30) NOT NULL,
 	description varchar(150) NOT NULL,
+	image varchar(150) NOT NULL,
 	abv varchar(5) NOT NULL,
 	beer_type varchar(25) NOT NULL,
 	PRIMARY KEY (beer_id)
