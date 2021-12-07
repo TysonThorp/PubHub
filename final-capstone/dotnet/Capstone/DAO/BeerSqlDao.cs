@@ -26,7 +26,7 @@ namespace Capstone.DAO
 
                     SqlCommand cmd = new SqlCommand("INSERT INTO beer (beer_name, description, image, abv, beer_type) OUTPUT INSERTED.beer_id VALUES(@beer_name, @description, @image, @abv, @beer_type)", conn);
 
-                    cmd.Parameters.AddWithValue("@beer_name", beer.Name);
+                    cmd.Parameters.AddWithValue("@beer_name", beer.BeerName);
                     cmd.Parameters.AddWithValue("@description", beer.Description);
                     cmd.Parameters.AddWithValue("@image", beer.Image);
                     cmd.Parameters.AddWithValue("@abv", beer.ABV);
@@ -131,7 +131,7 @@ namespace Capstone.DAO
             Beer beer = new Beer()
             {
                 BeerID = Convert.ToInt32(reader["beer_id"]),
-                Name = Convert.ToString(reader["beer_name"]),
+                BeerName = Convert.ToString(reader["beer_name"]),
                 Description = Convert.ToString(reader["description"]),
                 Image = Convert.ToString(reader["image"]),
                 ABV = Convert.ToDecimal(reader["abv"]),
