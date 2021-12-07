@@ -23,7 +23,7 @@ namespace Capstone.DAO
                 {
                     conn.Open();
 
-                    SqlCommand cmd = new SqlCommand("INSERT INTO Beer (beer_name, description, image, abv, beer_type) " +
+                    SqlCommand cmd = new SqlCommand("INSERT INTO beer (beer_name, description, image, abv, beer_type) " +
                         "OUTPUT INSERTED.beer_id VALUES (@beer_id, @beer_name, @description, @image, @abv, @beer_type)", conn);
                     cmd.Parameters.AddWithValue("@beer_name", beer.Name);
                     cmd.Parameters.AddWithValue("@description", beer.Description);
@@ -49,7 +49,8 @@ namespace Capstone.DAO
             {
                 conn.Open();
 
-                SqlCommand cmd = new SqlCommand("DELETE FROM Beer WHERE beer_id = @beer_id", conn);
+                SqlCommand cmd = new SqlCommand("DELETE FROM beers_by_brewery WHERE beer_id = @beer_id " +
+                    "DELETE FROM beer WHERE beer_id = @beer_id", conn);
                 cmd.Parameters.AddWithValue("@beer_id", beerId);
 
                 cmd.ExecuteNonQuery();
@@ -66,7 +67,7 @@ namespace Capstone.DAO
                 {
                     conn.Open();
 
-                    SqlCommand cmd = new SqlCommand("SELECT beer_id, beer_name, description, image, abv, beer_type FROM Beer", conn);
+                    SqlCommand cmd = new SqlCommand("SELECT beer_id, beer_name, description, image, abv, beer_type FROM beer", conn);
 
                     SqlDataReader reader = cmd.ExecuteReader();
 
