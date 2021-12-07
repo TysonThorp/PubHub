@@ -88,6 +88,34 @@ namespace Capstone.DAO
             return beerList;
         }
 
+        public Beer GetBeerById(int beerId)
+        {
+            Beer beer = new Beer();
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();
+
+                    SqlCommand cmd = new SqlCommand("SELECT beer_id, beer_name, description, image, abv, beer_type FROM beer WHERE beer_id = @beer_id", conn);
+                    cmd.Parameters.AddWithValue("@beer_id", beerId);
+
+                    SqlDataReader reader = cmd.ExecuteReader();
+
+                    if (reader.Read())
+                    {
+                        beer = GetBeerFromReader(reader);      
+                    }
+                }
+            }
+            catch (SqlException)
+            {
+                throw;
+            }
+
+            return beer;
+        }
+
         private Beer GetBeerFromReader(SqlDataReader reader)
         {
             Beer beer = new Beer()
