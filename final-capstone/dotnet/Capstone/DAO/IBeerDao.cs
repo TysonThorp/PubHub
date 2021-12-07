@@ -8,5 +8,6 @@ namespace Capstone.DAO
         Beer AddBeer(Beer beer);
         void DeleteBeer(int beerId);
         List<Beer> GetAllBeers();
+        Beer GetBeerById(int beerId);
     }
 }
