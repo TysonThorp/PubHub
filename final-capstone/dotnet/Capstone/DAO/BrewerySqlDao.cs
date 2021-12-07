@@ -23,8 +23,8 @@ namespace Capstone.DAO
                 using SqlConnection conn = new SqlConnection(connectionString);
                 conn.Open();
 
-                SqlCommand cmd = new SqlCommand("SELECT brewery_id, brewery_owner_id, email, phone, website, brewery_description, hours_operatiobs, address, isActive " +
-                    "FROM users" +
+                SqlCommand cmd = new SqlCommand("SELECT brewery_id, brewery_owner_id, email, phone, website, brewery_description, hours_operations, address, isActive " +
+                    "FROM breweries " +
                     "WHERE brewery_id = @breweryId", conn);
 
                 cmd.Parameters.AddWithValue("@breweryId", breweryId);
@@ -52,9 +52,8 @@ namespace Capstone.DAO
                 using SqlConnection conn = new SqlConnection(connectionString);
                 conn.Open();
 
-                SqlCommand cmd = new SqlCommand("SELECT brewery_id, brewery_owner_id, email, phone, website, brewery_description, hours_operatiobs, address, isActive " +
-                    "FROM users" +
-                    "WHERE brewery_id = @breweryId", conn);
+                SqlCommand cmd = new SqlCommand("SELECT brewery_id, brewery_owner_id, email, phone, website, brewery_description, hours_operations, address, isActive " +
+                    "FROM breweries", conn);
 
                 SqlDataReader reader = cmd.ExecuteReader();
 
@@ -79,8 +78,8 @@ namespace Capstone.DAO
                 using SqlConnection conn = new SqlConnection(connectionString);
                 conn.Open();
 
-                SqlCommand cmd = new SqlCommand("INSERT INTO Breweries (brewery_owner_id, email, phone, website, brewery_description, hours_operations, address, isActive) " +
-                    "VALUES (@brewery_owner_id, @email, @phone, @website, @brewery_description, @hours_operations, @address, @isActive OUTPUT INSERTED.brewery_id", conn);
+                SqlCommand cmd = new SqlCommand("INSERT INTO breweries (brewery_owner_id, email, phone, website, brewery_description, hours_operations, address, isActive) " +
+                    "VALUES (@brewery_owner_id, @email, @phone, @website, @brewery_description, @hours_operations, @address, @isActive OUTPUT INSERTED.brewery_id)", conn);
 
                 cmd.Parameters.AddWithValue("@brewery_owner_id", brewery.BreweryOwnerID);
                 cmd.Parameters.AddWithValue("@email", brewery.EmailAddress);
@@ -107,8 +106,8 @@ namespace Capstone.DAO
             using SqlConnection conn = new SqlConnection(connectionString);
             conn.Open();
 
-            SqlCommand cmd = new SqlCommand("DELETE FROM Brewery WHERE brewery_id = @breweryId", conn);
-            cmd.Parameters.AddWithValue("@brewery_id", breweryId);
+            SqlCommand cmd = new SqlCommand("DELETE FROM breweries WHERE brewery_id = @breweryId", conn);
+            cmd.Parameters.AddWithValue("@breweryId", breweryId);
             cmd.ExecuteNonQuery();
         }
 
@@ -119,9 +118,9 @@ namespace Capstone.DAO
                 using SqlConnection conn = new SqlConnection(connectionString);
                 conn.Open();
 
-                SqlCommand cmd = new SqlCommand("UPDATE Breweries " +
-                    "SET brewery_owner_id = @brewery_owner_id, email = @email, phone = @phone, website = @website, brewery_description = @brewery_description, hours_operations = @hours_operations, address = @address, isActive = @isActive" +
-                    "WHERE brewery_id = @brewery_id conn)");
+                SqlCommand cmd = new SqlCommand("UPDATE breweries " +
+                    "SET brewery_owner_id = @brewery_owner_id, email = @email, phone = @phone, website = @website, brewery_description = @brewery_description, hours_operations = @hours_operations, address = @address, isActive = @isActive " +
+                    "WHERE brewery_id = @brewery_id", conn);
 
                 cmd.Parameters.AddWithValue("@brewery_id", breweryId);
                 cmd.Parameters.AddWithValue("@brewery_owner_id", brewery.BreweryOwnerID);
@@ -140,7 +139,7 @@ namespace Capstone.DAO
             {
                 throw;
             }
-            //update this?
+            //return the actual updated item from the database here?
             return brewery;
         }
 
