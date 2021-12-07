@@ -13,6 +13,5 @@ namespace Capstone.Models
         public string Image { get; set; }
         public decimal ABV { get; set; }
         public string BeerType { get; set; }
-        public decimal Price { get; set; }
     }
 }
