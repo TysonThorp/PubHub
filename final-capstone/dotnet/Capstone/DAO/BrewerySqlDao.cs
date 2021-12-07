@@ -23,7 +23,7 @@ namespace Capstone.DAO
                 using SqlConnection conn = new SqlConnection(connectionString);
                 conn.Open();
 
-                SqlCommand cmd = new SqlCommand("SELECT brewery_id, brewery_owner_id, email, phone, website, brewery_description, hours_operations, address, isActive " +
+                SqlCommand cmd = new SqlCommand("SELECT brewery_id, brewery_name, brewery_owner_id, email, phone, website, brewery_description, hours_operations, address, isActive " +
                     "FROM breweries " +
                     "WHERE brewery_id = @breweryId", conn);
 
@@ -52,7 +52,7 @@ namespace Capstone.DAO
                 using SqlConnection conn = new SqlConnection(connectionString);
                 conn.Open();
 
-                SqlCommand cmd = new SqlCommand("SELECT brewery_id, brewery_owner_id, email, phone, website, brewery_description, hours_operations, address, isActive " +
+                SqlCommand cmd = new SqlCommand("SELECT brewery_id, brewery_name, brewery_owner_id, email, phone, website, brewery_description, hours_operations, address, isActive " +
                     "FROM breweries", conn);
 
                 SqlDataReader reader = cmd.ExecuteReader();
@@ -78,10 +78,12 @@ namespace Capstone.DAO
                 using SqlConnection conn = new SqlConnection(connectionString);
                 conn.Open();
 
-                SqlCommand cmd = new SqlCommand("INSERT INTO breweries (brewery_owner_id, email, phone, website, brewery_description, hours_operations, address, isActive) " +
-                    "VALUES (@brewery_owner_id, @email, @phone, @website, @brewery_description, @hours_operations, @address, @isActive OUTPUT INSERTED.brewery_id)", conn);
+                SqlCommand cmd = new SqlCommand("INSERT INTO breweries (brewery_owner_id, brewery_name, email, phone, website, brewery_description, hours_operations, address, isActive) " +
+                    "OUTPUT INSERTED.brewery_id " +
+                    "VALUES (@brewery_owner_id, @brewery_name, @email, @phone, @website, @brewery_description, @hours_operations, @address, @isActive)", conn);
 
                 cmd.Parameters.AddWithValue("@brewery_owner_id", brewery.BreweryOwnerID);
+                cmd.Parameters.AddWithValue("@brewery_name", brewery.BreweryName);
                 cmd.Parameters.AddWithValue("@email", brewery.EmailAddress);
                 cmd.Parameters.AddWithValue("@phone", brewery.PhoneNumber);
                 cmd.Parameters.AddWithValue("@website", brewery.Website);
@@ -119,10 +121,11 @@ namespace Capstone.DAO
                 conn.Open();
 
                 SqlCommand cmd = new SqlCommand("UPDATE breweries " +
-                    "SET brewery_owner_id = @brewery_owner_id, email = @email, phone = @phone, website = @website, brewery_description = @brewery_description, hours_operations = @hours_operations, address = @address, isActive = @isActive " +
+                    "SET brewery_owner_id = @brewery_owner_id, brewery_name = @brewery_name, email = @email, phone = @phone, website = @website, brewery_description = @brewery_description, hours_operations = @hours_operations, address = @address, isActive = @isActive " +
                     "WHERE brewery_id = @brewery_id", conn);
 
                 cmd.Parameters.AddWithValue("@brewery_id", breweryId);
+                cmd.Parameters.AddWithValue("@brewery_name", brewery.BreweryName);
                 cmd.Parameters.AddWithValue("@brewery_owner_id", brewery.BreweryOwnerID);
                 cmd.Parameters.AddWithValue("@email", brewery.EmailAddress);
                 cmd.Parameters.AddWithValue("@phone", brewery.PhoneNumber);
@@ -150,8 +153,9 @@ namespace Capstone.DAO
                 BreweryID = Convert.ToInt32(reader["brewery_id"]),
                 BreweryOwnerID = Convert.ToInt32(reader["brewery_owner_id"]),
                 BreweryName = Convert.ToString(reader["brewery_name"]),
-                PhoneNumber = Convert.ToString(reader["phone"]),
                 EmailAddress = Convert.ToString(reader["email"]),
+                PhoneNumber = Convert.ToString(reader["phone"]),
+                Website = Convert.ToString(reader["website"]),
                 Address = Convert.ToString(reader["address"]),
                 HoursOfOperation = Convert.ToString(reader["hours_operations"]),
                 IsActive = Convert.ToBoolean(reader["isActive"]),

@@ -27,7 +27,7 @@ namespace Capstone.DAO
                     "FROM reviews " +
                     "WHERE review_id = @reviewId", conn);
 
-                cmd.Parameters.AddWithValue("@review_id", reviewId);
+                cmd.Parameters.AddWithValue("@reviewId", reviewId);
                 SqlDataReader reader = cmd.ExecuteReader();
 
                 if (reader.Read())
@@ -78,8 +78,9 @@ namespace Capstone.DAO
                 using SqlConnection conn = new SqlConnection(connectionString);
                 conn.Open();
 
-                SqlCommand cmd = new SqlCommand("INSERT INTO reviews (user_id, rating, review_description) " +
-                    "VALUES (@user_id, @beer_id, @rating, @review_description OUTPUT INSERTED.review_id)", conn);
+                SqlCommand cmd = new SqlCommand("INSERT INTO reviews (user_id, beer_id, rating, review_description) " +
+                    "OUTPUT INSERTED.review_id " +
+                    "VALUES (@user_id, @beer_id, @rating, @review_description)", conn);
 
                 cmd.Parameters.AddWithValue("@user_id", review.UserId);
                 cmd.Parameters.AddWithValue("@beer_id", review.BeerId);
