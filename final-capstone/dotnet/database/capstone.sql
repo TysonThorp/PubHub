@@ -54,7 +54,6 @@ CREATE TABLE beers(
 	image varchar(150) NULL,
 	abv decimal(5,1) NULL,
 	beer_type varchar(25) NULL,
-	beer_image varchar(50) NULL, --looks like we have a duplicate?
 	PRIMARY KEY (beer_id)
 	)
 CREATE TABLE beers_by_brewery(
