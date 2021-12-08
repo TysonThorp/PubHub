@@ -19,8 +19,8 @@ CREATE TABLE reviews(
 	review_id int IDENTITY(1,1) NOT NULL,
 	user_id int NOT NULL,
 	beer_id int NOT NULL,
-	rating int NOT NULL,
-	review_description varchar(300) NOT NULL,
+	rating int NULL,
+	review_description varchar(300) NULL,
 	PRIMARY KEY (review_id),
 	--FOREIGN KEY (user_id) REFERENCES users(user_id)
 	)
@@ -38,7 +38,7 @@ CREATE TABLE breweries (
 	brewery_id int IDENTITY(1,1) NOT NULL,
 	brewery_owner_id int NOT NULL, --foreign key of user?
 	email varchar(50) NULL,
-	phone varchar(12)  NULL,
+	phone varchar(12) NULL,
 	website varchar(2083) NULL,
 	brewery_description varchar(500) NULL,
 	hours_operations varchar(100) NULL,
@@ -49,11 +49,11 @@ CREATE TABLE breweries (
 CREATE TABLE beers(
 	beer_id int IDENTITY(1,1) NOT NULL,
 	beer_name varchar(30) NOT NULL,
-	description varchar(150) NOT NULL,
-	image varchar(150) NOT NULL,
-	abv decimal(5,1) NOT NULL,
-	beer_type varchar(25) NOT NULL,
-	beer_image varchar(50) NULL,
+	description varchar(150) NULL,
+	image varchar(150) NULL,
+	abv decimal(5,1) NULL,
+	beer_type varchar(25) NULL,
+	beer_image varchar(50) NULL, --looks like we have a duplicate?
 	PRIMARY KEY (beer_id)
 	)
 CREATE TABLE beers_by_brewery(
