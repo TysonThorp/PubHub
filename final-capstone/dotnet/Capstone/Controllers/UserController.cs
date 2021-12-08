@@ -63,8 +63,8 @@ namespace Capstone.Controllers
         public IActionResult UpdateUser(int UserId, string username, string password, string role, User user)
         {
             
-            Brewery breweryToUpdate = userDao.GetUser(UserId);
-            if (breweryToUpdate != null)
+            User userToUpdate = userDao.GetUser(UserId);
+            if (userToUpdate != null)
             {
                 userDao.UpdateUser(UserId, user);
                 return Ok();
