@@ -8,7 +8,8 @@ namespace Capstone.DAO
         User GetUser(string username);
         User AddUser(string username, string password, string role);
         User UpdateUser(int UserId, string username, string password, string role, User user);
-
         List<User> GetAllUsers();
+        Brewery GetUser(object userName);
+        void UpdateUser(int userId, User user);
     }
 }
