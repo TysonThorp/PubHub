@@ -29,3 +29,8 @@ lactose, oats, and flaked wheat to bring you a refreshing, adults-only treat.',6
 ('Summer Trip','This tart German style ale features 50% wheat malt and is balanced from the acidity of passionfruit.',4.2,'Berliner Weisse'),
 ('Black Raspberry Chocolate Chip','2018’s batch is brewed with even MORE pure Black Raspberry Purée. — An irresistible collaboration between two handcrafted families.',
 7,'Pastry Stout')
+
+INSERT INTO reviews (user_id, beer_id, rating, review_description)
+VALUES (1, 2, 10, 'Example review text by user for beer 2 with rating 10'),
+       (1, 2, 5, 'Example review text by user for beer 2 with rating 5'),
+	   (2, 3, 7, 'Example review text by admin for beer 3 with rating 7')
