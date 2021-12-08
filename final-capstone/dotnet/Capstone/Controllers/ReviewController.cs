@@ -2,11 +2,13 @@
 using Capstone.DAO;
 using Capstone.Models;
 using System.Collections.Generic;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Capstone.Controllers
 {
     [Route("[controller]")]
     [ApiController]
+    [Authorize]
     public class ReviewsController : ControllerBase
     {
         private readonly IReviewDao reviewDao;
@@ -17,6 +19,7 @@ namespace Capstone.Controllers
         }
 
         [HttpGet]
+        [AllowAnonymous]
         public IActionResult GetAllReviews()
         {
             List<Review> listofReviews = reviewDao.GetAllReviews();
@@ -31,6 +34,7 @@ namespace Capstone.Controllers
         }
 
         [HttpGet("{reviewId}")]
+        [AllowAnonymous]
         public IActionResult GetReviewById(int reviewId)
         {
             Review review = reviewDao.GetReview(reviewId);
@@ -45,9 +49,13 @@ namespace Capstone.Controllers
         }
 
         [HttpPost]
+        [Authorize(Roles = "user, brewer, admin")]
         public IActionResult AddReview(Review review)
         {
             //Todo: Logic for checking request validity before we actually interact with the database
+            // Optionally, brewers shouldn't be able to review their own beers?
+
+
             Review result = reviewDao.AddReview(review);
             if (result != null)
             {
@@ -60,9 +68,11 @@ namespace Capstone.Controllers
         }
 
         [HttpPut("{reviewId}")]
+        [Authorize(Roles = "user, brewer, admin")]
         public IActionResult UpdateReview(int reviewId, Review review)
         {
             //Todo: Logic for checking request validity before we actually interact with the database
+            // Users should only be able to update their own reviews.
             Review reviewToUpdate = reviewDao.GetReview(reviewId);
             if (reviewToUpdate != null)
             {
@@ -76,8 +86,11 @@ namespace Capstone.Controllers
         }
 
         [HttpDelete("{reviewId}")]
+        [Authorize(Roles = "user, brewer, admin")]
         public IActionResult DeleteReview(int reviewId)
         {
+            //Todo: Logic for checking request validity before we actually interact with the database
+            // Users should only be able to delete their own reviews.
             Review reviewToDelete = reviewDao.GetReview(reviewId);
             if (reviewToDelete != null)
             {
