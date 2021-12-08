@@ -3,11 +3,13 @@ using Capstone.DAO;
 using Capstone.Models;
 using Capstone.Security;
 using System.Collections.Generic;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Capstone.Controllers
 {
     [Route("[controller]")]
     [ApiController]
+    [Authorize]
     public class BeersController : ControllerBase
     {
         private readonly IBeerDao beerDao;
@@ -18,6 +20,7 @@ namespace Capstone.Controllers
         }
 
         [HttpGet]
+        [AllowAnonymous]
         public IActionResult GetAllBeers()
         {
             List<Beer> listOfBeers = beerDao.GetAllBeers();
@@ -32,6 +35,7 @@ namespace Capstone.Controllers
         }
 
         [HttpGet("{beerId}")]
+        [AllowAnonymous]
         public IActionResult GetBeerById(int beerId)
         {
             Beer beer = beerDao.GetBeerById(beerId);
@@ -46,6 +50,7 @@ namespace Capstone.Controllers
         }
 
         [HttpPost]
+        [Authorize(Roles = "brewer, admin")]
         public IActionResult AddBeer(Beer beer)
         {
             Beer result = beerDao.AddBeer(beer);
@@ -60,6 +65,7 @@ namespace Capstone.Controllers
         }
 
         [HttpDelete("{beerId}")]
+        [Authorize(Roles = "brewer, admin")]
         public IActionResult DeleteBeer(int beerId)
         {
             Beer beerToDelete = beerDao.GetBeerById(beerId);
