@@ -59,10 +59,6 @@ namespace Capstone.Controllers
         [HttpPut("{userId}")]
         public IActionResult UpdateUser(int UserId, string username, string password, string role, User user)
         {
-<<<<<<< HEAD
-            
-=======
->>>>>>> fc3be2caa0243398d1474300f860146c61094258
             User userToUpdate = userDao.GetUser(UserId);
             if (userToUpdate != null)
             {
