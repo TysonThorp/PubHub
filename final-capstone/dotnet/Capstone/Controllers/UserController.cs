@@ -1,10 +1,7 @@
 ﻿using Capstone.DAO;
 using Capstone.Models;
 using Microsoft.AspNetCore.Mvc;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace Capstone.Controllers
 {
@@ -62,11 +59,10 @@ namespace Capstone.Controllers
         [HttpPut("{userId}")]
         public IActionResult UpdateUser(int UserId, string username, string password, string role, User user)
         {
-            
-            Brewery breweryToUpdate = userDao.GetUser(UserId);
-            if (breweryToUpdate != null)
+            User userToUpdate = userDao.GetUser(UserId);
+            if (userToUpdate != null)
             {
-                userDao.UpdateUser(UserId, user);
+                userDao.UpdateUser(UserId, username, password, role, user);
                 return Ok();
             }
             else

@@ -44,6 +44,33 @@ namespace Capstone.DAO
             return returnUser;
         }
 
+        public User GetUser(int userId)
+        {
+            User returnUser = null;
+
+            try
+            {
+                using SqlConnection conn = new SqlConnection(connectionString);
+                conn.Open();
+
+                SqlCommand cmd = new SqlCommand("SELECT user_id, username, password_hash, salt, user_role FROM users WHERE user_id = @user_id", conn);
+                cmd.Parameters.AddWithValue("@user_id", userId);
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                if (reader.Read())
+                {
+                    returnUser = GetUserFromReader(reader);
+                }
+            }
+            catch (SqlException)
+            {
+                throw;
+            }
+
+            return returnUser;
+        }
+
+
         public User AddUser(string username, string password, string role)
         {
             IPasswordHasher passwordHasher = new PasswordHasher();
@@ -136,16 +163,6 @@ namespace Capstone.DAO
             };
 
             return u;
-        }
-
-        public Brewery GetUser(object userName)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void UpdateUser(int userId, User user)
-        {
-            throw new NotImplementedException();
         }
     }
 }
