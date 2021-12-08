@@ -23,7 +23,7 @@ namespace Capstone.DAO
                 using SqlConnection conn = new SqlConnection(connectionString);
                 conn.Open();
 
-                SqlCommand cmd = new SqlCommand("SELECT brewery_id, brewery_name, brewery_owner_id, email, phone, website, brewery_description, hours_operations, address, isActive " +
+                SqlCommand cmd = new SqlCommand("SELECT brewery_id, brewery_owner_id, brewery_name, email, phone, website, brewery_description, hours_operations, address, isActive " +
                     "FROM breweries " +
                     "WHERE brewery_id = @breweryId", conn);
 
@@ -156,6 +156,7 @@ namespace Capstone.DAO
                 EmailAddress = Convert.ToString(reader["email"]),
                 PhoneNumber = Convert.ToString(reader["phone"]),
                 Website = Convert.ToString(reader["website"]),
+                Description = Convert.ToString(reader["brewery_description"]),
                 Address = Convert.ToString(reader["address"]),
                 HoursOfOperation = Convert.ToString(reader["hours_operations"]),
                 IsActive = Convert.ToBoolean(reader["isActive"]),
