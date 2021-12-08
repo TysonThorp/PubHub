@@ -137,5 +137,15 @@ namespace Capstone.DAO
 
             return u;
         }
+
+        public Brewery GetUser(object userName)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void UpdateUser(int userId, User user)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
