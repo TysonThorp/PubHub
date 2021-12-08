@@ -1,8 +1,3 @@
-
-
-ALTER TABLE dbo.breweries
-ADD brewery_name varchar (255); 
-
 INSERT INTO breweries (brewery_owner_id ,brewery_name, email, phone, website, brewery_description, hours_operations, address, isActive)
 VALUES
 (1,'Listermann Brewing Company', 'jess@listermannbrewing.com', '513-731-1130', 'https://www.listermannbrewing.com/', 'Family Owned, Cincinnati Brewed award winning beer!

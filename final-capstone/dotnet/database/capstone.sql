@@ -37,6 +37,7 @@ CREATE TABLE users (
 CREATE TABLE breweries (
 	brewery_id int IDENTITY(1,1) NOT NULL,
 	brewery_owner_id int NOT NULL, --foreign key of user?
+	brewery_name varchar (255),
 	email varchar(50) NULL,
 	phone varchar(12) NULL,
 	website varchar(2083) NULL,
