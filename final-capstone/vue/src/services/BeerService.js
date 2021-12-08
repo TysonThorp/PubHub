@@ -6,16 +6,16 @@ export default {
     return axios.get('/beers')
   },
 
-  getBeerById(beerID) {
-    return axios.get('/beers/${beerID}')
+  getBeerById(beerId) {
+    return axios.get(`/beers/${beerId}`)
   },
 
   addBeer(beer) {
       return axios.post('/beers', beer)
   },
 
-  deleteBeer(beerID) {
-      return axios.delete('/beers/${beerID}')
+  deleteBeer(beerId) {
+      return axios.delete(`/beers/${beerId}`)
   }
 
 }
