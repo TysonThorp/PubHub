@@ -52,6 +52,7 @@ CREATE TABLE beer(
 	description varchar(150) NOT NULL,
 	abv varchar(5) NOT NULL,
 	beer_type varchar(25) NOT NULL,
+	beer_image varchar(50) NULL,
 	PRIMARY KEY (beer_id)
 	)
 CREATE TABLE beers_by_brewery(

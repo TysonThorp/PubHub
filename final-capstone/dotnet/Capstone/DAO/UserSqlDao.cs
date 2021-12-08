@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Data.SqlClient;
 using Capstone.Models;
 using Capstone.Security;
@@ -68,6 +69,59 @@ namespace Capstone.DAO
             }
 
             return GetUser(username);
+        }
+        public User UpdateUser(int UserId, string username, string password, string role, User user)
+        {
+            IPasswordHasher passwordHasher = new PasswordHasher();
+            PasswordHash hash = passwordHasher.ComputeHash(password);
+            try
+            {
+                using SqlConnection conn = new SqlConnection(connectionString);
+                conn.Open();
+
+                SqlCommand cmd = new SqlCommand("UPDATE Users " +
+                    "SET username = @username, password_hash = @password_hash, salt = @salt, user_role = @user_role" +
+                    "WHERE user_id = @user_id conn)");
+                cmd.Parameters.AddWithValue("@user_id", UserId);
+                cmd.Parameters.AddWithValue("@username", username);
+                cmd.Parameters.AddWithValue("@password_hash", hash.Password);
+                cmd.Parameters.AddWithValue("@salt", hash.Salt);
+                cmd.Parameters.AddWithValue("@user_role", role);
+                cmd.ExecuteNonQuery();
+
+            }
+            catch (SqlException)
+            {
+                throw;
+            }
+            return user;
+        }
+        public List<User> GetAllUsers()
+        {
+            List<User> userList = new List<User>();
+
+            try
+            {
+                using SqlConnection conn = new SqlConnection(connectionString);
+                conn.Open();
+
+                SqlCommand cmd = new SqlCommand("SELECT username, user_role " +
+                    "FROM users" +
+                    "WHERE user_id = @userId", conn);
+
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    userList.Add(GetUserFromReader(reader));
+                }
+            }
+            catch (SqlException)
+            {
+                throw;
+            }
+
+            return userList;
         }
 
         private User GetUserFromReader(SqlDataReader reader)
