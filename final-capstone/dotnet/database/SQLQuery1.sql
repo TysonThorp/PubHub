@@ -20,9 +20,8 @@ flavorful libations and serving fine fare since its founding in Cincinnati, Ohio
 Taft’s Brewporium – Cincinnati, and now open, Taft’s Brewporium – Columbus, to treat your belly to a cold, crisp pint of beer and piping hot meal today.',
 'Sun-Th 11:30am - 10pm Fr, Sat 1130am - 11pm','1429 Race St, Cincinnati, OH 45202',1);
 
-INSERT INTO beer (beer_name, description, abv, beer_type)
+INSERT INTO beers (beer_name, description, abv, beer_type)
 VALUES
-
 ('Gavel Banger','American IPA brewed and dry hopped with heaps of Citra and Mosiac hops. Juicy, hoppy justice.', 7, 'American IPA'),
 ('Cold Boy','This anytime lager features American Pilsner malt and Saaz hops for a clean, balanced character that drinks smooth every time.', 4.5,'Lager'),
 ('UDF Milkshake IPA','This hoppy and creamy milkshake IPA is brewed with heaps of hops, 

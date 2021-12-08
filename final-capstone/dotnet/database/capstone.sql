@@ -46,7 +46,7 @@ CREATE TABLE breweries (
 	isActive bit NOT NULL,
 	PRIMARY KEY (brewery_id)
 	)
-CREATE TABLE beer(
+CREATE TABLE beers(
 	beer_id int IDENTITY(1,1) NOT NULL,
 	beer_name varchar(30) NOT NULL,
 	description varchar(150) NOT NULL,

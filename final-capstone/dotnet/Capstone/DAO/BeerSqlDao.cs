@@ -24,7 +24,7 @@ namespace Capstone.DAO
                 {
                     conn.Open();
 
-                    SqlCommand cmd = new SqlCommand("INSERT INTO beer (beer_name, description, image, abv, beer_type) OUTPUT INSERTED.beer_id VALUES(@beer_name, @description, @image, @abv, @beer_type)", conn);
+                    SqlCommand cmd = new SqlCommand("INSERT INTO beers (beer_name, description, image, abv, beer_type) OUTPUT INSERTED.beer_id VALUES(@beer_name, @description, @image, @abv, @beer_type)", conn);
 
                     cmd.Parameters.AddWithValue("@beer_name", beer.BeerName);
                     cmd.Parameters.AddWithValue("@description", beer.Description);
@@ -54,7 +54,7 @@ namespace Capstone.DAO
                     conn.Open();
 
                     SqlCommand cmd = new SqlCommand("DELETE FROM beers_by_brewery WHERE beer_id = @beer_id " +
-                        "DELETE FROM beer WHERE beer_id = @beer_id", conn);
+                        "DELETE FROM beers WHERE beer_id = @beer_id", conn);
                     cmd.Parameters.AddWithValue("@beer_id", beerId);
 
                     cmd.ExecuteNonQuery();
@@ -77,7 +77,7 @@ namespace Capstone.DAO
                 {
                     conn.Open();
 
-                    SqlCommand cmd = new SqlCommand("SELECT beer_id, beer_name, description, image, abv, beer_type FROM beer", conn);
+                    SqlCommand cmd = new SqlCommand("SELECT beer_id, beer_name, description, image, abv, beer_type FROM beers", conn);
 
                     SqlDataReader reader = cmd.ExecuteReader();
 
@@ -107,7 +107,7 @@ namespace Capstone.DAO
                 {
                     conn.Open();
 
-                    SqlCommand cmd = new SqlCommand("SELECT beer_id, beer_name, description, image, abv, beer_type FROM beer WHERE beer_id = @beer_id", conn);
+                    SqlCommand cmd = new SqlCommand("SELECT beer_id, beer_name, description, image, abv, beer_type FROM beers WHERE beer_id = @beer_id", conn);
                     cmd.Parameters.AddWithValue("@beer_id", beerId);
 
                     SqlDataReader reader = cmd.ExecuteReader();
