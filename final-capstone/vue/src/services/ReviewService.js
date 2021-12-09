@@ -3,22 +3,22 @@ import axios from 'axios';
 export default {
 
   getAllReviews() {
-    return axios.get('/review')
+    return axios.get('/reviews')
   },
 
   getReviewById(reviewId) {
-      return axios.get(`/review/${reviewId}`)
+      return axios.get(`/reviews/${reviewId}`)
   },
 
   addReview(review) {
-      return axios.post('/review', review)
+      return axios.post('/reviews', review)
   },
 
   updateReview(review) {
-      return axios.put(`/review/${review.reviewId}`, review)
+      return axios.put(`/reviews/${review.reviewId}`, review)
   }, 
 
   deleteReview(reviewId) {
-      return axios.delete(`/review/${reviewId}`)
+      return axios.delete(`/reviews/${reviewId}`)
   }
 }
