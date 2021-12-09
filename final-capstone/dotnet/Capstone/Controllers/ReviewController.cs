@@ -12,10 +12,21 @@ namespace Capstone.Controllers
     public class ReviewsController : ControllerBase
     {
         private readonly IReviewDao reviewDao;
+        private readonly IUserDao userDao;
+        private readonly IBeerDao beerDao;
+        private User CurrentUser
+        {
+            get {
+                int currentUserId = int.Parse(User.FindFirst("sub")?.Value);
+                return userDao.GetUser(currentUserId);
+            }
+        }
 
-        public ReviewsController(IReviewDao _reviewDao)
+        public ReviewsController(IReviewDao _reviewDao, IUserDao _userDao, IBeerDao _beerDao)
         {
             reviewDao = _reviewDao;
+            userDao = _userDao;
+            beerDao = _beerDao;
         }
 
         [HttpGet]
@@ -52,10 +63,13 @@ namespace Capstone.Controllers
         [Authorize(Roles = "user, brewer, admin")]
         public IActionResult AddReview(Review review)
         {
-            //Todo: Logic for checking request validity before we actually interact with the database
-            // Optionally, brewers shouldn't be able to review their own beers?
+            // LOGIC
+            //You may only review a beer that exists
+            if (beerDao.GetBeerById(review.BeerId) == null) return BadRequest();
 
-
+            //You may not create a review with someone else's userId
+            if (review.UserId != CurrentUser.UserId) return Unauthorized();
+ 
             Review result = reviewDao.AddReview(review);
             if (result != null)
             {
@@ -71,8 +85,13 @@ namespace Capstone.Controllers
         [Authorize(Roles = "user, brewer, admin")]
         public IActionResult UpdateReview(int reviewId, Review review)
         {
-            //Todo: Logic for checking request validity before we actually interact with the database
-            // Users should only be able to update their own reviews.
+            // LOGIC
+            //You may only review a beer that exists
+            if (beerDao.GetBeerById(review.BeerId) == null) return BadRequest();
+
+            //You may only update a review you created yourself
+            if (review.UserId != CurrentUser.UserId) return Unauthorized();
+
             Review reviewToUpdate = reviewDao.GetReview(reviewId);
             if (reviewToUpdate != null)
             {
