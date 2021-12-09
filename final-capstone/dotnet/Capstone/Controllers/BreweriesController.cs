@@ -64,13 +64,13 @@ namespace Capstone.Controllers
         {
             //LOGIC
             //You may only create a brewery with your own id as owner unless you're an administrator
-            if (!(brewery.BreweryOwnerID == CurrentUser.UserId || CurrentUser.Role == "admin"))
+            if (!(brewery.BreweryOwnerId == CurrentUser.UserId || CurrentUser.Role == "admin"))
             {
                 return Unauthorized();
             }
 
             //The owner of a brewery must be an existing user
-            if (userDao.GetUser(brewery.BreweryOwnerID) == null) return BadRequest();
+            if (userDao.GetUser(brewery.BreweryOwnerId) == null) return BadRequest();
 
             Brewery result = breweryDao.AddBrewery(brewery);
             if (result != null)
@@ -91,7 +91,7 @@ namespace Capstone.Controllers
 
             //LOGIC
             //You may only update a brewery if you're the owner or if you are an administrator
-            if (!(breweryToUpdate.BreweryOwnerID == CurrentUser.UserId || CurrentUser.Role == "admin"))
+            if (!(breweryToUpdate.BreweryOwnerId == CurrentUser.UserId || CurrentUser.Role == "admin"))
             {
                 return Unauthorized();
             }
@@ -115,7 +115,7 @@ namespace Capstone.Controllers
 
             //LOGIC
             //You may only delete a brewery if you're the owner or if you are an administrator
-            if (!(breweryToDelete.BreweryOwnerID == CurrentUser.UserId || CurrentUser.Role == "admin"))
+            if (!(breweryToDelete.BreweryOwnerId == CurrentUser.UserId || CurrentUser.Role == "admin"))
             {
                 return Unauthorized();
             }

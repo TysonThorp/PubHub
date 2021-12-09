@@ -7,7 +7,7 @@ namespace Capstone.Models
 {
     public class Beer
     {
-        public int BeerID { get; set; }
+        public int BeerId { get; set; }
         public string BeerName { get; set; }
         public string Description { get; set; }
         public string Image { get; set; }

@@ -82,7 +82,7 @@ namespace Capstone.DAO
                     "OUTPUT INSERTED.brewery_id " +
                     "VALUES (@brewery_owner_id, @brewery_name, @email, @phone, @website, @brewery_description, @hours_operations, @address, @isActive)", conn);
 
-                cmd.Parameters.AddWithValue("@brewery_owner_id", brewery.BreweryOwnerID);
+                cmd.Parameters.AddWithValue("@brewery_owner_id", brewery.BreweryId);
                 cmd.Parameters.AddWithValue("@brewery_name", brewery.BreweryName);
                 cmd.Parameters.AddWithValue("@email", brewery.EmailAddress);
                 cmd.Parameters.AddWithValue("@phone", brewery.PhoneNumber);
@@ -124,9 +124,9 @@ namespace Capstone.DAO
                     "SET brewery_owner_id = @brewery_owner_id, brewery_name = @brewery_name, email = @email, phone = @phone, website = @website, brewery_description = @brewery_description, hours_operations = @hours_operations, address = @address, isActive = @isActive " +
                     "WHERE brewery_id = @brewery_id", conn);
 
-                cmd.Parameters.AddWithValue("@brewery_id", brewery.BreweryID);
+                cmd.Parameters.AddWithValue("@brewery_id", brewery.BreweryId);
                 cmd.Parameters.AddWithValue("@brewery_name", brewery.BreweryName);
-                cmd.Parameters.AddWithValue("@brewery_owner_id", brewery.BreweryOwnerID);
+                cmd.Parameters.AddWithValue("@brewery_owner_id", brewery.BreweryOwnerId);
                 cmd.Parameters.AddWithValue("@email", brewery.EmailAddress);
                 cmd.Parameters.AddWithValue("@phone", brewery.PhoneNumber);
                 cmd.Parameters.AddWithValue("@website", brewery.Website);
@@ -150,8 +150,8 @@ namespace Capstone.DAO
         {
             return new Brewery()
             {
-                BreweryID = Convert.ToInt32(reader["brewery_id"]),
-                BreweryOwnerID = Convert.ToInt32(reader["brewery_owner_id"]),
+                BreweryId = Convert.ToInt32(reader["brewery_id"]),
+                BreweryOwnerId = Convert.ToInt32(reader["brewery_owner_id"]),
                 BreweryName = Convert.ToString(reader["brewery_name"]),
                 EmailAddress = Convert.ToString(reader["email"]),
                 PhoneNumber = Convert.ToString(reader["phone"]),
