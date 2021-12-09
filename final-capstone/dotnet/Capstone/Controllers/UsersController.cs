@@ -8,10 +8,10 @@ namespace Capstone.Controllers
     
     [Route("[controller]")]
     [ApiController]
-    public class UserController : ControllerBase
+    public class UsersController : ControllerBase
     {
         private readonly IUserDao userDao;
-        public UserController(IUserDao _userDao)
+        public UsersController(IUserDao _userDao)
         {
             userDao = _userDao;
         }
