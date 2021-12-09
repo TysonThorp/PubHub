@@ -55,7 +55,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"beerId\": 1,\r\n    \"userId\": 2,\r\n    \"rating\": 10,\r\n    \"reviewText\": \"Example review text here.\"\r\n}",
+							"raw": "{\r\n    \"beerId\": 1,\r\n    \"userId\": 1,\r\n    \"rating\": 10,\r\n    \"reviewText\": \"Example review text here.\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -72,6 +72,35 @@
 							"path": [
 								"reviews",
 								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Review",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"beerId\": 2,\r\n    \"userId\": 2,\r\n    \"rating\": 10,\r\n    \"reviewText\": \"Updated review text.\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:44315/reviews/1",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "44315",
+							"path": [
+								"reviews",
+								"1"
 							]
 						}
 					},
@@ -150,8 +179,187 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "Update Brewery",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n        \"breweryOwnerID\": 1,\r\n        \"breweryName\": \"Different Brewing Company\",\r\n        \"phoneNumber\": \"513-731-1130\",\r\n        \"emailAddress\": \"jess@listermannbrewing.com\",\r\n        \"description\": \"Family Owned, Cincinnati Brewed award winning beer!\\r\\nDRINK. LOCAL. BEER!\",\r\n        \"website\": \"https://www.listermannbrewing.com/\",\r\n        \"address\": \"1621 Dana Ave Cincinnati, OH 45207\",\r\n        \"hoursOfOperation\": \"Sun-Th 12pm - 9pm Fr, Sat 12pm - 10pm\",\r\n        \"isActive\": true\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:44315/breweries/1",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "44315",
+							"path": [
+								"breweries",
+								"1"
+							]
+						}
+					},
+					"response": []
 				}
 			]
+		},
+		{
+			"name": "Users",
+			"item": [
+				{
+					"name": "Get All Users",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n        \"userId\": 1,\r\n        \"username\": \"user\",\r\n        \"emailAddress\": null,\r\n        \"passwordHash\": \"Jg45HuwT7PZkfuKTz6IB90CtWY4=\",\r\n        \"phoneNumber\": null,\r\n        \"salt\": \"LHxP4Xh7bN0=\",\r\n        \"birthday\": \"0001-01-01T00:00:00\",\r\n        \"role\": \"user\"\r\n    },",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:44315/user/",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "44315",
+							"path": [
+								"user",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get User",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n        \"userId\": 1,\r\n        \"username\": \"user\",\r\n        \"emailAddress\": null,\r\n        \"passwordHash\": \"Jg45HuwT7PZkfuKTz6IB90CtWY4=\",\r\n        \"phoneNumber\": null,\r\n        \"salt\": \"LHxP4Xh7bN0=\",\r\n        \"birthday\": \"0001-01-01T00:00:00\",\r\n        \"role\": \"user\"\r\n    },",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:44315/user/1",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "44315",
+							"path": [
+								"user",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Beers",
+			"item": [
+				{
+					"name": "Get Beer",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:44315/beers/1222",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "44315",
+							"path": [
+								"beers",
+								"1222"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Login as User",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"user\",\r\n    \"password\": \"password\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:44315/login",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44315",
+					"path": [
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login as Admin",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"admin\",\r\n    \"password\": \"password\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:44315/login",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44315",
+					"path": [
+						"login"
+					]
+				}
+			},
+			"response": []
 		}
 	],
 	"auth": {

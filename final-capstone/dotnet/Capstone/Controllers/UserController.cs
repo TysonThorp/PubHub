@@ -21,7 +21,7 @@ namespace Capstone.Controllers
             List<User> listOfUsers = userDao.GetAllUsers();
             if (listOfUsers != null)
             {
-                return (IActionResult)listOfUsers;
+                return Ok(listOfUsers);
             }
             else
             {
@@ -35,7 +35,7 @@ namespace Capstone.Controllers
             User result = userDao.AddUser(username, password, role);
             if (result != null)
             {
-                return (IActionResult)result;
+                return Ok(result);
             }
             else
             {

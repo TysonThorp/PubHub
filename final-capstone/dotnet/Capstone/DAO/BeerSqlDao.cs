@@ -83,9 +83,7 @@ namespace Capstone.DAO
 
                     while (reader.Read())
                     {
-                        Beer beer = new Beer();
-                        beer = GetBeerFromReader(reader);
-                        beerList.Add(beer);
+                        beerList.Add(GetBeerFromReader(reader));
                     }
                 }
             }
@@ -94,13 +92,12 @@ namespace Capstone.DAO
                 throw;
             }
 
-
             return beerList;
         }
 
         public Beer GetBeerById(int beerId)
         {
-            Beer beer = new Beer();
+            Beer returnBeer = null;
             try
             {
                 using (SqlConnection conn = new SqlConnection(connectionString))
@@ -114,7 +111,7 @@ namespace Capstone.DAO
 
                     if (reader.Read())
                     {
-                        beer = GetBeerFromReader(reader);      
+                        returnBeer = GetBeerFromReader(reader);      
                     }
                 }
             }
@@ -123,7 +120,7 @@ namespace Capstone.DAO
                 throw;
             }
 
-            return beer;
+            return returnBeer;
         }
 
         private Beer GetBeerFromReader(SqlDataReader reader)
