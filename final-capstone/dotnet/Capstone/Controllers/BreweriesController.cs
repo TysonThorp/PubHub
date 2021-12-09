@@ -12,10 +12,20 @@ namespace Capstone.Controllers
     public class BreweriesController : ControllerBase
     {
         private readonly IBreweryDao breweryDao;
+        private readonly IUserDao userDao;
+        private User CurrentUser
+        {
+            get
+            {
+                int currentUserId = int.Parse(User.FindFirst("sub")?.Value);
+                return userDao.GetUser(currentUserId);
+            }
+        }
 
-        public BreweriesController(IBreweryDao _breweryDao)
+        public BreweriesController(IBreweryDao _breweryDao, IUserDao _userDao)
         {
             breweryDao = _breweryDao;
+            userDao = _userDao;
         }
 
         [HttpGet]
@@ -52,7 +62,16 @@ namespace Capstone.Controllers
         [Authorize(Roles = "brewer, admin")]
         public IActionResult AddBrewery(Brewery brewery)
         {
-            //Todo: Logic for checking request validity before we actually interact with the database
+            //LOGIC
+            //You may only create a brewery with your own id as owner unless you're an administrator
+            if (!(brewery.BreweryOwnerID == CurrentUser.UserId || CurrentUser.Role == "admin"))
+            {
+                return Unauthorized();
+            }
+
+            //The owner of a brewery must be an existing user
+            if (userDao.GetUser(brewery.BreweryOwnerID) == null) return BadRequest();
+
             Brewery result = breweryDao.AddBrewery(brewery);
             if (result != null)
             {
@@ -68,9 +87,15 @@ namespace Capstone.Controllers
         [Authorize(Roles = "brewer, admin")]
         public IActionResult UpdateBrewery(int breweryId, Brewery brewery)
         {
-            //Todo: Logic for checking request validity before we actually interact with the database
-            // Brewers should only be able to update their own brewery. Admins can update any brewery.
             Brewery breweryToUpdate = breweryDao.GetBrewery(breweryId);
+
+            //LOGIC
+            //You may only update a brewery if you're the owner or if you are an administrator
+            if (!(breweryToUpdate.BreweryOwnerID == CurrentUser.UserId || CurrentUser.Role == "admin"))
+            {
+                return Unauthorized();
+            }
+
             if (breweryToUpdate != null)
             {
                 breweryDao.UpdateBrewery(brewery);
@@ -86,9 +111,15 @@ namespace Capstone.Controllers
         [Authorize(Roles = "brewer, admin")]
         public IActionResult DeleteBrewery(int breweryId)
         {
-            //Todo: Logic for checking request validity before we actually interact with the database
-            // Brewers should only be able to delete their own brewery. Admins can update any brewery.
             Brewery breweryToDelete = breweryDao.GetBrewery(breweryId);
+
+            //LOGIC
+            //You may only delete a brewery if you're the owner or if you are an administrator
+            if (!(breweryToDelete.BreweryOwnerID == CurrentUser.UserId || CurrentUser.Role == "admin"))
+            {
+                return Unauthorized();
+            }
+
             if (breweryToDelete != null)
             {
                 breweryDao.DeleteBrewery(breweryId);

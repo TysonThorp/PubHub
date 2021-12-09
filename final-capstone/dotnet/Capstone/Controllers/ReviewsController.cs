@@ -85,14 +85,15 @@ namespace Capstone.Controllers
         [Authorize(Roles = "user, brewer, admin")]
         public IActionResult UpdateReview(Review review)
         {
+            Review reviewToUpdate = reviewDao.GetReview(review.ReviewId);
+
             // LOGIC
             //You may only review a beer that exists
             if (beerDao.GetBeerById(review.BeerId) == null) return BadRequest();
 
             //You may only update a review you created yourself
-            if (review.UserId != CurrentUser.UserId) return Unauthorized();
-
-            Review reviewToUpdate = reviewDao.GetReview(review.ReviewId);
+            if (reviewToUpdate.UserId != CurrentUser.UserId || review.ReviewId != CurrentUser.UserId) return Unauthorized();
+            
             if (reviewToUpdate != null)
             {
                 reviewDao.UpdateReview(review);
@@ -108,9 +109,14 @@ namespace Capstone.Controllers
         [Authorize(Roles = "user, brewer, admin")]
         public IActionResult DeleteReview(int reviewId)
         {
-            //Todo: Logic for checking request validity before we actually interact with the database
-            // Users should only be able to delete their own reviews.
             Review reviewToDelete = reviewDao.GetReview(reviewId);
+
+            //LOGIC
+            //You may only delete a review if you created it or if you are an administrator
+            if (!(reviewToDelete.UserId == CurrentUser.UserId || CurrentUser.Role == "admin")) {
+                return Unauthorized();
+              }
+            
             if (reviewToDelete != null)
             {
                 reviewDao.DeleteReview(reviewId);
