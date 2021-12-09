@@ -7,6 +7,7 @@ import Register from '../views/Register.vue'
 import BreweryList from '../views/BreweryList.vue'
 import Brewery from '../views/Brewery.vue'
 import Beer from '../views/Beer.vue'
+import NotFound from '../views/NotFound.vue'
 import store from '../store/index'
 
 Vue.use(Router)
@@ -79,7 +80,12 @@ const router = new Router({
       meta: {
         requiresAuth: false
       }
-    }   
+    },
+    { 
+      path: '/:catchAll(.*)', 
+      component: NotFound,
+      name: 'NotFound'
+    }
   ]
 })
 
