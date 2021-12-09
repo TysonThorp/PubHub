@@ -1,5 +1,6 @@
 <template>
   <v-container>
+    <div class="box">Sup bby gorl</div>
     <v-row class="text-center">
       <v-col cols="12">
         <v-img
