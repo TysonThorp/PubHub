@@ -73,7 +73,7 @@ namespace Capstone.Controllers
             Brewery breweryToUpdate = breweryDao.GetBrewery(breweryId);
             if (breweryToUpdate != null)
             {
-                breweryDao.UpdateBrewery(breweryId, brewery);
+                breweryDao.UpdateBrewery(brewery);
                 return Ok();
             }
             else

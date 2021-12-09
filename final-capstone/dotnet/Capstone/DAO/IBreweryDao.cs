@@ -8,7 +8,7 @@ namespace Capstone.DAO
         Brewery AddBrewery(Brewery brewery);
         Brewery GetBrewery(int breweryId);
         List<Brewery> GetAllBreweries();
-        Brewery UpdateBrewery(int breweryId, Brewery brewery);
+        Brewery UpdateBrewery(Brewery brewery);
         void DeleteBrewery(int breweryId);
     }
 }

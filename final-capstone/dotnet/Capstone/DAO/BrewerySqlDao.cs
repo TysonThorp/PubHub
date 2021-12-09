@@ -113,7 +113,7 @@ namespace Capstone.DAO
             cmd.ExecuteNonQuery();
         }
 
-        public Brewery UpdateBrewery(int breweryId, Brewery brewery)
+        public Brewery UpdateBrewery(Brewery brewery)
         {
             try
             {
@@ -124,7 +124,7 @@ namespace Capstone.DAO
                     "SET brewery_owner_id = @brewery_owner_id, brewery_name = @brewery_name, email = @email, phone = @phone, website = @website, brewery_description = @brewery_description, hours_operations = @hours_operations, address = @address, isActive = @isActive " +
                     "WHERE brewery_id = @brewery_id", conn);
 
-                cmd.Parameters.AddWithValue("@brewery_id", breweryId);
+                cmd.Parameters.AddWithValue("@brewery_id", brewery.BreweryID);
                 cmd.Parameters.AddWithValue("@brewery_name", brewery.BreweryName);
                 cmd.Parameters.AddWithValue("@brewery_owner_id", brewery.BreweryOwnerID);
                 cmd.Parameters.AddWithValue("@email", brewery.EmailAddress);

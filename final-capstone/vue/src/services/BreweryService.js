@@ -14,7 +14,6 @@ export default {
       return axios.post('/breweries', brewery)
   },
 
-  //takes two parameters; change this?
   updateBrewery(brewery) {
       return axios.put(`/breweries/${brewery.breweryId}`, brewery)
   }, 
