@@ -83,7 +83,7 @@ namespace Capstone.Controllers
 
         [HttpPut("{reviewId}")]
         [Authorize(Roles = "user, brewer, admin")]
-        public IActionResult UpdateReview(int reviewId, Review review)
+        public IActionResult UpdateReview(Review review)
         {
             // LOGIC
             //You may only review a beer that exists
@@ -92,10 +92,10 @@ namespace Capstone.Controllers
             //You may only update a review you created yourself
             if (review.UserId != CurrentUser.UserId) return Unauthorized();
 
-            Review reviewToUpdate = reviewDao.GetReview(reviewId);
+            Review reviewToUpdate = reviewDao.GetReview(review.ReviewId);
             if (reviewToUpdate != null)
             {
-                reviewDao.UpdateReview(reviewId, review);
+                reviewDao.UpdateReview(review);
                 return Ok();
             }
             else

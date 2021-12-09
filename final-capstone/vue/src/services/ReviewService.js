@@ -14,7 +14,6 @@ export default {
       return axios.post('/review', review)
   },
 
-  // NOTE: Controller takes reviewId and review as parameters.  
   updateReview(review) {
       return axios.put(`/review/${review.reviewId}`, review)
   }, 

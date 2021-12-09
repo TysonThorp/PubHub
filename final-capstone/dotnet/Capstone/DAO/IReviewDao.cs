@@ -8,7 +8,7 @@ namespace Capstone.DAO
         Review AddReview(Review review);
         Review GetReview(int breweryId);
         List<Review> GetAllReviews();
-        Review UpdateReview(int reviewId, Review review);
+        Review UpdateReview(Review review);
         void DeleteReview(int reviewId);
     }
 }

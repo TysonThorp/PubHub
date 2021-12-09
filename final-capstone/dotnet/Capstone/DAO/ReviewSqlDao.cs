@@ -108,7 +108,7 @@ namespace Capstone.DAO
             cmd.ExecuteNonQuery();
         }
 
-        public Review UpdateReview(int reviewId, Review review)
+        public Review UpdateReview(Review review)
         {
             try
             {
@@ -119,7 +119,7 @@ namespace Capstone.DAO
                     "SET user_id = @user_id, beer_id = @beer_id, rating = @rating, review_description = @review_description " +
                     "WHERE review_id = @review_id", conn);
 
-                cmd.Parameters.AddWithValue("@review_id", reviewId);
+                cmd.Parameters.AddWithValue("@review_id", review.ReviewId);
                 cmd.Parameters.AddWithValue("@user_id", review.UserId);
                 cmd.Parameters.AddWithValue("@beer_id", review.BeerId);
                 cmd.Parameters.AddWithValue("@rating", review.Rating);
