@@ -59,7 +59,7 @@
       items: [
         {title: 'Sign-in' , icon: 'mdi-view-dashboard', link: '/login'},
         {title: 'Breweries' , icon: 'mdi-image', link: '/brewerylist'},
-        {title: 'Beers' , icon: 'mdi-image', link: '/beerlist'},
+        {title: 'Beers' , icon: 'mdi-image', link: '/beers'},
       ],
     }),
     methods:{
