@@ -1,9 +1,9 @@
 <template>
-<ul id="beer-list" class="pa-0">
-            <div v-for="beer in beers" :key="beer.beerId">
-                <beer-detail :beerId="beer.beerId"/>
-            </div>
-        </ul>
+  <ul id="beer-list" class="pa-0">
+    <li v-for="beer in beers" :key="beer.beerId">
+      <beer-detail :beerId="beer.beerId"/>
+    </li>
+  </ul>
 </template>
 
 <script>
@@ -28,5 +28,7 @@ import BeerDetail from '../components/BeerDetail.vue';
 </script>
 
 <style>
-
+  #beer-list {
+    list-style-type: none;
+  }
 </style>

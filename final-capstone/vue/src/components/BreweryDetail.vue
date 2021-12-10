@@ -1,12 +1,10 @@
 <template>
     <v-card elevation="2" class="breweryItem" :href="link">
-        <!--<v-img height="20" src="https://cdn.vuetifyjs.com/images/ratings/fortnite1.png"></v-img>-->
         <v-card-title><h2>{{brewery.breweryName}}</h2></v-card-title>
         <v-card-subtitle>{{ brewery.address }}</v-card-subtitle>
         <v-card-text v-if="showFull">
             {{ brewery.description }}
             <ul>
-                <!--<li>Address: {{ brewery.address }}</li>-->
                 <li>Phone: {{ brewery.phoneNumber }}</li>
                 <li>Email: {{brewery.emailAddress }}</li>
                 <li>Website: {{brewery.website }}</li>

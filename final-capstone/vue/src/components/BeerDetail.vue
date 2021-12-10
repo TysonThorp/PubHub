@@ -1,18 +1,11 @@
 <template>
-    <table>
- 
-    <tbody>
-      
-        <td>{{beer.BeerName}}</td>
-        <td>{{beer.BeerType}}</td>
-        <td>{{beer.description}}</td>
-        <td>{{beer.image}}</td>
-        <td>{{beer.abv}}</td>
-      
-         
-     
-    </tbody>
-  </table>
+    <v-card elevation="2" class="beerItem" :href="link">
+        <v-card-title><h2>{{beer.beerName}}</h2></v-card-title>
+        <v-card-subtitle>{{ beer.beerType }}</v-card-subtitle>
+        <v-card-text>
+            {{ beer.description }} ABV: {{beer.abv }}
+        </v-card-text>
+    </v-card>
 </template>
 
 <script>
@@ -44,5 +37,13 @@ export default {
 </script>
 
 <style>
+
+    .beerItem{
+        margin-bottom: 1em;
+    }
+
+    h2{
+        font-size: 1em;
+    }
 
 </style>
