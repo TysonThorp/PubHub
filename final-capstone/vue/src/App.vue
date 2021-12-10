@@ -1,28 +1,19 @@
 <template>
   <v-app>
-    <h1>testing the header from app.vue right hurr</h1>
-    <v-app-bar
+    <v-app-bar id="app-bar"
       app
       color="#000"
       dark
     >
+      <router-link to="/home">
       <div class="d-flex align-center">
         <div class="logo">
           <span class="pub">Pub</span>
           <span class="hub">Hub</span>
         </div>
       </div>
+      </router-link>
 
-      <v-spacer></v-spacer>
-
-      <v-btn
-        href="https://github.com/vuetifyjs/vuetify/releases/latest"
-        target="_blank"
-        text
-      >
-        <span class="mr-2">Latest Release</span>
-        <v-icon>mdi-open-in-new</v-icon>
-      </v-btn>
     </v-app-bar>
 
     <v-main>
@@ -52,6 +43,11 @@ export default {
 
 .pub{
   color:darkorange;
+}
+
+#app-bar a {
+  color: white!important;
+  text-decoration: none;
 }
 
 </style>
