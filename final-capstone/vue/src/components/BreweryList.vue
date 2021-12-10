@@ -1,38 +1,34 @@
 <template>
-    <table>
-    <thead>
-      <tr>
-        <th>Brewery List</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr v-for="brewery in $store.state.brewery" v-bind:key="brewery.id">
-        <td>{{ brewery.id }}</td>
-        <td>{{ brewery.name }}</td>
-        <td>
-          <router-link
-            v-bind:to="{name:'brewery', params:{id: brewery.id} }">
-            {{brewery.id}}
-          </router-link>
-        </td>
-      </tr>
-    </tbody>
-  </table>
+  <v-container>
+    <ul id="brewery-list" class="pa-0">
+      <div v-for="brewery in breweries" :key="brewery.breweryId">
+        <brewery-detail :breweryId="brewery.breweryId" :showFull="false" />
+      </div>
+    </ul>
+  </v-container>
 </template>
 
 <script>
+import BreweryDetail from "../components/BreweryDetail.vue";
+import BreweryService from "../services/BreweryService";
+
 export default {
-    name: "beer-list",
-    data() {
-        return {
-            brewery: {
-                breweryName: '',
-            }
-        }
-    },
+  name: "brewery-list",
+  components: { 
+    BreweryDetail 
+  },
+  data() {
+    return {
+      breweries: [],
+    };
+  },
+  created() {
+    BreweryService.getAllBreweries().then((response) => {
+      this.breweries = response.data;
+    });
+  },
 };
 </script>
 
 <style>
-
 </style>
