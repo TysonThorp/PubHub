@@ -17,9 +17,9 @@
           <v-list-item-title class="text-h6">
             PubHub
           </v-list-item-title>
-          <v-list-item-subtitle>
+          <!--<v-list-item-subtitle>
             More text
-          </v-list-item-subtitle>
+          </v-list-item-subtitle>-->
         </v-list-item-content>
       </v-list-item>
 
@@ -59,9 +59,9 @@
     data: () => ({ 
       drawer: false,
       items: [
-        {title: 'Sign-in' , icon: 'mdi-view-dashboard', link: '/login'},
-        {title: 'Breweries' , icon: 'mdi-image', link: '/breweries'},
-        {title: 'Beers' , icon: 'mdi-image', link: '/beers'},
+        {title: 'Login' , icon: 'mdi-arrow-right-thick', link: '/login'},
+        {title: 'Breweries' , icon: 'mdi-home', link: '/breweries'},
+        {title: 'Beers' , icon: 'mdi-glass-mug-variant', link: '/beers'},
       ],
     }),
     methods:{
