@@ -4,7 +4,7 @@ import Home from '../views/Home.vue'
 import Login from '../views/Login.vue'
 import Logout from '../views/Logout.vue'
 import Register from '../views/Register.vue'
-import BreweryList from '../views/BreweryList.vue'
+import Breweries from '../views/Breweries.vue'
 import Brewery from '../views/Brewery.vue'
 import Beer from '../views/Beer.vue'
 import NotFound from '../views/NotFound.vue'
@@ -59,15 +59,15 @@ const router = new Router({
       }
     },
     {
-      path: "/brewerylist",
-      name: "brewerylist",
-      component: BreweryList,
+      path: "/breweries",
+      name: "breweries",
+      component: Breweries,
       meta: {
         requiresAuth: false
       }
     },
     {
-      path: "/brewerylist/:breweryId",
+      path: "/breweries/:breweryId",
       name: "brewery",
       component: Brewery,
       meta: {
@@ -75,7 +75,7 @@ const router = new Router({
       }
     },
     {
-      path: "/brewerylist/:breweryId/:beerId",
+      path: "/breweries/:breweryId/:beerId",
       name: "beer",
       component: Beer, 
       meta: {
