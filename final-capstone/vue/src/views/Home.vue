@@ -1,6 +1,6 @@
 <template>
       <div>
-        <h2>This text appears only on the homepage.</h2>
+        <h1>HOME</h1>
         <brewery-list/>
       </div>
 </template>
@@ -13,7 +13,7 @@
   
 
 <script>
-  import BreweryList from './BreweryList.vue'
+  import BreweryList from '../components/BreweryList.vue'
 
   export default {
     name: 'home',
