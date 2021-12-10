@@ -1,5 +1,5 @@
 <template>
-    <beer-detail />
+    <beer-detail :beerId="this.$route.params.beerId"/>
 </template>
 
 <script>

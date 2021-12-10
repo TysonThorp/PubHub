@@ -87,6 +87,11 @@ const router = new Router({
       component: Beers,
       name: 'beers'
     },
+    {
+      path: '/beers/:beerId', 
+      component: Beer,
+      name: 'beer'
+    },
     { 
       path: '/:catchAll(.*)', 
       component: NotFound,

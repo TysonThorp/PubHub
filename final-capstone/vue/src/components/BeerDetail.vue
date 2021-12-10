@@ -19,6 +19,7 @@ export default {
     data() {
         return {
             beer: {
+                beerId: '',
                 beerName: '',
                 beerType: '',
                 description: '',
@@ -26,6 +27,11 @@ export default {
                 abv: ''
             }
         }
+    },
+    computed: {
+        link() {
+            return "beers/" + this.beerId;
+        } 
     },
     created() {
         
