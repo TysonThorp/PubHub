@@ -1,11 +1,9 @@
 <template>
-<<<<<<< HEAD
   <v-app id="inspire">
     <v-navigation-drawer
       v-model="drawer"
       app
     >
-      <!--  -->
     </v-navigation-drawer>
 
     <v-app-bar app>
@@ -15,9 +13,11 @@
     </v-app-bar>
 
     <v-main>
-      <!--  -->
+      <brewery-list/>
     </v-main>
   </v-app>
+
+  
 </template>
 
 <script>
@@ -25,9 +25,7 @@
     data: () => ({ drawer: null }),
   }
 </script>
-=======
-  <brewery-list/>
-</template>
+  
 
 <script>
   import BreweryList from './BreweryList.vue'
@@ -44,4 +42,3 @@
 <style>
  
 </style>
->>>>>>> 8171bc0023309b770e210e17fd27d616385cd9c0

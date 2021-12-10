@@ -1,5 +1,4 @@
 <template>
-<<<<<<< HEAD
   <v-app id="inspire">
     
     <v-app-bar app>
@@ -43,28 +42,9 @@
         </v-list-item>
       </v-list>
      </v-navigation-drawer>
-=======
-  <v-app>
-    <v-app-bar id="app-bar"
-      app
-      color="#000"
-      dark
-    >
-      <router-link to="/home">
-      <div class="d-flex align-center">
-        <div class="logo">
-          <span class="pub">Pub</span>
-          <span class="hub">Hub</span>
-        </div>
-      </div>
-      </router-link>
-
-    </v-app-bar>
->>>>>>> 8171bc0023309b770e210e17fd27d616385cd9c0
 
     <v-main>
       <router-view></router-view>
-      <!--  -->
     </v-main>
   </v-app>
 </template>
@@ -110,16 +90,9 @@
   position: absolute;
 }
 
-<<<<<<< HEAD
-
-
-
-</style>
-=======
 #app-bar a {
   color: white!important;
   text-decoration: none;
 }
 
 </style>
->>>>>>> 8171bc0023309b770e210e17fd27d616385cd9c0
