@@ -1,4 +1,5 @@
 <template>
+<<<<<<< HEAD
   <v-app id="inspire">
     <v-navigation-drawer
       v-model="drawer"
@@ -24,3 +25,23 @@
     data: () => ({ drawer: null }),
   }
 </script>
+=======
+  <brewery-list/>
+</template>
+
+<script>
+  import BreweryList from './BreweryList.vue'
+
+  export default {
+    name: 'home',
+
+    components: {
+        BreweryList,
+    },
+  }
+</script>
+
+<style>
+ 
+</style>
+>>>>>>> 8171bc0023309b770e210e17fd27d616385cd9c0

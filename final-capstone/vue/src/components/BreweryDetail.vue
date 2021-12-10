@@ -1,0 +1,66 @@
+<template>
+    <v-card elevation="2" class="breweryItem" :href="link">
+        <!--<v-img height="20" src="https://cdn.vuetifyjs.com/images/ratings/fortnite1.png"></v-img>-->
+        <v-card-title><h2>{{brewery.breweryName}}</h2></v-card-title>
+        <v-card-subtitle>{{ brewery.address }}</v-card-subtitle>
+        <v-card-text v-if="showFull">
+            {{ brewery.description }}
+            <ul>
+                <!--<li>Address: {{ brewery.address }}</li>-->
+                <li>Phone: {{ brewery.phoneNumber }}</li>
+                <li>Email: {{brewery.emailAddress }}</li>
+                <li>Website: {{brewery.website }}</li>
+                <li>Hours: {{ brewery.hoursOfOperation }}</li>
+            </ul>
+        </v-card-text>
+    </v-card>
+</template>
+
+<script>
+import BreweryService from '../services/BreweryService';
+
+export default {
+    name: 'brewery-detail',
+    props: {
+        breweryId: Number,
+        showFull: Boolean
+    },
+    data() {
+        return {
+            brewery: {
+                breweryName: '',
+                emailAddress: '',
+                phoneNumber: '',
+                website: '',
+                description: '',
+                hoursOfOperation: '',
+                address: ''
+            }
+        }
+    },
+    computed: {
+        link() {
+            return "brewerylist/" + this.breweryId
+        } 
+    },
+    created() {
+        //const breweryId = this.$route.params.breweryId;
+
+        BreweryService.getBreweryById(this.breweryId).then((response) => {
+            this.brewery = response.data;
+        });
+    }
+}
+</script>
+
+<style>
+
+    .breweryItem{
+        margin-bottom: 1em;
+    }
+
+    h2{
+        font-size: 1em;
+    }
+
+</style>

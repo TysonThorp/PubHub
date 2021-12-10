@@ -127,7 +127,7 @@ namespace Capstone.DAO
         {
             Beer beer = new Beer()
             {
-                BeerID = Convert.ToInt32(reader["beer_id"]),
+                BeerId = Convert.ToInt32(reader["beer_id"]),
                 BeerName = Convert.ToString(reader["beer_name"]),
                 Description = Convert.ToString(reader["description"]),
                 Image = Convert.ToString(reader["image"]),

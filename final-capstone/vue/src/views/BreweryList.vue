@@ -1,28 +1,20 @@
 <template>
-  <div>
-    <ul id="brewery-list">
-        <li v-for="brewery in breweries" :key="brewery.breweryId">
-            <div>
-                <h2 id="breweryName">{{ brewery.breweryName }}</h2>
-                <p id="breweryInfo">
-                    <a :href= brewery.website target="_blank">Website</a> |
-                    {{ brewery.phoneNumber }} |
-                    {{ brewery.address }}
-                </p>
-                <p id="breweryDesc">{{ brewery.description }}</p>
+    <v-container>
+        <ul id="brewery-list" class="pa-0">
+            <div v-for="brewery in breweries" :key="brewery.breweryId">
+                <brewery-detail :breweryId="brewery.breweryId" :showFull="false"/>
             </div>
-            
-        </li>
-    </ul>
-  </div>
+        </ul>
+    </v-container>
 </template>
 
 <script>
+    import BreweryDetail from '../components/BreweryDetail.vue';
     import BreweryService from '../services/BreweryService';
 
     export default {
         name: 'Breweries',
-        components: {},
+        components: {BreweryDetail},
         data() {
             return {
                 breweries: []
@@ -35,3 +27,7 @@
         }
     }   
 </script>
+
+<style>
+
+</style>
