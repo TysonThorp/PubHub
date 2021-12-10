@@ -117,32 +117,25 @@ CREATE TABLE user_review(
 	beer_id int NOT NULL,
 	brewery_id int NOT NULL)
 
-ALTER TABLE user_review
+ALTER TABLE reviews
 ADD CONSTRAINT FKreview_user_id FOREIGN KEY (user_id)
 	REFERENCES users (user_id)
 
-ALTER TABLE user_review
+ALTER TABLE reviews
 ADD CONSTRAINT FKreview_beer_id FOREIGN KEY (beer_id)
 	REFERENCES beer (beer_id)
 
-ALTER TABLE user_review
-ADD CONSTRAINT FKreview_brewery_id FOREIGN KEY (brewery_id)
-	REFERENCES breweries (brewery_id)
+ALTER TABLE users
+DROP COLUMN user_review_id
 
-ALTER TABLE reviews
-ADD CONSTRAINT FKreview_user_id FOREIGN KEY (user_id)
-	REFERENCES users (user_id)
+SELECT * 
+FROM users
 
-ALTER TABLE reviews
-ADD user_review_id int;
-
-ALTER TABLE user_review
-ADD user_review_id int;
-
-ALTER TABLE user_review
-ADD CONSTRAINT FK_user_review_id FOREIGN KEY (user_review_id)
-	REFERENCES reviews (user_review_id)
-
-DROP TABLE user_review
+INSERT INTO users (username, password_hash, salt, user_role)
+VALUES
+('Levi Swartz', 'Jg45HuwT7PZkfuKTz6IB90CtWY4=', 'LHxP4Xh7bN0=', 'admin'),
+('Mustafa Hilal','YhyGVQ+Ch69n4JMBncM4lNF/i9s=', 'Ar/aB2thQTI=', 'admin'),
+('Ryan DuPerow', 'Jg45HuwT7PZkfuKTz6IB90CtWY4=','LHxP4Xh7bN0=', 'admin'),
+('Tyson Thorp', 'YhyGVQ+Ch69n4JMBncM4lNF/i9s=', 'Ar/aB2thQTI=', 'user')
 
 
