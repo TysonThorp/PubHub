@@ -60,7 +60,7 @@
       drawer: false,
       items: [
         {title: 'Sign-in' , icon: 'mdi-view-dashboard', link: '/login'},
-        {title: 'Breweries' , icon: 'mdi-image', link: '/brewerylist'},
+        {title: 'Breweries' , icon: 'mdi-image', link: '/breweries'},
         {title: 'Beers' , icon: 'mdi-image', link: '/beers'},
       ],
     }),
