@@ -1,11 +1,9 @@
 <template>
-  <v-container>
-    <ul id="brewery-list" class="pa-0">
-      <div v-for="brewery in breweries" :key="brewery.breweryId">
-        <brewery-detail :breweryId="brewery.breweryId" :showFull="false" />
-      </div>
-    </ul>
-  </v-container>
+  <ul id="brewery-list" class="pa-0">
+    <div v-for="brewery in breweries" :key="brewery.breweryId">
+      <brewery-detail :breweryId="brewery.breweryId" :showFull="false" />
+    </div>
+  </ul>
 </template>
 
 <script>

@@ -1,5 +1,5 @@
 <template>
-  <div class="beers">
+  <div id="beers">
      <h1>Beers</h1>
      <beer-list />
   </div>
@@ -18,5 +18,4 @@ export default {
 </script>
 
 <style>
-
 </style>

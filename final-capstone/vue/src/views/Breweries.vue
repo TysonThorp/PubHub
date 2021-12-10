@@ -1,7 +1,8 @@
 <template>
-  <v-container>
-    <brewery-list />
-  </v-container>  
+    <div id="breweries">
+      <h1>Breweries</h1>
+      <brewery-list />
+    </div>
 </template>
 
 <script>
