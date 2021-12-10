@@ -54,7 +54,7 @@ namespace Capstone.Controllers
             }
             else
             {
-                return NotFound();
+                return new NotFoundObjectResult("Couldn't find a brewery by that id.");
             }
         }
 
@@ -66,11 +66,11 @@ namespace Capstone.Controllers
             //You may only create a brewery with your own id as owner unless you're an administrator
             if (!(brewery.BreweryOwnerId == CurrentUser.UserId || CurrentUser.Role == "admin"))
             {
-                return Unauthorized();
+                return new UnauthorizedObjectResult("You may only create a brewery with your own id as owner.");
             }
 
             //The owner of a brewery must be an existing user
-            if (userDao.GetUser(brewery.BreweryOwnerId) == null) return BadRequest();
+            if (userDao.GetUser(brewery.BreweryOwnerID) == null) new BadRequestObjectResult("The owner of a brewery must be an existing user.");
 
             Brewery result = breweryDao.AddBrewery(brewery);
             if (result != null)
@@ -89,15 +89,18 @@ namespace Capstone.Controllers
         {
             Brewery breweryToUpdate = breweryDao.GetBrewery(breweryId);
 
-            //LOGIC
-            //You may only update a brewery if you're the owner or if you are an administrator
-            if (!(breweryToUpdate.BreweryOwnerId == CurrentUser.UserId || CurrentUser.Role == "admin"))
-            {
-                return Unauthorized();
-            }
-
             if (breweryToUpdate != null)
             {
+                //LOGIC
+                //You may only update a brewery if you're the owner or if you are an administrator
+                if (!(breweryToUpdate.BreweryOwnerID == CurrentUser.UserId || CurrentUser.Role == "admin"))
+                {
+                    return new UnauthorizedObjectResult("You may only update a brewery you own.");
+                }
+
+                //The owner of a brewery must be an existing user
+                if (userDao.GetUser(brewery.BreweryOwnerID) == null) return new BadRequestObjectResult("The owner of a brewery must be an existing user.");
+
                 breweryDao.UpdateBrewery(brewery);
                 return Ok();
             }
@@ -113,21 +116,21 @@ namespace Capstone.Controllers
         {
             Brewery breweryToDelete = breweryDao.GetBrewery(breweryId);
 
-            //LOGIC
-            //You may only delete a brewery if you're the owner or if you are an administrator
-            if (!(breweryToDelete.BreweryOwnerId == CurrentUser.UserId || CurrentUser.Role == "admin"))
-            {
-                return Unauthorized();
-            }
-
             if (breweryToDelete != null)
             {
+                //LOGIC
+                //You may only delete a brewery if you're the owner or if you are an administrator
+                if (!(breweryToDelete.BreweryOwnerID == CurrentUser.UserId || CurrentUser.Role == "admin"))
+                {
+                    return new UnauthorizedObjectResult("You may only delete a brewery you own.");
+                }
+
                 breweryDao.DeleteBrewery(breweryId);
                 return Ok();
             }
             else
             {
-                return NotFound();
+                return new NotFoundObjectResult("Couldn't find a brewery by that id.");
             }
         }
 
