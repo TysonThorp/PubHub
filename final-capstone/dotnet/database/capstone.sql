@@ -20,9 +20,8 @@ CREATE TABLE reviews(
 	user_id int NOT NULL,
 	beer_id int NOT NULL,
 	rating int NULL,
-	review_description varchar(300) NULL,
+	review_description varchar(500) NULL,
 	PRIMARY KEY (review_id),
-	--FOREIGN KEY (user_id) REFERENCES users(user_id)
 	)
 
 CREATE TABLE users (
@@ -103,4 +102,47 @@ VALUES (1, 2, 10, 'Example review text by user for beer 2 with rating 10'),
        (1, 2, 5, 'Example review text by user for beer 2 with rating 5'),
 	   (2, 3, 7, 'Example review text by admin for beer 3 with rating 7')
 
+
 GO
+ALTER TABLE beers_by_brewery
+ADD CONSTRAINT FKb_by_b_beer_id FOREIGN KEY (beer_id)
+      REFERENCES beer (beer_id)
+
+ALTER TABLE beers_by_brewery
+ADD CONSTRAINT FKb_by_b_brewery_id FOREIGN KEY (brewery_id)
+	REFERENCES breweries (brewery_id)
+
+CREATE TABLE user_review(
+	user_id int NOT NULL,
+	beer_id int NOT NULL,
+	brewery_id int NOT NULL)
+
+ALTER TABLE user_review
+ADD CONSTRAINT FKreview_user_id FOREIGN KEY (user_id)
+	REFERENCES users (user_id)
+
+ALTER TABLE user_review
+ADD CONSTRAINT FKreview_beer_id FOREIGN KEY (beer_id)
+	REFERENCES beer (beer_id)
+
+ALTER TABLE user_review
+ADD CONSTRAINT FKreview_brewery_id FOREIGN KEY (brewery_id)
+	REFERENCES breweries (brewery_id)
+
+ALTER TABLE reviews
+ADD CONSTRAINT FKreview_user_id FOREIGN KEY (user_id)
+	REFERENCES users (user_id)
+
+ALTER TABLE reviews
+ADD user_review_id int;
+
+ALTER TABLE user_review
+ADD user_review_id int;
+
+ALTER TABLE user_review
+ADD CONSTRAINT FK_user_review_id FOREIGN KEY (user_review_id)
+	REFERENCES reviews (user_review_id)
+
+DROP TABLE user_review
+
+
