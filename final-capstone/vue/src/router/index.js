@@ -9,6 +9,7 @@ import Brewery from '../views/Brewery.vue'
 import Beer from '../views/Beer.vue'
 import NotFound from '../views/NotFound.vue'
 import store from '../store/index'
+import Beers from '../views/Beers.vue'
 
 Vue.use(Router)
 
@@ -81,11 +82,17 @@ const router = new Router({
         requiresAuth: false
       }
     },
+    {
+      path: '/beers', 
+      component: Beers,
+      name: 'beers'
+    },
     { 
       path: '/:catchAll(.*)', 
       component: NotFound,
       name: 'NotFound'
-    }
+    },
+
   ]
 })
 
