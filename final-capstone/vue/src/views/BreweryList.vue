@@ -1,33 +1,19 @@
 <template>
-    <v-container>
-        <ul id="brewery-list" class="pa-0">
-            <div v-for="brewery in breweries" :key="brewery.breweryId">
-                <brewery-detail :breweryId="brewery.breweryId" :showFull="false"/>
-            </div>
-        </ul>
-    </v-container>
+  <v-container>
+    <brewery-list />
+  </v-container>  
 </template>
 
 <script>
-    import BreweryDetail from '../components/BreweryDetail.vue';
-    import BreweryService from '../services/BreweryService';
+import BreweryList from "../components/BreweryList.vue"
 
-    export default {
-        name: 'Breweries',
-        components: {BreweryDetail},
-        data() {
-            return {
-                breweries: []
-            }
-        },
-        created(){
-            BreweryService.getAllBreweries().then(response => {
-                    this.breweries = response.data;
-            });
-        }
-    }   
+export default {
+  name: "Breweries",
+  components: { 
+      BreweryList 
+  }
+};
 </script>
 
 <style>
-
 </style>
