@@ -38,7 +38,7 @@ export default {
     },
     computed: {
         link() {
-            return "brewerylist/" + this.breweryId
+            return "breweries/" + this.breweryId
         } 
     },
     created() {
