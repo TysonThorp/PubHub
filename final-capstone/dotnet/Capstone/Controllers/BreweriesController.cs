@@ -70,7 +70,7 @@ namespace Capstone.Controllers
             }
 
             //The owner of a brewery must be an existing user
-            if (userDao.GetUser(brewery.BreweryOwnerID) == null) new BadRequestObjectResult("The owner of a brewery must be an existing user.");
+            if (userDao.GetUser(brewery.BreweryOwnerId) == null) new BadRequestObjectResult("The owner of a brewery must be an existing user.");
 
             Brewery result = breweryDao.AddBrewery(brewery);
             if (result != null)
@@ -93,13 +93,13 @@ namespace Capstone.Controllers
             {
                 //LOGIC
                 //You may only update a brewery if you're the owner or if you are an administrator
-                if (!(breweryToUpdate.BreweryOwnerID == CurrentUser.UserId || CurrentUser.Role == "admin"))
+                if (!(breweryToUpdate.BreweryOwnerId == CurrentUser.UserId || CurrentUser.Role == "admin"))
                 {
                     return new UnauthorizedObjectResult("You may only update a brewery you own.");
                 }
 
                 //The owner of a brewery must be an existing user
-                if (userDao.GetUser(brewery.BreweryOwnerID) == null) return new BadRequestObjectResult("The owner of a brewery must be an existing user.");
+                if (userDao.GetUser(brewery.BreweryOwnerId) == null) return new BadRequestObjectResult("The owner of a brewery must be an existing user.");
 
                 breweryDao.UpdateBrewery(brewery);
                 return Ok();
@@ -120,7 +120,7 @@ namespace Capstone.Controllers
             {
                 //LOGIC
                 //You may only delete a brewery if you're the owner or if you are an administrator
-                if (!(breweryToDelete.BreweryOwnerID == CurrentUser.UserId || CurrentUser.Role == "admin"))
+                if (!(breweryToDelete.BreweryOwnerId == CurrentUser.UserId || CurrentUser.Role == "admin"))
                 {
                     return new UnauthorizedObjectResult("You may only delete a brewery you own.");
                 }
