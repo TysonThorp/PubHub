@@ -1,21 +1,24 @@
 <template>
-  <v-app id="inspire">
-    
-    <v-app-bar app>
+  <v-app>
+    <v-app-bar app id="app-bar">
       <v-app-bar-nav-icon @click="toggleDrawer"></v-app-bar-nav-icon>
-      <div class="logo">
-          Pub<span class="hub">Hub</span>
-      </div>
+      <router-link to="/home">
+        <div class="d-flex align-center">
+          <div class="logo">
+            Pub<span class="hub">Hub</span>
+          </div>
+        </div>
+      </router-link>
     </v-app-bar>
-     <v-navigation-drawer v-model="drawer">
+     <v-navigation-drawer v-model="drawer" app>
        
       <v-list-item>
         <v-list-item-content>
           <v-list-item-title class="text-h6">
-            Application
+            PubHub
           </v-list-item-title>
           <v-list-item-subtitle>
-            subtext
+            More text
           </v-list-item-subtitle>
         </v-list-item-content>
       </v-list-item>
@@ -29,8 +32,7 @@
         <v-list-item
           v-for="item in items"
           :key="item.title"
-          link
-          to="/login"
+          :to="item.link"
         >
           <v-list-item-icon>
             <v-icon>{{ item.icon }}</v-icon>
@@ -55,9 +57,9 @@
     data: () => ({ 
       drawer: false,
       items: [
-        {title: 'Sign-in' , icon: 'mdi-view-dashboard'},
-        {title: 'Beer' , icon: 'mdi-image'},
-        {title: 'Brewery' , icon: 'mdi-image'},
+        {title: 'Sign-in' , icon: 'mdi-view-dashboard', link: '/login'},
+        {title: 'Breweries' , icon: 'mdi-image', link: '/brewerylist'},
+        {title: 'Beers' , icon: 'mdi-image', link: '/beerlist'},
       ],
     }),
     methods:{
