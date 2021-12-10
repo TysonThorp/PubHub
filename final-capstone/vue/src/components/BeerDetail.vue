@@ -1,13 +1,18 @@
 <template>
-    <div>
-        <h1>
-            {{ beer.beerName }}
-        </h1>
-        <ul>
-            <li>{{ beer.description }}</li>
-            <li>{{ beer.beerType }}</li>
-        </ul>
-    </div>
+    <table>
+ 
+    <tbody>
+      
+        <td>{{beer.BeerName}}</td>
+        <td>{{beer.BeerType}}</td>
+        <td>{{beer.description}}</td>
+        <td>{{beer.image}}</td>
+        <td>{{beer.abv}}</td>
+      
+         
+     
+    </tbody>
+  </table>
 </template>
 
 <script>
@@ -15,20 +20,23 @@ import BeerService from '../services/BeerService.js'
 
 export default {
     name: 'beer-detail',
+    props: {
+        beerId: Number
+    },
     data() {
         return {
             beer: {
                 beerName: '',
                 beerType: '',
                 description: '',
-                image: ''
+                image: '',
+                abv: ''
             }
         }
     },
     created() {
-        const beerId = this.$route.params.breweryId;
-
-        BeerService.getBeerById(beerId).then((response) => {
+        
+        BeerService.getBeerById(this.beerId).then((response) => {
             this.beer = response.data;
         });
     }

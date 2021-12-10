@@ -1,36 +1,30 @@
 <template>
-    <table>
-    <thead>
-      <tr>
-        <th>Beer List</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr v-for="beer in $store.state.beers" v-bind:key="beer.id">
-        <td>{{ beer.id }}</td>
-        <td>{{ beer.name }}</td>
-        <td>
-          <router-link
-            v-bind:to="{name:'beers', params:{id: beer.id} }">
-            {{beer.id}}
-          </router-link>
-        </td>
-      </tr>
-    </tbody>
-  </table>
+<ul id="beer-list" class="pa-0">
+            <div v-for="beer in beers" :key="beer.beerId">
+                <beer-detail :beerId="beer.beerId"/>
+            </div>
+        </ul>
 </template>
 
 <script>
-export default {
-    name: "beer-list",
-    data() {
-        return {
-            beer: {
-                beerName: '',
+ import BeerService from '../services/BeerService.js';
+import BeerDetail from '../components/BeerDetail.vue';
+
+    export default {
+        name: 'beer-list',
+        components: {BeerDetail},
+        data() {
+            return {
+                beers: []
             }
+        },
+        created(){
+            BeerService.getAllBeers().then(response => {
+                    this.beers = response.data;
+            });
         }
-    },
-};
+    }   
+
 </script>
 
 <style>
