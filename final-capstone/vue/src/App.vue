@@ -2,24 +2,22 @@
   <v-app>
     <v-app-bar app id="app-bar">
       <v-app-bar-nav-icon @click="toggleDrawer"></v-app-bar-nav-icon>
-      <router-link to="/">
-        <div class="d-flex align-center">
-          <div class="logo">
-            Pub<span class="hub">Hub</span>
-          </div>
-        </div>
-      </router-link>
+      
+      <app-logo></app-logo>
+      <v-spacer></v-spacer>
+      
+      <v-switch
+        v-model="$vuetify.theme.dark" :label="$vuetify.theme.dark ? '🌙' : '☀️'"
+      ></v-switch>
+      
     </v-app-bar>
-     <v-navigation-drawer v-model="drawer" app>
+    <v-navigation-drawer v-model="drawer" app>
        
       <v-list-item>
         <v-list-item-content>
           <v-list-item-title class="text-h6">
-            PubHub
+            <app-logo/>
           </v-list-item-title>
-          <!--<v-list-item-subtitle>
-            More text
-          </v-list-item-subtitle>-->
         </v-list-item-content>
       </v-list-item>
 
@@ -55,7 +53,11 @@
 
 
 <script>
+import AppLogo from './components/AppLogo.vue';
   export default {
+    components: { 
+      AppLogo 
+  },
     data: () => ({ 
       drawer: false,
       items: [
@@ -83,6 +85,17 @@
   background-color: #000;
   border-radius: 5px;
   padding: 10px;
+}
+
+.logo2{
+  color: #ff4424;
+  border-radius: 5px;
+  padding: 10px;
+  font-weight: bold;
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+
 }
 
 .hub{
