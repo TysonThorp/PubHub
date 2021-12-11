@@ -1,9 +1,13 @@
 <template>
   <div>
     <beer-detail :beerId="this.$route.params.beerId"/>
+   
+      <h2>Reviews:</h2>
+      <review-list :beerId="this.$route.params.beerId"/>
+
     <v-card>
       <v-card-title>
-          This Beer's Reviews:
+          Review this beer:
       </v-card-title>
     </v-card>
   </div>
@@ -11,10 +15,12 @@
 
 <script>
 import BeerDetail from '../components/BeerDetail.vue'
+import ReviewList from '../components/ReviewList.vue'
 
 export default {
   components: { 
-      BeerDetail 
+      BeerDetail,
+    ReviewList 
   },
 
 }

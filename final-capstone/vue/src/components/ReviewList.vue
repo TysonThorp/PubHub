@@ -12,6 +12,10 @@
 
     export default {
         name: 'review-list',
+        props: {
+          beerId: Number,
+          showAll: Boolean
+        },
         components: {ReviewDetail},
         data() {
             return {
@@ -19,9 +23,20 @@
             }
         },
         created(){
-            ReviewService.getAllReviews().then(response => {
-                    this.reviews = response.data;
-            });
+          
+          if (this.showAll) {
+            ReviewService.getAllReviews().then(response => { 
+              this.reviews = response.data;
+            })
+          }
+
+          // otherwise, if a beerId was passed into this component as a prop, get reviews for a specific beer
+          else if (this.beerId != 0) {
+            ReviewService.getAllReviews().then(response => { 
+              this.reviews = response.data.filter(beer => beer.beerId == this.beerId);
+            })
+          }
+          
         }
     }
 </script>

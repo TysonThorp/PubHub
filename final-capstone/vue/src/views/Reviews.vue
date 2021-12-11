@@ -1,7 +1,7 @@
 <template>
   <div class="reviews">
      <h1>Reviews</h1>
-     <review-list />
+     <review-list :showAll="true"/>
   </div>
 </template>
 
