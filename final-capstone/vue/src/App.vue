@@ -2,7 +2,7 @@
   <v-app>
     <v-app-bar app id="app-bar">
       <v-app-bar-nav-icon @click="toggleDrawer"></v-app-bar-nav-icon>
-      <router-link to="/home">
+      <router-link to="/">
         <div class="d-flex align-center">
           <div class="logo">
             Pub<span class="hub">Hub</span>
