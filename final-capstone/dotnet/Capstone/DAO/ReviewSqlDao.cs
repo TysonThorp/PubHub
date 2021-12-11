@@ -141,7 +141,7 @@ namespace Capstone.DAO
                 ReviewId = Convert.ToInt32(reader["review_id"]),
                 UserId = Convert.ToInt32(reader["user_id"]),
                 BeerId = Convert.ToInt32(reader["beer_id"]),
-                Rating = Convert.ToInt32(reader["rating"]),
+                Rating = Convert.ToDecimal(reader["rating"]),
                 ReviewText = Convert.ToString(reader["review_description"])
             };
         }

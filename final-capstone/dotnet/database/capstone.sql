@@ -38,7 +38,7 @@ CREATE TABLE reviews(
 	review_id int IDENTITY(1,1) NOT NULL,
 	user_id int NOT NULL,
 	beer_id int NOT NULL,
-	rating int NULL,
+	rating decimal(2,1) NULL,
 	review_description varchar(500) NULL,
 	PRIMARY KEY (review_id),
 	FOREIGN KEY (user_id) references users(user_id),
@@ -108,9 +108,9 @@ lactose, oats, and flaked wheat to bring you a refreshing, adults-only treat.',6
 7,'Pastry Stout')
 
 INSERT INTO reviews (user_id, beer_id, rating, review_description)
-VALUES (1, 1, 10, 'Review of Gavel Banger (beerId 1) by user with rating 10.'),
+VALUES (1, 1, 2.5, 'Review of Gavel Banger (beerId 1) by user with rating 2.5.'),
        (1, 2, 5, 'Example review text by user for beer 2 with rating 5'),
-	   (2, 3, 7, 'Example review text by admin for beer 3 with rating 7')
+	   (2, 3, 3, 'Example review text by admin for beer 3 with rating 3')
 
 INSERT INTO users (username, password_hash, salt, user_role)
 VALUES
