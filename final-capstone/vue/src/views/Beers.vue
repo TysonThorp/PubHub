@@ -1,7 +1,7 @@
 <template>
   <div id="beers">
      <h1>Beers</h1>
-     <beer-list />
+     <beer-list :showAll="true"/>
   </div>
 </template>
 
