@@ -1,5 +1,5 @@
 <template>
-    <v-card elevation="2" class="breweryItem" :href="link">
+    <v-card elevation="2" class="breweryItem" :to="link">
         <v-card-title><h2>{{brewery.breweryName}}</h2></v-card-title>
         <v-card-subtitle>{{ brewery.address }}</v-card-subtitle>
         <v-card-text v-if="showFull">
@@ -38,7 +38,7 @@ export default {
     },
     computed: {
         link() {
-            return "breweries/" + this.breweryId
+            return "/breweries/" + this.breweryId
         } 
     },
     created() {

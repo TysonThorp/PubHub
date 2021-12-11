@@ -43,7 +43,7 @@ export default {
     },
     computed: {
         link() {
-            return "beers/" + this.review.beerId
+            return "/beers/" + this.review.beerId
         } 
     },
     created() {
