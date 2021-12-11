@@ -110,15 +110,16 @@ namespace Capstone.Controllers
         public IActionResult DeleteReview(int reviewId)
         {
             Review reviewToDelete = reviewDao.GetReview(reviewId);
-
-            //LOGIC
-            //You may only delete a review if you created it or if you are an administrator
-            if (!(reviewToDelete.UserId == CurrentUser.UserId || CurrentUser.Role == "admin")) {
-                return Unauthorized();
-              }
             
             if (reviewToDelete != null)
             {
+                //LOGIC
+                //You may only delete a review if you created it or if you are an administrator
+                if (!(reviewToDelete.UserId == CurrentUser.UserId || CurrentUser.Role == "admin"))
+                {
+                    return Unauthorized();
+                }
+
                 reviewDao.DeleteReview(reviewId);
                 return Ok();
             }
