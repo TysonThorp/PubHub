@@ -119,5 +119,8 @@ VALUES
 ('rduperow', 'Jg45HuwT7PZkfuKTz6IB90CtWY4=','LHxP4Xh7bN0=', 'admin'),
 ('tthorp', 'YhyGVQ+Ch69n4JMBncM4lNF/i9s=', 'Ar/aB2thQTI=', 'admin')
 
+INSERT INTO beers_by_brewery(brewery_id, beer_id)
+VALUES (1, 1), (1, 2), (1, 3), (1, 4), (1, 5), (2, 6), (2, 7), (2, 8), (2, 9), (2, 10)
+-- for purposes of placeholder data the first five beers belong to Listermann's; the next five belong to Madtree
 
 GO
