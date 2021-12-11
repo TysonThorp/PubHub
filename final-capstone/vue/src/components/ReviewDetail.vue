@@ -17,6 +17,7 @@
         </v-card-subtitle>
         <v-card-text>
             {{ review.reviewText }}
+            <router-link :to="this.link">Go to beer</router-link>
         </v-card-text>
     </v-card>
 </template>
@@ -39,6 +40,11 @@ export default {
                 reviewText: '',
             }
         }
+    },
+    computed: {
+        link() {
+            return "beers/" + this.review.beerId
+        } 
     },
     created() {
         
