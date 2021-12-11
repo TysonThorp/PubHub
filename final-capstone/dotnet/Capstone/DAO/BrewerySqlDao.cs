@@ -109,7 +109,8 @@ namespace Capstone.DAO
             using SqlConnection conn = new SqlConnection(connectionString);
             conn.Open();
 
-            SqlCommand cmd = new SqlCommand("DELETE FROM breweries WHERE brewery_id = @breweryId", conn);
+            SqlCommand cmd = new SqlCommand("DELETE FROM beers_by_brewery WHERE brewery_id = @breweryId " +
+                                            "DELETE FROM breweries WHERE brewery_id = @breweryId", conn);
             cmd.Parameters.AddWithValue("@breweryId", breweryId);
             cmd.ExecuteNonQuery();
         }
