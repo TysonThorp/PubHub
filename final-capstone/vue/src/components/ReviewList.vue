@@ -1,14 +1,14 @@
 <template>
-<ul id="review-list" class="pa-0">
-            <div v-for="review in reviews" :key="review.reviewId">
-                <review-detail :reviewId="review.reviewId"/>
-            </div>
-        </ul>
+    <ul id="review-list" class="pa-0">
+        <div v-for="review in reviews" :key="review.reviewId">
+            <review-detail :reviewId="review.reviewId"/>
+        </div>
+    </ul>
 </template>
 
 <script>
- import ReviewService from '../services/ReviewService.js';
-import ReviewDetail from '../components/ReviewDetail.vue';
+    import ReviewService from '../services/ReviewService.js';
+    import ReviewDetail from '../components/ReviewDetail.vue';
 
     export default {
         name: 'review-list',
@@ -23,4 +23,5 @@ import ReviewDetail from '../components/ReviewDetail.vue';
                     this.reviews = response.data;
             });
         }
-    }   
+    }
+</script>

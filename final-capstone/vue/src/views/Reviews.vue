@@ -1,6 +1,6 @@
 <template>
   <div class="reviews">
-     <h1>Reviewss</h1>
+     <h1>Reviews</h1>
      <review-list />
   </div>
 </template>

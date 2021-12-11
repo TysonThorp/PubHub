@@ -10,6 +10,8 @@ import Beer from '../views/Beer.vue'
 import NotFound from '../views/NotFound.vue'
 import store from '../store/index'
 import Beers from '../views/Beers.vue'
+import Reviews from '../views/Reviews.vue'
+
 
 Vue.use(Router)
 
@@ -86,6 +88,11 @@ const router = new Router({
       path: '/beers', 
       component: Beers,
       name: 'beers'
+    },
+    {
+      path: '/reviews', 
+      component: Reviews,
+      name: 'reviews'
     },
     {
       path: '/beers/:beerId', 

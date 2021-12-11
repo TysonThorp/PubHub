@@ -62,6 +62,7 @@
         {title: 'Login' , icon: 'mdi-arrow-right-thick', link: '/login'},
         {title: 'Breweries' , icon: 'mdi-home', link: '/breweries'},
         {title: 'Beers' , icon: 'mdi-glass-mug-variant', link: '/beers'},
+        {title: 'Reviews' , icon: 'mdi-star', link: '/reviews'},
       ],
     }),
     methods:{

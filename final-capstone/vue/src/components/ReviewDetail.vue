@@ -1,14 +1,24 @@
 <template>
-    <table>
- 
-    <tbody>
-      
-        <td>{{reivew.reviewText}}</td>
-        <td>{{review.Rating}}</td>  
-         
-     
-    </tbody>
-  </table>
+    <v-card elevation="2" class="breweryItem">
+        <v-card-title>
+            <h2>User {{review.userId}} says:</h2>
+        </v-card-title>
+        <v-card-subtitle>
+            <v-rating
+            background-color="#eee"
+            color="warning"
+            half-increments
+            length="5"
+            readonly
+            size="20"
+            dense
+            :value="review.rating"
+            ></v-rating>
+        </v-card-subtitle>
+        <v-card-text>
+            {{ review.reviewText }}
+        </v-card-text>
+    </v-card>
 </template>
 
 <script>
@@ -22,8 +32,11 @@ export default {
     data() {
         return {
             review: {
+                reviewId: '',
+                beerId: '',
+                userId: '',
+                rating: '',
                 reviewText: '',
-                Rating: '',
             }
         }
     },
@@ -37,5 +50,13 @@ export default {
 </script>
 
 <style>
+
+    .breweryItem{
+        margin-bottom: 1em;
+    }
+
+    h2{
+        font-size: 1em;
+    }
 
 </style>
