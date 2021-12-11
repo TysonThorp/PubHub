@@ -95,6 +95,35 @@ namespace Capstone.DAO
             return beerList;
         }
 
+        public List<Beer> GetBeersByBrewery(int breweryId)
+        {
+            List<Beer> beerList = new List<Beer>();
+
+            try
+            {
+                using SqlConnection conn = new SqlConnection(connectionString);
+                conn.Open();
+
+                SqlCommand cmd = new SqlCommand("SELECT beers.beer_id, beer_name, description, image, abv, beer_type, brewery_id " +
+                                                "FROM beers " +
+                                                "JOIN beers_by_brewery ON beers.beer_id = beers_by_brewery.beer_id " +
+                                                "WHERE brewery_id = @brewery_id", conn);
+                cmd.Parameters.AddWithValue("@brewery_id", breweryId);
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    beerList.Add(GetBeerFromReader(reader));
+                }
+            }
+            catch (SqlException)
+            {
+                throw;
+            }
+
+            return beerList;
+        }
+
         public Beer GetBeerById(int beerId)
         {
             Beer returnBeer = null;
@@ -133,7 +162,6 @@ namespace Capstone.DAO
                 Image = Convert.ToString(reader["image"]),
                 ABV = Convert.ToDecimal(reader["abv"]),
                 BeerType = Convert.ToString(reader["beer_type"]),
-
             };
 
             return beer;
