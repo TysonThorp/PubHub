@@ -1,6 +1,6 @@
 <template>
     <v-card elevation="2" class="breweryItem" :to="link">
-        <v-card-title><h2>{{brewery.breweryName}}</h2></v-card-title>
+        <v-card-title><h3>{{brewery.breweryName}}</h3></v-card-title>
         <v-card-subtitle>{{ brewery.address }}</v-card-subtitle>
         <v-card-text v-if="showFull">
             {{ brewery.description }}
@@ -57,8 +57,8 @@ export default {
         margin-bottom: 1em;
     }
 
-    h2{
-        font-size: 1em;
+    .breweryItem h3{
+        font-size: 1.1em;
     }
 
 </style>

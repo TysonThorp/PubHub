@@ -1,11 +1,7 @@
 <template>
     <div>
         <brewery-detail :breweryId="this.$route.params.breweryId" :showFull="true"/>
-        <v-card>
-            <v-card-title>
-                This Brewery's Beers:
-            </v-card-title>
-        </v-card>
+        <h2>Beers:</h2>
         <beer-list :breweryId="this.$route.params.breweryId"/>
     </div>
 </template>

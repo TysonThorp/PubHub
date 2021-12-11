@@ -1,7 +1,7 @@
 <template>
     <v-card elevation="2" class="breweryItem">
         <v-card-title>
-            <h2>User {{review.userId}} says:</h2>
+            <h3>User {{review.userId}} says:</h3>
         </v-card-title>
         <v-card-subtitle>
             <v-rating
@@ -59,10 +59,6 @@ export default {
 
     .breweryItem{
         margin-bottom: 1em;
-    }
-
-    h2{
-        font-size: 1em;
     }
 
 </style>
