@@ -15,15 +15,6 @@ USE final_capstone
 GO
 
 --create tables
-CREATE TABLE reviews(
-	review_id int IDENTITY(1,1) NOT NULL,
-	user_id int NOT NULL,
-	beer_id int NOT NULL,
-	rating int NULL,
-	review_description varchar(500) NULL,
-	PRIMARY KEY (review_id),
-	)
-
 CREATE TABLE users (
 	user_id int IDENTITY(1,1) NOT NULL,
 	username varchar(50) NOT NULL,
@@ -31,11 +22,32 @@ CREATE TABLE users (
 	salt varchar(200) NOT NULL,
 	user_role varchar(50) NOT NULL,
 	PRIMARY KEY (user_id),
-	--CONSTRAINT FK_UserReview FOREIGN KEY (user_id) REFERENCES Reviews(user_id),
-)
+	)
+
+CREATE TABLE beers(
+	beer_id int IDENTITY(1,1) NOT NULL,
+	beer_name varchar(30) NOT NULL,
+	description varchar(150) NULL,
+	image varchar(150) NULL,
+	abv decimal(5,1) NULL,
+	beer_type varchar(25) NULL,
+	PRIMARY KEY (beer_id),
+	)
+
+CREATE TABLE reviews(
+	review_id int IDENTITY(1,1) NOT NULL,
+	user_id int NOT NULL,
+	beer_id int NOT NULL,
+	rating int NULL,
+	review_description varchar(500) NULL,
+	PRIMARY KEY (review_id),
+	FOREIGN KEY (user_id) references users(user_id),
+	FOREIGN KEY (beer_id) references beers(beer_id),
+	)
+
 CREATE TABLE breweries (
 	brewery_id int IDENTITY(1,1) NOT NULL,
-	brewery_owner_id int NOT NULL, --foreign key of user?
+	brewery_owner_id int NOT NULL,
 	brewery_name varchar (255),
 	email varchar(50) NULL,
 	phone varchar(12) NULL,
@@ -44,21 +56,16 @@ CREATE TABLE breweries (
 	hours_operations varchar(100) NULL,
 	address varchar(50) NULL,
 	isActive bit NOT NULL,
-	PRIMARY KEY (brewery_id)
+	PRIMARY KEY (brewery_id),
+	FOREIGN KEY (brewery_owner_id) references users(user_id),
 	)
-CREATE TABLE beers(
-	beer_id int IDENTITY(1,1) NOT NULL,
-	beer_name varchar(30) NOT NULL,
-	description varchar(150) NULL,
-	image varchar(150) NULL,
-	abv decimal(5,1) NULL,
-	beer_type varchar(25) NULL,
-	PRIMARY KEY (beer_id)
-	)
+
 CREATE TABLE beers_by_brewery(
 	beer_id int NOT NULL,
-	brewery_id int NOT NULL,)
-	
+	brewery_id int NOT NULL,
+	FOREIGN KEY (beer_id) references beers(beer_id),
+	FOREIGN KEY (brewery_id) references breweries(brewery_id),
+	)
 
 --populate default data
 INSERT INTO users (username, password_hash, salt, user_role) VALUES ('user','Jg45HuwT7PZkfuKTz6IB90CtWY4=','LHxP4Xh7bN0=','user');
@@ -67,17 +74,17 @@ INSERT INTO users (username, password_hash, salt, user_role) VALUES ('brewer','Y
 
 INSERT INTO breweries (brewery_owner_id ,brewery_name, email, phone, website, brewery_description, hours_operations, address, isActive)
 VALUES
-(1,'Listermann Brewing Company', 'jess@listermannbrewing.com', '513-731-1130', 'https://www.listermannbrewing.com/', 'Family Owned, Cincinnati Brewed award winning beer!
+(3,'Listermann Brewing Company', 'jess@listermannbrewing.com', '513-731-1130', 'https://www.listermannbrewing.com/', 'Family Owned, Cincinnati Brewed award winning beer!
 DRINK. LOCAL. BEER!',  'Sun-Th 12pm - 9pm Fr, Sat 12pm - 10pm', '1621 Dana Ave Cincinnati, OH 45207', 1),
-(2, 'Madtree Brewing', 'info@madtreebrewing.com', '513-836-8733', 'https://www.madtreebrewing.com/','MadTree Brewing connects people with nature and each other.
+(3, 'Madtree Brewing', 'info@madtreebrewing.com', '513-836-8733', 'https://www.madtreebrewing.com/','MadTree Brewing connects people with nature and each other.
 Founded in 2013, join us as we rise above the noise deepening our roots to thrive and amplify our impact on the world and people around us. Cheers!', 
 'M-Th 11am - 11pm Fri 11am - 12am Sat 10am - 12am', '3301 Madison Rd Cincinnati OH 45209',1),
 (3,'Rhinegeist Brewery', 'taproom@rhinegeist.com', '513-381-1367', 'https://rhinegeist.com/','Rhinegeist Brewery is located in the Over-the-Rhine historical 
 district in Cincinnati, OH. We brewed our first batch on June 8th, 2013. Open 7 days a week.', 'M-Th 12pm - 10pm F, Sat 12pm - 12am Sun 12pm - 9pm',
 '1910 Elm St, Cincinnati, OH 45202',1),
-(4, 'Braxton Brewing Company','social@braxtonbrewing.com','859-261-5600','https://www.braxtonbrewing.com/','We’re crossing the river so you don’t have to. A new location – Braxton Brewing Company Cincinnati!',
+(3, 'Braxton Brewing Company','social@braxtonbrewing.com','859-261-5600','https://www.braxtonbrewing.com/','We’re crossing the river so you don’t have to. A new location – Braxton Brewing Company Cincinnati!',
 'M 3pm - 10pm T-Th 11am - 10pm Fri, Sat 11am - 12am Sun 11am - 9pm','27 W 7th St, Covington, KY 41011',1),
-(5, 'Taft''s Ale House','info@taftsalehouse.com','513-334-1393','https://taftsbeer.com/','Based in the great state of Ohio, Taft’s Brewing Co. is an award-winning brewery that’s been pouring fresh, 
+(3, 'Taft''s Ale House','info@taftsalehouse.com','513-334-1393','https://taftsbeer.com/','Based in the great state of Ohio, Taft’s Brewing Co. is an award-winning brewery that’s been pouring fresh, 
 flavorful libations and serving fine fare since its founding in Cincinnati, Ohio in 2015. C’mon in to our bar and restaurant locations that include Taft’s Ale House, 
 Taft’s Brewporium – Cincinnati, and now open, Taft’s Brewporium – Columbus, to treat your belly to a cold, crisp pint of beer and piping hot meal today.',
 'Sun-Th 11:30am - 10pm Fr, Sat 1130am - 11pm','1429 Race St, Cincinnati, OH 45202',1);
@@ -98,44 +105,16 @@ lactose, oats, and flaked wheat to bring you a refreshing, adults-only treat.',6
 7,'Pastry Stout')
 
 INSERT INTO reviews (user_id, beer_id, rating, review_description)
-VALUES (1, 2, 10, 'Example review text by user for beer 2 with rating 10'),
+VALUES (1, 1, 10, 'Review of Gavel Banger (beerId 1) by user with rating 10.'),
        (1, 2, 5, 'Example review text by user for beer 2 with rating 5'),
 	   (2, 3, 7, 'Example review text by admin for beer 3 with rating 7')
 
-
-GO
-ALTER TABLE beers_by_brewery
-ADD CONSTRAINT FKb_by_b_beer_id FOREIGN KEY (beer_id)
-      REFERENCES beer (beer_id)
-
-ALTER TABLE beers_by_brewery
-ADD CONSTRAINT FKb_by_b_brewery_id FOREIGN KEY (brewery_id)
-	REFERENCES breweries (brewery_id)
-
-CREATE TABLE user_review(
-	user_id int NOT NULL,
-	beer_id int NOT NULL,
-	brewery_id int NOT NULL)
-
-ALTER TABLE reviews
-ADD CONSTRAINT FKreview_user_id FOREIGN KEY (user_id)
-	REFERENCES users (user_id)
-
-ALTER TABLE reviews
-ADD CONSTRAINT FKreview_beer_id FOREIGN KEY (beer_id)
-	REFERENCES beer (beer_id)
-
-ALTER TABLE users
-DROP COLUMN user_review_id
-
-SELECT * 
-FROM users
-
 INSERT INTO users (username, password_hash, salt, user_role)
 VALUES
-('Levi Swartz', 'Jg45HuwT7PZkfuKTz6IB90CtWY4=', 'LHxP4Xh7bN0=', 'admin'),
-('Mustafa Hilal','YhyGVQ+Ch69n4JMBncM4lNF/i9s=', 'Ar/aB2thQTI=', 'admin'),
-('Ryan DuPerow', 'Jg45HuwT7PZkfuKTz6IB90CtWY4=','LHxP4Xh7bN0=', 'admin'),
-('Tyson Thorp', 'YhyGVQ+Ch69n4JMBncM4lNF/i9s=', 'Ar/aB2thQTI=', 'user')
+('lswartz', 'Jg45HuwT7PZkfuKTz6IB90CtWY4=', 'LHxP4Xh7bN0=', 'admin'),
+('mhilal','YhyGVQ+Ch69n4JMBncM4lNF/i9s=', 'Ar/aB2thQTI=', 'admin'),
+('rduperow', 'Jg45HuwT7PZkfuKTz6IB90CtWY4=','LHxP4Xh7bN0=', 'admin'),
+('tthorp', 'YhyGVQ+Ch69n4JMBncM4lNF/i9s=', 'Ar/aB2thQTI=', 'admin')
 
 
+GO
