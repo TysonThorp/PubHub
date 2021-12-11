@@ -13,6 +13,7 @@ namespace Capstone.Controllers
     {
         private readonly IBreweryDao breweryDao;
         private readonly IUserDao userDao;
+        private readonly IBeerDao beerDao;
         private User CurrentUser
         {
             get
@@ -22,9 +23,10 @@ namespace Capstone.Controllers
             }
         }
 
-        public BreweriesController(IBreweryDao _breweryDao, IUserDao _userDao)
+        public BreweriesController(IBreweryDao _breweryDao, IBeerDao _beerDao, IUserDao _userDao)
         {
             breweryDao = _breweryDao;
+            beerDao = _beerDao;
             userDao = _userDao;
         }
 
@@ -55,6 +57,21 @@ namespace Capstone.Controllers
             else
             {
                 return new NotFoundObjectResult("Couldn't find a brewery by that id.");
+            }
+        }
+
+        [HttpGet("{breweryId}/beers")]
+        [AllowAnonymous]
+        public IActionResult GetBeersByBrewery(int breweryId)
+        {
+            List<Beer> listOfBeersByBrewery = beerDao.GetBeersByBrewery(breweryId);
+            if (listOfBeersByBrewery != null)
+            {
+                return Ok(listOfBeersByBrewery);
+            }
+            else
+            {
+                return NotFound();
             }
         }
 
