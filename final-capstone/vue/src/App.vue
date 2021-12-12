@@ -5,9 +5,17 @@
       
       <app-logo></app-logo>
       <v-spacer></v-spacer>
-      <v-switch
-        v-model="$vuetify.theme.dark" :label="$vuetify.theme.dark ? '🌙' : '☀️'"
-      ></v-switch>
+
+      <div v-if="loggedIn">
+          <router-link to="/profile">
+              <v-icon color="primary">mdi-account-circle</v-icon>
+              {{this.$store.state.user.username}}
+            </router-link>
+      </div>
+
+      <div v-else>
+         <v-btn to="/login" color=primary>Log in</v-btn>
+      </div>
       
     </v-app-bar>
     <v-navigation-drawer v-model="drawer" app>
@@ -15,10 +23,11 @@
       <v-list-item>
         <v-list-item-content>
           <v-list-item-title class="text-h6">
-            <app-logo/>
+            <app-logo/> 
           </v-list-item-title>
         </v-list-item-content>
       </v-list-item>
+      
 
       <v-divider></v-divider>
 
@@ -39,6 +48,12 @@
             <v-list-item-title>{{ item.title }}</v-list-item-title>
           </v-list-item-content>
         </v-list-item>
+        
+        <v-list-item>
+        <v-switch reverse v-model="$vuetify.theme.dark" :label="$vuetify.theme.dark ? '🌙' : '☀️'"
+      ></v-switch>
+      </v-list-item>
+
       </v-list>
      </v-navigation-drawer>
 
@@ -60,7 +75,7 @@ import AppLogo from './components/AppLogo.vue';
     data: () => ({ 
       drawer: false,
       items: [
-        {title: 'Login' , icon: 'mdi-arrow-right-thick', link: '/login'},
+        {title: 'Log in' , icon: 'mdi-arrow-right-thick', link: '/login'},
         {title: 'Breweries' , icon: 'mdi-home', link: '/breweries'},
         {title: 'Beers' , icon: 'mdi-glass-mug-variant', link: '/beers'},
         {title: 'Reviews' , icon: 'mdi-star', link: '/reviews'},
@@ -70,7 +85,11 @@ import AppLogo from './components/AppLogo.vue';
       toggleDrawer(){
         this.drawer = !this.drawer;
         console.log(this.drawer);
-      },
+      }},
+    computed: {
+      loggedIn(){
+        return this.$store.state.user.role != null
+      }
     }  
   }
 </script>
@@ -108,7 +127,6 @@ import AppLogo from './components/AppLogo.vue';
 }
 
 #app-bar a {
-  color: white!important;
   text-decoration: none;
 }
 
