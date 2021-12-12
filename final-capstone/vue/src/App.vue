@@ -43,7 +43,7 @@
      </v-navigation-drawer>
 
     <v-main>
-      <v-container>
+      <v-container style="max-width: 700px">
         <router-view />
       </v-container>
     </v-main>

@@ -1,5 +1,5 @@
 <template>
-    <v-card elevation="2" class="breweryItem" :to="link">
+    <v-card class="breweryItem" :to="link">
         <v-card-title><h3>{{brewery.breweryName}}</h3></v-card-title>
         <v-card-subtitle>{{ brewery.address }}</v-card-subtitle>
         <v-card-text v-if="showFull">

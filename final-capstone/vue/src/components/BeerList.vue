@@ -3,6 +3,12 @@
     <li v-for="beer in beers" :key="beer.beerId">
       <beer-detail :beerId="beer.beerId"/>
     </li>
+    <div v-if="this.beers.length === 0">
+            <v-card id="missing-beer" elevation="0" color="fade">
+                <v-icon>mdi-alert</v-icon>
+            <p>This brewery has no beers. Kind of weird?</p>
+            </v-card>
+        </div>
   </ul>
 </template>
 
@@ -42,8 +48,19 @@ import BeerDetail from '../components/BeerDetail.vue';
 
 </script>
 
-<style>
+<style scoped>
   #beer-list {
     list-style-type: none;
   }
+
+    #missing-beer{
+        margin-bottom: 1em;
+        padding: 0.5em;
+        font-size: 0.9em;
+        text-align: center;
+    }
+
+    #missing-beer p {
+        margin-bottom: 0.5em;
+    }
 </style>

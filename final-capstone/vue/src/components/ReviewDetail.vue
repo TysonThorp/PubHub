@@ -1,5 +1,5 @@
 <template>
-    <v-card elevation="2" class="breweryItem">
+    <v-card class="breweryItem">
         <v-card-title>
             <h3>User {{review.userId}} says:</h3>
         </v-card-title>
