@@ -1,8 +1,8 @@
 <template>
 <div id="container">
     <h1>404</h1>
-    <p>Couldn't find that page!</p>
-    <router-link to="/home">Back to home</router-link>
+    <p>Couldn't find the page at "{{this.$route.path}}"!</p>
+    <router-link to="/">Back to home</router-link>
 </div>
 </template>
 
@@ -17,7 +17,7 @@ export default {
 
 <style>
 #container{
-  font-size: 2em;
-  margin: 1em;
+  text-align: center;
+  font-size: 1.2em
 }
 </style>
