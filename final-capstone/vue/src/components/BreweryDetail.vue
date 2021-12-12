@@ -51,14 +51,13 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 
+    h2{
+        font-size: 1em;
+    }
     .breweryItem{
         margin-bottom: 1em;
-    }
-
-    .breweryItem h3{
-        font-size: 1.1em;
     }
 
 </style>
