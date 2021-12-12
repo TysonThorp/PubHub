@@ -5,7 +5,6 @@
       
       <app-logo></app-logo>
       <v-spacer></v-spacer>
-      
       <v-switch
         v-model="$vuetify.theme.dark" :label="$vuetify.theme.dark ? '🌙' : '☀️'"
       ></v-switch>
@@ -111,6 +110,14 @@ import AppLogo from './components/AppLogo.vue';
 #app-bar a {
   color: white!important;
   text-decoration: none;
+}
+
+#app-bar .v-input__slot {
+  margin-bottom: 0;
+}
+
+#app-bar .v-messages{
+  display: none;
 }
 
 </style>

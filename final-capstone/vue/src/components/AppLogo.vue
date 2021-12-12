@@ -22,5 +22,7 @@ export default {
 </script>
 
 <style>
-
+.router-link-active{
+  text-decoration: none;
+}
 </style>
