@@ -1,6 +1,6 @@
 <template>
-    <v-card class="beerItem" :to="link">
-        <v-card-title><h3>{{beer.beerName}}</h3></v-card-title>
+    <v-card elevation="2" class="beerItem" :href="link">
+        <v-card-title><h2>{{beer.beerName}}</h2></v-card-title>
         <v-card-subtitle>{{ beer.beerType }}</v-card-subtitle>
         <v-card-text>
             {{ beer.description }} ABV: {{beer.abv }}
@@ -30,7 +30,7 @@ export default {
     },
     computed: {
         link() {
-            return "/beers/" + this.beerId;
+            return "beers/" + this.beerId;
         } 
     },
     created() {
@@ -48,7 +48,7 @@ export default {
         margin-bottom: 1em;
     }
 
-    .beerItem h3{
+    h2{
         font-size: 1em;
     }
 

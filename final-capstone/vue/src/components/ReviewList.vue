@@ -1,8 +1,8 @@
 <template>
     <ul id="review-list" class="pa-0">
-        <div v-for="review in reviews" :key="review.reviewId">
+        <li v-for="review in reviews" :key="review.reviewId">
             <review-detail :reviewId="review.reviewId"/>
-        </div>
+        </li>
 
         <div v-if="this.reviews.length === 0">
             <v-card id="missing-review" elevation="0" color="fade">
@@ -50,6 +50,10 @@
 </script>
 
 <style scoped>
+    #review-list {
+        list-style-type: none;
+    }
+
     #missing-review{
         margin-bottom: 1em;
         padding: 0.5em;

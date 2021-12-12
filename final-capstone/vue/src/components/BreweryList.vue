@@ -1,7 +1,13 @@
 <template>
   <ul id="brewery-list" class="pa-0">
-    <div v-for="brewery in breweries" :key="brewery.breweryId">
+    <li v-for="brewery in breweries" :key="brewery.breweryId">
       <brewery-detail :breweryId="brewery.breweryId" :showFull="false" />
+    </li>
+    <div v-if="this.breweries.length === 0">
+      <v-card id="missing-brewery" elevation="0" color="fade">
+          <v-icon>mdi-alert</v-icon>
+      <p>You don't have any breweries. Time to start one?</p>
+      </v-card>
     </div>
   </ul>
 </template>
@@ -28,5 +34,19 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
+  #brewery-list {
+    list-style-type: none;
+  }
+
+    #missing-brewery{
+        margin-bottom: 1em;
+        padding: 0.5em;
+        font-size: 0.9em;
+        text-align: center;
+    }
+
+    #missing-brewery p {
+        margin-bottom: 0.5em;
+    }
 </style>

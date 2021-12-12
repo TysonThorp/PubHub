@@ -4,11 +4,11 @@
       <beer-detail :beerId="beer.beerId"/>
     </li>
     <div v-if="this.beers.length === 0">
-            <v-card id="missing-beer" elevation="0" color="fade">
-                <v-icon>mdi-alert</v-icon>
-            <p>This brewery has no beers. Kind of weird?</p>
-            </v-card>
-        </div>
+      <v-card id="missing-beer" elevation="0" color="fade">
+          <v-icon>mdi-alert</v-icon>
+      <p>No beers here. Kind of weird?</p>
+      </v-card>
+    </div>
   </ul>
 </template>
 
