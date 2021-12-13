@@ -92,20 +92,58 @@ flavorful libations and serving fine fare since its founding in Cincinnati, Ohio
 Taft’s Brewporium – Cincinnati, and now open, Taft’s Brewporium – Columbus, to treat your belly to a cold, crisp pint of beer and piping hot meal today.', '',
 'Sun-Th 11:30am - 10pm Fr, Sat 1130am - 11pm','1429 Race St, Cincinnati, OH 45202',1);
 
-INSERT INTO beers (beer_name, description, abv, beer_type)
+INSERT INTO beers (beer_name, description, abv, beer_type,image)
 VALUES
-('Gavel Banger','American IPA brewed and dry hopped with heaps of Citra and Mosiac hops. Juicy, hoppy justice.', 7, 'American IPA'),
-('Cold Boy','This anytime lager features American Pilsner malt and Saaz hops for a clean, balanced character that drinks smooth every time.', 4.5,'Lager'),
+('Gavel Banger','American IPA brewed and dry hopped with heaps of Citra and Mosiac hops. Juicy, hoppy justice.', 7, 'American IPA',
+'TaftsGavelBanger.jpg'),
+('Cold Boy','This anytime lager features American Pilsner malt and Saaz hops for a clean, balanced character that drinks smooth every time.', 4.5,'Lager',
+'TaftsColdBoy.jpg'),
 ('UDF Milkshake IPA','This hoppy and creamy milkshake IPA is brewed with heaps of hops, 
-lactose, oats, and flaked wheat to bring you a refreshing, adults-only treat.',6.6,'Milkshake IPA'),
-('Nellie''s Key Lime Ale','American wheat beer brewed with keylime juice straight from the islands and a hint of coriander. Refreshingly fruity.',4.8,'American Wheat Ale'),
-('Frisch''s Pumpkin Pie Ale','Hints of cinnamon, ginger, and nutmeg combine with lactose and vanilla for a smooth, creamy finish. Better than grandma used to make!',6,'Pumpkin Pie Ale'),
-('Storm','This golden cream ale is a traditional American lawnmower beer, featuring a medium body with a creamy palate feel.',4.8,'Golden Cream Ale'),
-('Garage Beer','This premium lager is incredibly refreshing and thirst quenching.',4,'Premium Lager'),
-('Tropical Flare','This straw yellow, hazy IPA was carefully refined over a year of innovation and experimentation at Braxton Labs.',6.8,'New England IPA'),
-('Summer Trip','This tart German style ale features 50% wheat malt and is balanced from the acidity of passionfruit.',4.2,'Berliner Weisse'),
+lactose, oats, and flaked wheat to bring you a refreshing, adults-only treat.',6.6,'Milkshake IPA',
+'TaftsUDFMilkshakeIPA.jpg'),
+('Nellie''s Key Lime Ale','American wheat beer brewed with keylime juice straight from the islands and a hint of coriander. Refreshingly fruity.'
+,4.8,'American Wheat Ale','TaftsNellieKeyLimeAle.jpg'),
+('Frisch''s Pumpkin Pie Ale','Hints of cinnamon, ginger, and nutmeg combine with lactose and vanilla for a smooth, creamy finish. Better than grandma used to make!',
+6,'Pumpkin Pie Ale','TaftsFrischsPumpkinPieAle.jpg'),
+('Storm','This golden cream ale is a traditional American lawnmower beer, featuring a medium body with a creamy palate feel.',4.8,'Golden Cream Ale',
+'BraxtonStorm.jpg'),
+('Garage Beer','This premium lager is incredibly refreshing and thirst quenching.',4,'Premium Lager',
+'BraxtonGarageBeer.jpg'),
+('Tropical Flare','This straw yellow, hazy IPA was carefully refined over a year of innovation and experimentation at Braxton Labs.',6.8,'New England IPA',
+'BraxtonTropicalFlare.jpg'),
+('Summer Trip','This tart German style ale features 50% wheat malt and is balanced from the acidity of passionfruit.',4.2,'Berliner Weisse',
+'BraxtonSummerTrip.jpg'),
 ('Black Raspberry Chocolate Chip','2018’s batch is brewed with even MORE pure Black Raspberry Purée. — An irresistible collaboration between two handcrafted families.',
-7,'Pastry Stout')
+7,'Pastry Stout',
+'BraxtonGraeters.jpg'),
+('Truth','Brewed with a nod to the Pacific, hops sizzle with tropical fruit aroma, grapefruit and mango notes and a dry finish.',7.2, 'IPA',
+'RhinegeistTruth.jpg'),
+('Cheetah','Pure, crisp, clean. Blissful simplicity. Savor this moment. All we have and all we need is now. Feel free and therefore you are free.',4.8,'Lager',
+'RhinegeistCheetah.jpg'),
+('Uncle','A familial visitor bearing sweet, bready gifts, Uncle is the definition of sessionable. Available seasonally in cans and year-round on draft.', 4.2,'British Mild',
+'RhinegeistUncle.jpg'),
+('Whiffle','Airy wheat and bright citrus aromas drift in and give way to a crisp, ardent breeze bearing notes of tangerine and subtle spice—a breath of fresh air.',5.0,
+'Witbier','RhinegeistWhiffle.jpg'),
+('Knowledge','Chewy hops, a zesty punch; this erudite Imperial India Pale Ale sharpens perceptive depths in the studious night.',8.5,'Imperial IPA',
+'RhinegeistKnowledge.jpg'),
+('Psychopathy','A staple beer to keep stocked in the fridge, this reliable IPA bursts with bright citrus flavors followed by a smooth finish.',6.9, 'IPA',
+'MadtreePsychopathy.jpg'),
+('Shade','With real blackberries, this fruit ale''s versatility compliments a day of relaxation to a fun, vibrant happy hour get together.',4.6,'Tart Fruit Ale',
+'MadtreeShade.jpg'),
+('Legendary Lager','A balanced and crisp lager with light kettle hop aroma and floral notes followed by a dry finish.',4.2,'Lager',
+'MadtreeLegendaryLager.jpg'),
+('Happy Amber','Happy Amber is here to elevate any meal. Infused into a gourmet dish or just sipped from a can while barbecuing, find your happy place and enjoy this award-winning beer.',
+6,'Amber Ale','MadtreeHappyAmber.jpeg'),
+('Aheuvo!','The perfect blend of Cacao, peppers, cinnamon, vanilla and lactose, this beer is dark and creamy with just enough heat to warm you up on a cold day.',7.7,'Stout',
+'\c-brewery-finder-capstone\final-capstone\vue\public\img\Madtree_Ahuevo.jpg'),
+('Don''t Talk Sh!t About Norwood','Session Pale ale with all Falconer''s Flight 7 C''s hops.', 4.2, 'American Pale Ale',
+'ListermannDontTalk.jpg'),
+('The Adventures of Hobo Swaggins','DDH Triple NE IPA with El Dorado, Sultana, African Queen, Galaxy, and Wai-iti. Release 11/20/21. A tribute brew to our head brewer and taproom manager''s lost pup, Bo.',10,
+'New England Hazy IPA','ListermannHoboSwaggins.jpg'),
+('Nutcase','Porter brewed with peanut butter.',6.8,'Porter','\c-brewery-finder-capstone\final-capstone\vue\public\img\Listermann Nutcase.jpg'),
+('Basic','NE Milkshake IPA with Pumpkin Spices, Vanilla and Coffee.',6.3,'Milkshake IPA','ListermannBasic.jpg'),
+('Satisfied?','Stout brewed with chocolate, caramel and peanuts to satisfy your beer thirst.',7,'Milk Stout',
+'ListermannSatisfied.jpg')
 
 INSERT INTO reviews (user_id, beer_id, rating, review_description)
 VALUES (1, 1, 2.5, 'Review of Gavel Banger (beerId 1) by user with rating 2.5.'),
@@ -124,3 +162,10 @@ VALUES (1, 1), (1, 2), (1, 3), (1, 4), (1, 5), (2, 6), (2, 7), (2, 8), (2, 9), (
 -- for purposes of placeholder data the first five beers belong to Listermann's; the next five belong to Madtree
 
 GO
+
+ALTER TABLE beers
+ADD beer_name varchar(30) NOT NULL,
+	description varchar(150) NULL,
+	image varchar(150) NULL,
+	abv decimal(5,1) NULL,
+	beer_type varchar(25) NULL

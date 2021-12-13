@@ -3,8 +3,9 @@
         <v-card-title><h3>{{beer.beerName}}</h3></v-card-title>
         <v-card-subtitle>{{ beer.beerType }}</v-card-subtitle>
         <v-card-text>
-            {{ beer.description }} ABV: {{beer.abv }}
+            {{ beer.description }} ABV: {{beer.abv }} 
         </v-card-text>
+        <img v-bind:src='"/img/"+ beer.image'>
     </v-card>
 </template>
 
@@ -25,7 +26,8 @@ export default {
                 description: '',
                 image: '',
                 abv: ''
-            }
+            },
+                      
         }
     },
     computed: {

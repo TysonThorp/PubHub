@@ -13,7 +13,7 @@
 </template>
 
 <script>
- import BeerService from '../services/BeerService.js';
+import BeerService from '../services/BeerService.js';
 import BeerDetail from '../components/BeerDetail.vue';
 
     export default {
