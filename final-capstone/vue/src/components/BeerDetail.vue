@@ -1,11 +1,15 @@
 <template>
     <v-card class="beerItem" :to="link">
+        <div>
         <v-card-title><h3>{{beer.beerName}}</h3></v-card-title>
         <v-card-subtitle>{{ beer.beerType }}</v-card-subtitle>
         <v-card-text>
             {{ beer.description }} ABV: {{beer.abv }} 
         </v-card-text>
-        <img v-bind:src='"/img/"+ beer.image'>
+        </div>
+        <div style="margin-left: auto; display: flex; align-items: center;">
+        <img :src='"/img/"+ beer.image' class="beer-image">
+        </div>
     </v-card>
 </template>
 
@@ -48,10 +52,17 @@ export default {
 
     .beerItem{
         margin-bottom: 1em;
+        display: flex;
     }
 
     h2{
         font-size: 1em;
+    }
+
+    .beer-image{
+       object-fit: cover;
+        width:120px;
+        height:120px;
     }
 
 </style>
