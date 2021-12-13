@@ -26,9 +26,9 @@ CREATE TABLE users (
 
 CREATE TABLE beers(
 	beer_id int IDENTITY(1,1) NOT NULL,
-	beer_name varchar(30) NOT NULL,
-	description varchar(150) NULL,
-	image varchar(150) NULL,
+	beer_name varchar(200) NOT NULL,
+	description varchar(200) NULL,
+	image varchar(200) NULL,
 	abv decimal(5,1) NULL,
 	beer_type varchar(25) NULL,
 	PRIMARY KEY (beer_id),
@@ -162,10 +162,3 @@ VALUES (1, 1), (1, 2), (1, 3), (1, 4), (1, 5), (2, 6), (2, 7), (2, 8), (2, 9), (
 -- for purposes of placeholder data the first five beers belong to Listermann's; the next five belong to Madtree
 
 GO
-
-ALTER TABLE beers
-ADD beer_name varchar(30) NOT NULL,
-	description varchar(150) NULL,
-	image varchar(150) NULL,
-	abv decimal(5,1) NULL,
-	beer_type varchar(25) NULL
