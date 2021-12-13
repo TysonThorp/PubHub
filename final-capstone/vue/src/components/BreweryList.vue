@@ -21,15 +21,29 @@ export default {
   components: { 
     BreweryDetail 
   },
+  props: {
+      userId: Number,
+      showAll: Boolean,
+    },
   data() {
     return {
       breweries: [],
     };
   },
-  created() {
-    BreweryService.getAllBreweries().then((response) => {
-      this.breweries = response.data;
-    });
+  created(){ 
+    if (this.showAll) {
+      BreweryService.getAllBreweries().then(response => { 
+        this.breweries = response.data;
+      })
+    }
+
+    // otherwise, if a userId was passed into this component as a prop, get breweries owned by a specific user
+    else if (this.userId != 0) {
+      BreweryService.getAllBreweries().then(response => { 
+        this.breweries = response.data.filter(brewery => brewery.breweryOwnerId == this.userId);
+      })
+    }
+    
   },
 };
 </script>
