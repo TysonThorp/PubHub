@@ -7,7 +7,7 @@
         <div v-if="this.reviews.length === 0">
             <v-card id="missing-review" elevation="0" color="fade">
                 <v-icon>mdi-alert</v-icon>
-            <p>No one has reviewed this beer yet. Be the first?</p>
+            <p>No reviews here yet. Create the first?</p>
             </v-card>
         </div>
 
@@ -21,6 +21,7 @@
     export default {
         name: 'review-list',
         props: {
+          userId: Number,
           beerId: Number,
           showAll: Boolean
         },
@@ -42,6 +43,13 @@
           else if (this.beerId != 0) {
             ReviewService.getAllReviews().then(response => { 
               this.reviews = response.data.filter(beer => beer.beerId == this.beerId);
+            })
+          }
+
+          // otherwise, if a userId was passed into this component as a prop, get reviews for a specific user
+          else if (this.userId != 0) {
+            ReviewService.getAllReviews().then(response => { 
+              this.reviews = response.data.filter(beer => beer.userId == this.userId);
             })
           }
           
