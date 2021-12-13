@@ -3,6 +3,7 @@ import Router from 'vue-router'
 import Home from '../views/Home.vue'
 import Login from '../views/Login.vue'
 import Logout from '../views/Logout.vue'
+import Profile from '../views/Profile.vue'
 import Register from '../views/Register.vue'
 import Breweries from '../views/Breweries.vue'
 import Brewery from '../views/Brewery.vue'
@@ -42,6 +43,14 @@ const router = new Router({
       component: Login,
       meta: {
         requiresAuth: false
+      }
+    },
+    {
+      path: "/profile",
+      name: "profile",
+      component: Profile,
+      meta: {
+        requiresAuth: true
       }
     },
     {
