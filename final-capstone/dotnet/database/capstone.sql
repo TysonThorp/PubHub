@@ -135,12 +135,12 @@ lactose, oats, and flaked wheat to bring you a refreshing, adults-only treat.',6
 ('Happy Amber','Happy Amber is here to elevate any meal. Infused into a gourmet dish or just sipped from a can while barbecuing, find your happy place and enjoy this award-winning beer.',
 6,'Amber Ale','MadtreeHappyAmber.jpeg'),
 ('Aheuvo!','The perfect blend of Cacao, peppers, cinnamon, vanilla and lactose, this beer is dark and creamy with just enough heat to warm you up on a cold day.',7.7,'Stout',
-'\c-brewery-finder-capstone\final-capstone\vue\public\img\Madtree_Ahuevo.jpg'),
+'MadtreeAhuevo.jpg'),
 ('Don''t Talk Sh!t About Norwood','Session Pale ale with all Falconer''s Flight 7 C''s hops.', 4.2, 'American Pale Ale',
 'ListermannDontTalk.jpg'),
 ('The Adventures of Hobo Swaggins','DDH Triple NE IPA with El Dorado, Sultana, African Queen, Galaxy, and Wai-iti. Release 11/20/21. A tribute brew to our head brewer and taproom manager''s lost pup, Bo.',10,
 'New England Hazy IPA','ListermannHoboSwaggins.jpg'),
-('Nutcase','Porter brewed with peanut butter.',6.8,'Porter','\c-brewery-finder-capstone\final-capstone\vue\public\img\Listermann Nutcase.jpg'),
+('Nutcase','Porter brewed with peanut butter.',6.8,'Porter','ListermannNutcase.jpg'),
 ('Basic','NE Milkshake IPA with Pumpkin Spices, Vanilla and Coffee.',6.3,'Milkshake IPA','ListermannBasic.jpg'),
 ('Satisfied?','Stout brewed with chocolate, caramel and peanuts to satisfy your beer thirst.',7,'Milk Stout',
 'ListermannSatisfied.jpg')
@@ -158,7 +158,12 @@ VALUES
 ('tthorp', 'YhyGVQ+Ch69n4JMBncM4lNF/i9s=', 'Ar/aB2thQTI=', 'admin')
 
 INSERT INTO beers_by_brewery(brewery_id, beer_id)
-VALUES (1, 1), (1, 2), (1, 3), (1, 4), (1, 5), (2, 6), (2, 7), (2, 8), (2, 9), (2, 10)
--- for purposes of placeholder data the first five beers belong to Listermann's; the next five belong to Madtree
+VALUES 
+(1, 21), (1, 22), (1, 23), (1, 24), (1, 25),	-- Listermann
+(2, 16), (2, 17), (2, 18), (2, 19), (1, 20),	-- Madtree
+(3, 11), (3, 12), (3, 13), (3, 14), (3, 15),	-- Rhinegeist
+(4, 6), (4, 7), (4, 8), (4, 9), (4, 10),		-- Braxton
+(5, 1), (5, 2), (5, 3), (5, 4), (5, 5)			-- Taft
+
 
 GO
