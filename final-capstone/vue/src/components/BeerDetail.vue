@@ -18,9 +18,10 @@
                 <v-card-title><h3>{{beer.beerName}}</h3></v-card-title>
                 <v-card-subtitle>{{ beer.beerType }}</v-card-subtitle>
                 <v-card-text>
-                {{ beer.description }} ABV: {{beer.abv }} 
-                </v-card-text>
+                <p>{{ beer.description }} ABV: {{beer.abv }}</p> 
                 <average-review :beerId="this.beerId" />
+                </v-card-text>
+                
             </div>
             <div style="margin-left: auto; display: flex; align-items: center;">
                 <img :src='"/img/"+ beer.image' class="beer-image">
