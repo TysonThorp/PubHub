@@ -60,13 +60,12 @@ namespace Capstone.Controllers
         }
 
         [HttpPut("{userId}")]
-        [Authorize(Roles = "admin")]
-        public IActionResult UpdateUser(int UserId, string username, string password, string role, User user)
+        public IActionResult UpdateUser(int UserId, User user)
         {
             User userToUpdate = userDao.GetUser(UserId);
             if (userToUpdate != null)
             {
-                userDao.UpdateUser(UserId, username, password, role, user);
+                userDao.UpdateUser(UserId, user);
                 return Ok();
             }
             else

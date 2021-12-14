@@ -5,13 +5,13 @@
         class="alert alert-danger"
         role="alert"
         v-if="invalidCredentials"
-      >Invalid username and password!</div>
+      >Invalid username or password.</div>
 
       <div
         class="alert alert-success"
         role="alert"
         v-if="this.$route.query.registration"
-      >Thank you for registering, please sign in.</div>
+      >Your account has been created! Please sign in below:</div>
 
       <v-text-field
         type="text"

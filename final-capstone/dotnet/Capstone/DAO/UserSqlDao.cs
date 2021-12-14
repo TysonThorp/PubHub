@@ -97,25 +97,23 @@ namespace Capstone.DAO
 
             return GetUser(username);
         }
-        public User UpdateUser(int UserId, string username, string password, string role, User user)
+        public User UpdateUser(int UserId, User user)
         {
-            IPasswordHasher passwordHasher = new PasswordHasher();
-            PasswordHash hash = passwordHasher.ComputeHash(password);
             try
             {
-                using SqlConnection conn = new SqlConnection(connectionString);
-                conn.Open();
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                { 
+                    conn.Open();
 
-                SqlCommand cmd = new SqlCommand("UPDATE Users " +
-                    "SET username = @username, password_hash = @password_hash, salt = @salt, user_role = @user_role" +
-                    "WHERE user_id = @user_id conn)");
-                cmd.Parameters.AddWithValue("@user_id", UserId);
-                cmd.Parameters.AddWithValue("@username", username);
-                cmd.Parameters.AddWithValue("@password_hash", hash.Password);
-                cmd.Parameters.AddWithValue("@salt", hash.Salt);
-                cmd.Parameters.AddWithValue("@user_role", role);
-                cmd.ExecuteNonQuery();
+                    SqlCommand cmd = new SqlCommand("UPDATE users " +
+                        "SET username = @username, user_role = @user_role " +
+                        "WHERE user_id = @user_id", conn);
+                    cmd.Parameters.AddWithValue("@user_id", UserId);
+                    cmd.Parameters.AddWithValue("@username", user.Username);
+                    cmd.Parameters.AddWithValue("@user_role", user.Role);
+                    cmd.ExecuteNonQuery();
 
+                }
             }
             catch (SqlException)
             {
