@@ -1,6 +1,11 @@
 <template>
       <div>
-        <h1>HOME</h1>
+        <div v-if="this.$store.state.user.role != null">
+          <h1>Welcome, {{this.$store.state.user.username}}!</h1>
+      </div>
+      <div v-else>
+        <h1>Home</h1>
+      </div>
         <v-container>
           <v-layout row wrap>
             <v-flex xs12 md6>
@@ -24,7 +29,7 @@
               <v-btn outline block class="secondary">testing</v-btn>
             </v-flex>  
           </v-layout>
-        <brewery-list/>
+        <brewery-list :showAll="true"/>
         </v-layout>
         </v-container>
       </div>

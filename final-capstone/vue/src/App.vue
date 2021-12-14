@@ -143,6 +143,7 @@ import AppLogo from './components/AppLogo.vue';
 }
 #mainsection {
   background-image:url('~@/assets/BeerBubbles.jpg');
+  background-attachment:fixed;
   background-position: center; /* Center the image */
   background-repeat: no-repeat; /* Do not repeat the image */
   background-size: cover; /* Resize the background image to cover the entire container */

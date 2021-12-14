@@ -1,41 +1,48 @@
 <template>
-  <div id="login">
-    <h1></h1>
-    <form class="form-signin" @submit.prevent="login">
-      <h1 class="h3 mb-3 font-weight-normal">Log in</h1>
+  <v-card id="login">
+    <v-form @submit.prevent="login">
       <div
         class="alert alert-danger"
         role="alert"
         v-if="invalidCredentials"
       >Invalid username and password!</div>
+
       <div
         class="alert alert-success"
         role="alert"
         v-if="this.$route.query.registration"
       >Thank you for registering, please sign in.</div>
-      <label for="username" class="sr-only">Username</label>
-      <input
+
+      <v-text-field
         type="text"
         id="username"
         class="form-control"
         placeholder="Username"
+        label="Username"
         v-model="user.username"
         required
         autofocus
       />
-      <label for="password" class="sr-only">Password</label>
-      <input
+
+      <v-text-field
         type="password"
         id="password"
         class="form-control"
         placeholder="Password"
+        label="Password"
         v-model="user.password"
         required
       />
-      <router-link :to="{ name: 'register' }">Need an account?</router-link>
-      <button type="submit">Sign in</button>
-    </form>
-  </div>
+      <v-col class="text-right">
+          <v-btn block type="submit" color='primary'>Log in</v-btn>
+      </v-col>
+      
+      <div style="text-align: center">
+      <router-link class="login-link" :to="{ name: 'register' }">Need an account?</router-link>
+      </div>
+      
+    </v-form>
+  </v-card>
 </template>
 
 <script>
@@ -75,3 +82,13 @@ export default {
   }
 };
 </script>
+
+<style scoped>
+  #login{
+    padding: 1em;
+  }
+  .login-link{
+    color: #757575;
+    text-decoration: none;
+  }
+</style>
