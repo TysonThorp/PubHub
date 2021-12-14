@@ -1,11 +1,9 @@
 <template>
   <div>
     <beer-detail :beerId="this.$route.params.beerId" context="beer-individual"/>
-    <average-review :beerId="this.$route.params.beerId"/>
     <h2>Reviews:</h2>
     <review-list :beerId="this.$route.params.beerId"/>
       
-
     <v-card>
       <v-card-title>
           Review this beer:
@@ -15,7 +13,6 @@
 </template>
 
 <script>
-import AverageReview from '../components/AverageReview.vue'
 import BeerDetail from '../components/BeerDetail.vue'
 import ReviewList from '../components/ReviewList.vue'
 
@@ -23,8 +20,8 @@ import ReviewList from '../components/ReviewList.vue'
 export default {
   components: { 
       BeerDetail,
-    ReviewList,
-    AverageReview 
+      ReviewList,
+
   },
 
 }
