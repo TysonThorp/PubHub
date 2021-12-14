@@ -1,42 +1,51 @@
 <template>
-  <div id="register" class="text-center">
-    <form class="form-register" @submit.prevent="register">
-      <h1 class="h3 mb-3 font-weight-normal">Create Account</h1>
+<div>
+  <v-card id="register">
+    <v-form @submit.prevent="register">
       <div class="alert alert-danger" role="alert" v-if="registrationErrors">
         {{ registrationErrorMsg }}
       </div>
-      <label for="username" class="sr-only">Username</label>
-      <input
+
+      <v-text-field
         type="text"
         id="username"
         class="form-control"
         placeholder="Username"
+        label="Username"
         v-model="user.username"
         required
         autofocus
       />
-      <label for="password" class="sr-only">Password</label>
-      <input
+
+      <v-text-field
         type="password"
         id="password"
         class="form-control"
         placeholder="Password"
+        label="Password"
         v-model="user.password"
         required
       />
-      <input
+
+      <v-text-field
         type="password"
         id="confirmPassword"
         class="form-control"
-        placeholder="Confirm Password"
+        label="Confirm Password"
         v-model="user.confirmPassword"
         required
       />
-      <router-link :to="{ name: 'login' }">Have an account?</router-link>
-      <button class="btn btn-lg btn-primary btn-block" type="submit">
-        Create Account
-      </button>
-    </form>
+
+      <v-col class="text-right">
+          <v-btn block type="submit" color='primary'>Register</v-btn>
+      </v-col>
+
+      <div style="text-align: center">
+      <router-link class="login-link" :to="{ name: 'login' }">Already have an account?</router-link>
+      </div>
+      
+    </v-form>
+  </v-card>
   </div>
 </template>
 
@@ -90,4 +99,12 @@ export default {
 };
 </script>
 
-<style></style>
+<style scoped>
+  #register{
+    padding: 1em;
+  }
+  .login-link{
+    color: #757575;
+    text-decoration: none;
+  }
+</style>
