@@ -82,10 +82,6 @@ export default {
     h2{
         font-size: 1em;
     }
-    img{
-        max-width: 25%;  
-        height: auto;  
-    }
 
     .beer-image{
        object-fit: cover;
