@@ -5,8 +5,10 @@
       <h2>Reviews:</h2>
       <review-list :beerId="parseInt(this.$route.params.beerId)"/>
 
+      <div v-if='this.$store.state.user.role != null'>
       <h2>Review this beer:</h2>
       <review-beer :beerId="parseInt(this.$route.params.beerId)"/>
+      </div>
   </div>
 </template>
 
