@@ -16,9 +16,12 @@
 import BeerService from '../services/BeerService.js';
 import BeerDetail from '../components/BeerDetail.vue';
 
+
     export default {
         name: 'beer-list',
-        components: {BeerDetail},
+        components: {
+          BeerDetail,
+        },
         props: {
           breweryId: Number,
           showAll: Boolean
