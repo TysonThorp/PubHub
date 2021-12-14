@@ -5,6 +5,8 @@
                 <h1 style="font-size: 1.8em">{{beer.beerName}}</h1>
                 <p>{{ beer.beerType }} | ABV: {{beer.abv }}</p>
                 <p>{{ beer.description }}</p>
+                <average-review :beerId="this.beerId" />
+                     
             </div>
             <div style="margin-left: auto; display: flex; align-items: center;">
                 <img :src='"/img/"+ beer.image' class="beer-image">
@@ -18,6 +20,7 @@
                 <v-card-text>
                 {{ beer.description }} ABV: {{beer.abv }} 
                 </v-card-text>
+                <average-review :beerId="this.beerId" />
             </div>
             <div style="margin-left: auto; display: flex; align-items: center;">
                 <img :src='"/img/"+ beer.image' class="beer-image">
@@ -30,9 +33,13 @@
 
 <script>
 import BeerService from '../services/BeerService.js'
+import AverageReview from '../components/AverageReview.vue'
 
 export default {
     name: 'beer-detail',
+    components: {
+        AverageReview
+    },
     props: {
         beerId: Number,
         context: String
