@@ -1,7 +1,11 @@
 <template>
     <div id="breweries">
-      <h1>Breweries</h1>
-      <brewery-list />
+      <div v-if="this.$store.state.user.role === 'brewer'">
+      <h1>My Breweries</h1>
+        <brewery-list :userId="this.$store.state.user.userId"/>
+      </div>
+        <h1>Breweries</h1>
+      <brewery-list :showAll="true"/>
     </div>
 </template>
 

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <beer-detail :beerId="this.$route.params.beerId"/>
+    <beer-detail :beerId="this.$route.params.beerId" context="beer-individual"/>
    
       <h2>Reviews:</h2>
       <review-list :beerId="this.$route.params.beerId"/>

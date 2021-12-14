@@ -34,15 +34,14 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "https://localhost:44315/reviews/",
+							"raw": "https://localhost:44315/reviews",
 							"protocol": "https",
 							"host": [
 								"localhost"
 							],
 							"port": "44315",
 							"path": [
-								"reviews",
-								""
+								"reviews"
 							]
 						}
 					},
@@ -55,7 +54,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"beerId\": 1,\r\n    \"userId\": 1,\r\n    \"rating\": 10,\r\n    \"reviewText\": \"Example review text here.\"\r\n}",
+							"raw": "{\r\n    \"reviewId\": 1,\r\n    \"beerId\": 1,\r\n    \"userId\": 1,\r\n    \"rating\": 2.5,\r\n    \"reviewText\": \"Review of Gavel Banger (beerId 1) by user with rating 2.5.\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -84,13 +83,33 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"beerId\": 2,\r\n    \"userId\": 2,\r\n    \"rating\": 10,\r\n    \"reviewText\": \"Updated review text.\"\r\n}",
+							"raw": "{\r\n    \"reviewId\": 1,\r\n    \"beerId\": 1,\r\n    \"userId\": 1,\r\n    \"rating\": 2.5,\r\n    \"reviewText\": \"Review of Gavel Banger (beerId 1) by user with rating 2.5.\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
 								}
 							}
 						},
+						"url": {
+							"raw": "https://localhost:44315/reviews/1",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "44315",
+							"path": [
+								"reviews",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Review",
+					"request": {
+						"method": "DELETE",
+						"header": [],
 						"url": {
 							"raw": "https://localhost:44315/reviews/1",
 							"protocol": "https",
@@ -132,6 +151,27 @@
 					"response": []
 				},
 				{
+					"name": "Get Brewery's Beers",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:44315/breweries/3/beers",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "44315",
+							"path": [
+								"breweries",
+								"3",
+								"beers"
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "Get All Breweries",
 					"request": {
 						"method": "GET",
@@ -158,7 +198,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n        \"breweryOwnerID\": 1,\r\n        \"breweryName\": \"Listermann Brewing Company\",\r\n        \"phoneNumber\": \"513-731-1130\",\r\n        \"emailAddress\": \"jess@listermannbrewing.com\",\r\n        \"description\": \"Family Owned, Cincinnati Brewed award winning beer!\\r\\nDRINK. LOCAL. BEER!\",\r\n        \"website\": \"https://www.listermannbrewing.com/\",\r\n        \"address\": \"1621 Dana Ave Cincinnati, OH 45207\",\r\n        \"hoursOfOperation\": \"Sun-Th 12pm - 9pm Fr, Sat 12pm - 10pm\",\r\n        \"isActive\": true\r\n    }",
+							"raw": "{\r\n    \"breweryId\": 1,\r\n    \"breweryOwnerId\": 3,\r\n    \"breweryName\": \"Listermann Brewing Company\",\r\n    \"phoneNumber\": \"513-731-1130\",\r\n    \"emailAddress\": \"jess@listermannbrewing.com\",\r\n    \"description\": \"Family Owned, Cincinnati Brewed award winning beer!\\r\\nDRINK. LOCAL. BEER!\",\r\n    \"image\": \"\",\r\n    \"website\": \"https://www.listermannbrewing.com/\",\r\n    \"address\": \"1621 Dana Ave Cincinnati, OH 45207\",\r\n    \"hoursOfOperation\": \"Sun-Th 12pm - 9pm Fr, Sat 12pm - 10pm\",\r\n    \"isActive\": true\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -166,15 +206,14 @@
 							}
 						},
 						"url": {
-							"raw": "https://localhost:44315/breweries/",
+							"raw": "https://localhost:44315/breweries",
 							"protocol": "https",
 							"host": [
 								"localhost"
 							],
 							"port": "44315",
 							"path": [
-								"breweries",
-								""
+								"breweries"
 							]
 						}
 					},
@@ -187,13 +226,33 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n        \"breweryOwnerID\": 1,\r\n        \"breweryName\": \"Different Brewing Company\",\r\n        \"phoneNumber\": \"513-731-1130\",\r\n        \"emailAddress\": \"jess@listermannbrewing.com\",\r\n        \"description\": \"Family Owned, Cincinnati Brewed award winning beer!\\r\\nDRINK. LOCAL. BEER!\",\r\n        \"website\": \"https://www.listermannbrewing.com/\",\r\n        \"address\": \"1621 Dana Ave Cincinnati, OH 45207\",\r\n        \"hoursOfOperation\": \"Sun-Th 12pm - 9pm Fr, Sat 12pm - 10pm\",\r\n        \"isActive\": true\r\n    }",
+							"raw": "{\r\n    \"breweryId\": 1,\r\n    \"breweryOwnerId\": 3,\r\n    \"breweryName\": \"Listermann Brewing Company\",\r\n    \"phoneNumber\": \"513-731-1130\",\r\n    \"emailAddress\": \"jess@listermannbrewing.com\",\r\n    \"description\": \"Family Owned, Cincinnati Brewed award winning beer!\\r\\nDRINK. LOCAL. BEER!\",\r\n    \"image\": \"\",\r\n    \"website\": \"https://www.listermannbrewing.com/\",\r\n    \"address\": \"1621 Dana Ave Cincinnati, OH 45207\",\r\n    \"hoursOfOperation\": \"Sun-Th 12pm - 9pm Fr, Sat 12pm - 10pm\",\r\n    \"isActive\": true\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
 								}
 							}
 						},
+						"url": {
+							"raw": "https://localhost:44315/breweries/2",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "44315",
+							"path": [
+								"breweries",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Brewery",
+					"request": {
+						"method": "DELETE",
+						"header": [],
 						"url": {
 							"raw": "https://localhost:44315/breweries/1",
 							"protocol": "https",
@@ -232,15 +291,14 @@
 							}
 						},
 						"url": {
-							"raw": "https://localhost:44315/user/",
+							"raw": "https://localhost:44315/users",
 							"protocol": "https",
 							"host": [
 								"localhost"
 							],
 							"port": "44315",
 							"path": [
-								"user",
-								""
+								"users"
 							]
 						}
 					},
@@ -248,30 +306,38 @@
 				},
 				{
 					"name": "Get User",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
 					"request": {
 						"method": "GET",
 						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n        \"userId\": 1,\r\n        \"username\": \"user\",\r\n        \"emailAddress\": null,\r\n        \"passwordHash\": \"Jg45HuwT7PZkfuKTz6IB90CtWY4=\",\r\n        \"phoneNumber\": null,\r\n        \"salt\": \"LHxP4Xh7bN0=\",\r\n        \"birthday\": \"0001-01-01T00:00:00\",\r\n        \"role\": \"user\"\r\n    },",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
 						"url": {
-							"raw": "https://localhost:44315/user/1",
+							"raw": "https://localhost:44315/users/1",
 							"protocol": "https",
 							"host": [
 								"localhost"
 							],
 							"port": "44315",
 							"path": [
-								"user",
+								"users",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete User",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:44315/users/1",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "44315",
+							"path": [
+								"users",
 								"1"
 							]
 						}
@@ -289,7 +355,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "https://localhost:44315/beers/1222",
+							"raw": "https://localhost:44315/beers/1",
 							"protocol": "https",
 							"host": [
 								"localhost"
@@ -297,7 +363,47 @@
 							"port": "44315",
 							"path": [
 								"beers",
-								"1222"
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Beers",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:44315/beers/",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "44315",
+							"path": [
+								"beers",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Beer",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:44315/beers/2",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "44315",
+							"path": [
+								"beers",
+								"2"
 							]
 						}
 					},
@@ -360,6 +466,34 @@
 				}
 			},
 			"response": []
+		},
+		{
+			"name": "Login as Brewer",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"brewer\",\r\n    \"password\": \"password\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:44315/login",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44315",
+					"path": [
+						"login"
+					]
+				}
+			},
+			"response": []
 		}
 	],
 	"auth": {
@@ -367,7 +501,7 @@
 		"bearer": [
 			{
 				"key": "token",
-				"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIyIiwibmFtZSI6ImFkbWluIiwicm9sZSI6ImFkbWluIiwibmJmIjoxNjM4OTg0ODMwLCJleHAiOjE2Mzk1ODk2MzAsImlhdCI6MTYzODk4NDgzMH0.2pSwmbEKyHIwE38T41OZ6iCPlW4CXaMaruQuZcohnFo",
+				"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIyIiwibmFtZSI6ImFkbWluIiwicm9sZSI6ImFkbWluIiwibmJmIjoxNjM5MjQyMDg2LCJleHAiOjE2Mzk4NDY4ODYsImlhdCI6MTYzOTI0MjA4Nn0.UHLvxWTAukqxiFPhGmFDHpO_esQ0dvhckqJ1ySVF6WQ",
 				"type": "string"
 			}
 		]

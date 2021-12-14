@@ -2,10 +2,11 @@
 using Capstone.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Capstone.Controllers
 {
-    
+    [Authorize]
     [Route("[controller]")]
     [ApiController]
     public class UsersController : ControllerBase
@@ -16,6 +17,7 @@ namespace Capstone.Controllers
             userDao = _userDao;
         }
         [HttpGet]
+        [Authorize(Roles = "admin")]
         public IActionResult GetAllUsers()
         {
             List<User> listOfUsers = userDao.GetAllUsers();
@@ -43,6 +45,7 @@ namespace Capstone.Controllers
             }
         }
         [HttpGet("{userName}")]
+        [Authorize(Roles = "admin")]
         public IActionResult GetUserByName(string username)
         {
             User user = userDao.GetUser(username);
@@ -57,6 +60,7 @@ namespace Capstone.Controllers
         }
 
         [HttpPut("{userId}")]
+        [Authorize(Roles = "admin")]
         public IActionResult UpdateUser(int UserId, string username, string password, string role, User user)
         {
             User userToUpdate = userDao.GetUser(UserId);

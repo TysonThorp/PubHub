@@ -5,7 +5,8 @@
       
       <app-logo></app-logo>
       <v-spacer></v-spacer>
-
+      <app-background></app-background>
+      
       <div v-if="loggedIn">
           <router-link to="/profile">
               <v-icon color="primary">mdi-account-circle</v-icon>
@@ -69,15 +70,16 @@
 
 
 <script>
+import AppBackground from './components/AppBackground.vue';
 import AppLogo from './components/AppLogo.vue';
   export default {
     components: { 
-      AppLogo 
+      AppLogo,
+      AppBackground
   },
     data: () => ({ 
       drawer: false,
       items: [
-        {title: 'Log in' , icon: 'mdi-arrow-right-thick', link: '/login'},
         {title: 'Breweries' , icon: 'mdi-home', link: '/breweries'},
         {title: 'Beers' , icon: 'mdi-glass-mug-variant', link: '/beers'},
         {title: 'Reviews' , icon: 'mdi-star', link: '/reviews'},
@@ -139,6 +141,6 @@ import AppLogo from './components/AppLogo.vue';
 #app-bar .v-messages{
   display: none;
 }
-
+main {background-image:url('public\img\BeerBubbles.jpg') }
 
 </style>
