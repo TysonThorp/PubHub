@@ -43,7 +43,7 @@ CREATE TABLE reviews(
 	PRIMARY KEY (review_id),
 	FOREIGN KEY (user_id) references users(user_id),
 	FOREIGN KEY (beer_id) references beers(beer_id),
-	CONSTRAINT UQ_beer_review UNIQUE (beer_id, user_id) --a user may not review the same beer twice
+	-- CONSTRAINT UQ_beer_review UNIQUE (beer_id, user_id) --a user may not review the same beer twice
 	)
 
 CREATE TABLE breweries (
