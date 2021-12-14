@@ -160,8 +160,12 @@ VALUES
 ('tthorp', 'YhyGVQ+Ch69n4JMBncM4lNF/i9s=', 'Ar/aB2thQTI=', 'admin')
 
 INSERT INTO beers_by_brewery(brewery_id, beer_id)
-VALUES (1, 1), (1, 2), (1, 3), (1, 4), (1, 5), (2, 6), (2, 7), (2, 8), (2, 9), (2, 10)
--- for purposes of placeholder data the first five beers belong to Listermann's; the next five belong to Madtree
+VALUES 
+(1, 21), (1, 22), (1, 23), (1, 24), (1, 25),	-- Listermann
+(2, 16), (2, 17), (2, 18), (2, 19), (1, 20),	-- Madtree
+(3, 11), (3, 12), (3, 13), (3, 14), (3, 15),	-- Rhinegeist
+(4, 6), (4, 7), (4, 8), (4, 9), (4, 10),		-- Braxton
+(5, 1), (5, 2), (5, 3), (5, 4), (5, 5)			-- Taft
 
 GO
 
