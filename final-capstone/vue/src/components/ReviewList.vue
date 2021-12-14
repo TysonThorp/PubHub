@@ -40,14 +40,14 @@
           }
 
           // otherwise, if a beerId was passed into this component as a prop, get reviews for a specific beer
-          else if (this.beerId != 0) {
+          else if (this.beerId != undefined) {
             ReviewService.getAllReviews().then(response => { 
               this.reviews = response.data.filter(beer => beer.beerId == this.beerId);
             })
           }
 
           // otherwise, if a userId was passed into this component as a prop, get reviews for a specific user
-          else if (this.userId != 0) {
+          else if (this.userId != undefined) {
             ReviewService.getAllReviews().then(response => { 
               this.reviews = response.data.filter(beer => beer.userId == this.userId);
             })
