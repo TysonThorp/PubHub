@@ -27,7 +27,7 @@
           </v-list-item-title>
         </v-list-item-content>
       </v-list-item>
-      
+     
 
       <v-divider></v-divider>
 
@@ -61,8 +61,10 @@
       <v-container style="max-width: 700px">
         <router-view />
       </v-container>
+       <div class="hero-image"></div>
     </v-main>
   </v-app>
+
 </template>
 
 
@@ -137,5 +139,6 @@ import AppLogo from './components/AppLogo.vue';
 #app-bar .v-messages{
   display: none;
 }
+
 
 </style>

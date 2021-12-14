@@ -2,6 +2,9 @@
     <v-card class="breweryItem" :to="link">
         <v-card-title><h3>{{brewery.breweryName}}</h3></v-card-title>
         <v-card-subtitle>{{ brewery.address }}</v-card-subtitle>
+        <img v-bind:src='"/img/"+ brewery.image' >
+        <img v-bind:src='"/img/"+ brewery.image' >
+        <img v-bind:src='"/img/"+ brewery.image' >
         <v-card-text v-if="showFull">
             {{ brewery.description }}
             <ul>
@@ -58,6 +61,10 @@ export default {
     }
     .breweryItem{
         margin-bottom: 1em;
+    }
+      img{
+        max-width: 25%;  
+        height: auto;  
     }
 
 </style>

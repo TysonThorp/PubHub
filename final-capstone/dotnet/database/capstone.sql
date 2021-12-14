@@ -26,8 +26,8 @@ CREATE TABLE users (
 
 CREATE TABLE beers(
 	beer_id int IDENTITY(1,1) NOT NULL,
-	beer_name varchar(30) NOT NULL,
-	description varchar(150) NULL,
+	beer_name varchar(50) NOT NULL,
+	description varchar(255) NULL,
 	image varchar(150) NULL,
 	abv decimal(5,1) NULL,
 	beer_type varchar(25) NULL,
@@ -75,22 +75,22 @@ INSERT INTO users (username, password_hash, salt, user_role) VALUES ('user','Jg4
 INSERT INTO users (username, password_hash, salt, user_role) VALUES ('admin','YhyGVQ+Ch69n4JMBncM4lNF/i9s=', 'Ar/aB2thQTI=','admin');
 INSERT INTO users (username, password_hash, salt, user_role) VALUES ('brewer','YhyGVQ+Ch69n4JMBncM4lNF/i9s=', 'Ar/aB2thQTI=','brewer');
 
-INSERT INTO breweries (brewery_owner_id ,brewery_name, email, phone, website, brewery_description, image, hours_operations, address, isActive)
+INSERT INTO breweries (brewery_owner_id ,brewery_name, email, phone, website, brewery_description,hours_operations, address, isActive, image, image_two, image_three)
 VALUES
 (3,'Listermann Brewing Company', 'jess@listermannbrewing.com', '513-731-1130', 'https://www.listermannbrewing.com/', 'Family Owned, Cincinnati Brewed award winning beer!
-DRINK. LOCAL. BEER!',  '', 'Sun-Th 12pm - 9pm Fr, Sat 12pm - 10pm', '1621 Dana Ave Cincinnati, OH 45207', 1),
+DRINK. LOCAL. BEER!', 'Sun-Th 12pm - 9pm Fr, Sat 12pm - 10pm', '1621 Dana Ave Cincinnati, OH 45207', 1, 'ListermannExterior.JPG', 'ListermannInterior.JPG', 'ListermannTaproom.JPG' ),
 (3, 'Madtree Brewing', 'info@madtreebrewing.com', '513-836-8733', 'https://www.madtreebrewing.com/','MadTree Brewing connects people with nature and each other.
-Founded in 2013, join us as we rise above the noise deepening our roots to thrive and amplify our impact on the world and people around us. Cheers!', '', 
-'M-Th 11am - 11pm Fri 11am - 12am Sat 10am - 12am', '3301 Madison Rd Cincinnati OH 45209',1),
+Founded in 2013, join us as we rise above the noise deepening our roots to thrive and amplify our impact on the world and people around us. Cheers!',  
+'M-Th 11am - 11pm Fri 11am - 12am Sat 10am - 12am', '3301 Madison Rd Cincinnati OH 45209',1,'MadtreeExterior.JPG','MadtreeInterior.JPG','MadtreePeople.JPG'),
 (3,'Rhinegeist Brewery', 'taproom@rhinegeist.com', '513-381-1367', 'https://rhinegeist.com/','Rhinegeist Brewery is located in the Over-the-Rhine historical 
-district in Cincinnati, OH. We brewed our first batch on June 8th, 2013. Open 7 days a week.', '', 'M-Th 12pm - 10pm F, Sat 12pm - 12am Sun 12pm - 9pm',
-'1910 Elm St, Cincinnati, OH 45202',1),
-(3, 'Braxton Brewing Company','social@braxtonbrewing.com','859-261-5600','https://www.braxtonbrewing.com/','We’re crossing the river so you don’t have to. A new location – Braxton Brewing Company Cincinnati!', '',
-'M 3pm - 10pm T-Th 11am - 10pm Fri, Sat 11am - 12am Sun 11am - 9pm','27 W 7th St, Covington, KY 41011',1),
+district in Cincinnati, OH. We brewed our first batch on June 8th, 2013. Open 7 days a week.', 'M-Th 12pm - 10pm F, Sat 12pm - 12am Sun 12pm - 9pm',
+'1910 Elm St, Cincinnati, OH 45202',1,'RhinegeistSign.jpg','RhinegeistInterior.JPG','RhinegeistBeers.jpg'),
+(3, 'Braxton Brewing Company','social@braxtonbrewing.com','859-261-5600','https://www.braxtonbrewing.com/','We’re crossing the river so you don’t have to. A new location – Braxton Brewing Company Cincinnati!',
+'M 3pm - 10pm T-Th 11am - 10pm Fri, Sat 11am - 12am Sun 11am - 9pm','27 W 7th St, Covington, KY 41011',1,'BraxtonInterior.jpg','BraxtonRooftop.jpg','BraxtonTaps.jpg'),
 (3, 'Taft''s Ale House','info@taftsalehouse.com','513-334-1393','https://taftsbeer.com/','Based in the great state of Ohio, Taft’s Brewing Co. is an award-winning brewery that’s been pouring fresh, 
 flavorful libations and serving fine fare since its founding in Cincinnati, Ohio in 2015. C’mon in to our bar and restaurant locations that include Taft’s Ale House, 
-Taft’s Brewporium – Cincinnati, and now open, Taft’s Brewporium – Columbus, to treat your belly to a cold, crisp pint of beer and piping hot meal today.', '',
-'Sun-Th 11:30am - 10pm Fr, Sat 1130am - 11pm','1429 Race St, Cincinnati, OH 45202',1);
+Taft’s Brewporium – Cincinnati, and now open, Taft’s Brewporium – Columbus, to treat your belly to a cold, crisp pint of beer and piping hot meal today.', 
+'Sun-Th 11:30am - 10pm Fr, Sat 1130am - 11pm','1429 Race St, Cincinnati, OH 45202',1,'TaftsExterior.jpg','TaftsInterior.JPG','TaftsLineup.jpg');
 
 INSERT INTO beers (beer_name, description, abv, beer_type,image)
 VALUES
@@ -132,15 +132,15 @@ lactose, oats, and flaked wheat to bring you a refreshing, adults-only treat.',6
 'MadtreeShade.jpg'),
 ('Legendary Lager','A balanced and crisp lager with light kettle hop aroma and floral notes followed by a dry finish.',4.2,'Lager',
 'MadtreeLegendaryLager.jpg'),
-('Happy Amber','Happy Amber is here to elevate any meal. Infused into a gourmet dish or just sipped from a can while barbecuing, find your happy place and enjoy this award-winning beer.',
+('Happy Amber','Happy Amber is here to elevate any meal. Find your happy place and enjoy this award-winning beer.',
 6,'Amber Ale','MadtreeHappyAmber.jpeg'),
 ('Aheuvo!','The perfect blend of Cacao, peppers, cinnamon, vanilla and lactose, this beer is dark and creamy with just enough heat to warm you up on a cold day.',7.7,'Stout',
-'\c-brewery-finder-capstone\final-capstone\vue\public\img\Madtree_Ahuevo.jpg'),
+'MadtreeAhuevo.jpg'),
 ('Don''t Talk Sh!t About Norwood','Session Pale ale with all Falconer''s Flight 7 C''s hops.', 4.2, 'American Pale Ale',
 'ListermannDontTalk.jpg'),
 ('The Adventures of Hobo Swaggins','DDH Triple NE IPA with El Dorado, Sultana, African Queen, Galaxy, and Wai-iti. Release 11/20/21. A tribute brew to our head brewer and taproom manager''s lost pup, Bo.',10,
 'New England Hazy IPA','ListermannHoboSwaggins.jpg'),
-('Nutcase','Porter brewed with peanut butter.',6.8,'Porter','\c-brewery-finder-capstone\final-capstone\vue\public\img\Listermann Nutcase.jpg'),
+('Nutcase','Porter brewed with peanut butter.',6.8,'Porter','ListermannNutcase.jpg'),
 ('Basic','NE Milkshake IPA with Pumpkin Spices, Vanilla and Coffee.',6.3,'Milkshake IPA','ListermannBasic.jpg'),
 ('Satisfied?','Stout brewed with chocolate, caramel and peanuts to satisfy your beer thirst.',7,'Milk Stout',
 'ListermannSatisfied.jpg')
@@ -163,9 +163,4 @@ VALUES (1, 1), (1, 2), (1, 3), (1, 4), (1, 5), (2, 6), (2, 7), (2, 8), (2, 9), (
 
 GO
 
-ALTER TABLE beers
-ADD beer_name varchar(30) NOT NULL,
-	description varchar(150) NULL,
-	image varchar(150) NULL,
-	abv decimal(5,1) NULL,
-	beer_type varchar(25) NULL
+
