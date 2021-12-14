@@ -1,8 +1,15 @@
 <template>
   <div>
-      <h3>
-          Average Review: {{ averageRating }}
-      </h3>  
+    <div v-if="reviews.length !== 0">
+        <p>
+            Average Rating: {{ averageRating }}
+        </p>  
+    </div>
+    <div v-else>
+        <p>
+            Average Rating: Not Enough Reviews
+        </p>
+    </div>
   </div>
 </template>
 
