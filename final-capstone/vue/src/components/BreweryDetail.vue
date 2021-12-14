@@ -3,26 +3,35 @@
         <div v-if="context === 'brewery-individual'" class="breweryItem">
             <div>
                 <h1 style="font-size: 1.8em">{{ brewery.breweryName }}</h1>
+                
+                <p v-if="this.$store.state.user.userId === brewery.breweryOwnerId">
+                    (<v-icon>mdi-heart</v-icon> You own this brewery.)
+                </p> 
                 <p>{{ brewery.address }}</p>
                 <p>{{ brewery.description }}</p>
                 <ul>
                     <li>Phone: {{ brewery.phoneNumber }}</li>
                     <li>Email: {{ brewery.emailAddress }}</li>
                     <li>Website: {{ brewery.website }}</li>
-                    <li>Hours: {{ brewery.hoursOfOperation }}</li>
+                    <li><p>Hours: {{ brewery.hoursOfOperation }}</p></li>
                 </ul>
                 <img v-bind:src='"/img/"+ brewery.image' >
                 <img v-bind:src='"/img/"+ brewery.imageTwo' >
                 <img v-bind:src='"/img/"+ brewery.imageThree' >
             </div>
+            <div v-if="this.$store.state.user.userId == brewery.breweryOwnerId">
+                <h2>Add a beer:</h2>
+            </div> 
         </div>
 
         <v-card v-else class="breweryItem" :to="link">
             <div>
-                <v-card-title
-                    ><h3>{{ brewery.breweryName }}</h3></v-card-title
-                >
-                <v-card-subtitle>{{ brewery.address }}</v-card-subtitle>
+                <v-card-title>
+                    <h3>{{ brewery.breweryName }}</h3>
+                </v-card-title>
+                <v-card-subtitle><span v-if="this.$store.state.user.userId === brewery.breweryOwnerId">
+                    (<v-icon>mdi-heart</v-icon> You own this brewery.)
+                </span> {{ brewery.address }}</v-card-subtitle>
                 <img v-bind:src='"/img/"+ brewery.image' >
                 <img v-bind:src='"/img/"+ brewery.imageTwo' >
                 <img v-bind:src='"/img/"+ brewery.imageThree' >
@@ -44,6 +53,7 @@ export default {
         return {
             brewery: {
                 breweryName: '',
+                breweryOwnerId: '',
                 emailAddress: '',
                 phoneNumber: '',
                 website: '',
@@ -68,10 +78,6 @@ export default {
 </script>
 
 <style scoped>
-
-    h2{
-        font-size: 1em;
-    }
     .breweryItem{
         margin-bottom: 1em;
     }

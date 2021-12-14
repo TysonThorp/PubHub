@@ -38,7 +38,7 @@ export default {
     }
 
     // otherwise, if a userId was passed into this component as a prop, get breweries owned by a specific user
-    else if (this.userId != 0) {
+    else if (this.userId != undefined) {
       BreweryService.getAllBreweries().then(response => { 
         this.breweries = response.data.filter(brewery => brewery.breweryOwnerId == this.userId);
       })
