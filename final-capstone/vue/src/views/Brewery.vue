@@ -1,8 +1,8 @@
 <template>
     <div>
-        <brewery-detail :breweryId="this.$route.params.breweryId" context="brewery-individual"/>
+        <brewery-detail :breweryId="parseInt(this.$route.params.breweryId)" context="brewery-individual"/>
         <h2>Beers:</h2>
-        <beer-list :breweryId="this.$route.params.breweryId"/>
+        <beer-list :breweryId="parseInt(this.$route.params.breweryId)"/>
     </div>
 </template>
 
