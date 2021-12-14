@@ -36,7 +36,9 @@ export default {
                     return currentSum + review.rating
                 },0
             )
-            return sum / this.reviews.length;
+            
+            const average = (sum / this.reviews.length).toFixed(2);
+            return average;
         }
     },
     created() {
