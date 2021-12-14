@@ -141,6 +141,10 @@ import AppLogo from './components/AppLogo.vue';
 #app-bar .v-messages{
   display: none;
 }
-main {background-image:url('public\img\BeerBubbles.jpg') }
+main {
+  background-image: url('assets/BeerBubbles.jpg');
+  background-size: cover;
+  background-attachment: fixed;
+  }
 
 </style>
