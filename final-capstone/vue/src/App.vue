@@ -5,7 +5,7 @@
       
       <app-logo></app-logo>
       <v-spacer></v-spacer>
-      <app-background></app-background>
+    
       
       <div v-if="loggedIn">
           <router-link to="/profile">
@@ -58,7 +58,7 @@
       </v-list>
      </v-navigation-drawer>
 
-    <v-main>
+    <v-main id="mainsection">
       <v-container style="max-width: 700px">
         <router-view />
       </v-container>
@@ -70,12 +70,12 @@
 
 
 <script>
-import AppBackground from './components/AppBackground.vue';
+
 import AppLogo from './components/AppLogo.vue';
   export default {
     components: { 
       AppLogo,
-      AppBackground
+      
   },
     data: () => ({ 
       drawer: false,
@@ -141,6 +141,11 @@ import AppLogo from './components/AppLogo.vue';
 #app-bar .v-messages{
   display: none;
 }
-main {background-image:url('public\img\BeerBubbles.jpg') }
+#mainsection {
+  background-image:url('~@/assets/BeerBubbles.jpg');
+  background-position: center; /* Center the image */
+  background-repeat: no-repeat; /* Do not repeat the image */
+  background-size: cover; /* Resize the background image to cover the entire container */
+}
 
 </style>
