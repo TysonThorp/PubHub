@@ -19,6 +19,9 @@
                 <img v-bind:src='"/img/"+ brewery.imageTwo' >
                 <img v-bind:src='"/img/"+ brewery.imageThree' >
             </div>
+            <div v-if="this.$store.state.user.userId == brewery.breweryOwnerId">
+                <h2>Add a beer:</h2>
+            </div> 
         </div>
 
         <v-card v-else class="breweryItem" :to="link">
@@ -75,10 +78,6 @@ export default {
 </script>
 
 <style scoped>
-
-    h2{
-        font-size: 1em;
-    }
     .breweryItem{
         margin-bottom: 1em;
     }
