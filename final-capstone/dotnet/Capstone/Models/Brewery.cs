@@ -14,6 +14,8 @@ namespace Capstone.Models
         public string EmailAddress { get; set; }
         public string Description { get; set; }
         public string Image { get; set; }
+        public string ImageTwo { get; set; }
+        public string ImageThree { get; set; }
         public string Website { get; set; }
         public string Address { get; set; }
         public string HoursOfOperation { get; set; }

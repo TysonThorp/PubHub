@@ -3,8 +3,8 @@
         <v-card-title><h3>{{brewery.breweryName}}</h3></v-card-title>
         <v-card-subtitle>{{ brewery.address }}</v-card-subtitle>
         <img v-bind:src='"/img/"+ brewery.image' >
-        <img v-bind:src='"/img/"+ brewery.image' >
-        <img v-bind:src='"/img/"+ brewery.image' >
+        <img v-bind:src='"/img/"+ brewery.imageTwo' >
+        <img v-bind:src='"/img/"+ brewery.imageThree' >
         <v-card-text v-if="showFull">
             {{ brewery.description }}
             <ul>

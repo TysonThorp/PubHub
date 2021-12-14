@@ -23,7 +23,7 @@ namespace Capstone.DAO
                 using SqlConnection conn = new SqlConnection(connectionString);
                 conn.Open();
 
-                SqlCommand cmd = new SqlCommand("SELECT brewery_id, brewery_owner_id, brewery_name, email, phone, website, brewery_description, image, hours_operations, address, isActive " +
+                SqlCommand cmd = new SqlCommand("SELECT brewery_id, brewery_owner_id, brewery_name, email, phone, website, brewery_description, image, hours_operations, address, isActive, image_two, image_three " +
                     "FROM breweries " +
                     "WHERE brewery_id = @breweryId", conn);
 
@@ -52,7 +52,7 @@ namespace Capstone.DAO
                 using SqlConnection conn = new SqlConnection(connectionString);
                 conn.Open();
 
-                SqlCommand cmd = new SqlCommand("SELECT brewery_id, brewery_name, brewery_owner_id, email, phone, website, brewery_description, image, hours_operations, address, isActive " +
+                SqlCommand cmd = new SqlCommand("SELECT brewery_id, brewery_name, brewery_owner_id, email, phone, website, brewery_description, image, hours_operations, address, isActive, image_two, image_three " +
                     "FROM breweries", conn);
 
                 SqlDataReader reader = cmd.ExecuteReader();
@@ -78,9 +78,9 @@ namespace Capstone.DAO
                 using SqlConnection conn = new SqlConnection(connectionString);
                 conn.Open();
 
-                SqlCommand cmd = new SqlCommand("INSERT INTO breweries (brewery_owner_id, brewery_name, email, phone, website, brewery_description, image, hours_operations, address, isActive) " +
+                SqlCommand cmd = new SqlCommand("INSERT INTO breweries (brewery_owner_id, brewery_name, email, phone, website, brewery_description, image, hours_operations, address, isActive, image_two, image_three) " +
                     "OUTPUT INSERTED.brewery_id " +
-                    "VALUES (@brewery_owner_id, @brewery_name, @email, @phone, @website, @brewery_description, @image, @hours_operations, @address, @isActive)", conn);
+                    "VALUES (@brewery_owner_id, @brewery_name, @email, @phone, @website, @brewery_description, @image, @hours_operations, @address, @isActive, @image_two, @image_three)", conn);
 
                 cmd.Parameters.AddWithValue("@brewery_owner_id", brewery.BreweryOwnerId);
                 cmd.Parameters.AddWithValue("@brewery_name", brewery.BreweryName);
@@ -92,6 +92,8 @@ namespace Capstone.DAO
                 cmd.Parameters.AddWithValue("@hours_operations", brewery.HoursOfOperation);
                 cmd.Parameters.AddWithValue("@address", brewery.Address);
                 cmd.Parameters.AddWithValue("@isActive", brewery.IsActive);
+                cmd.Parameters.AddWithValue("@image_two", brewery.ImageTwo);
+                cmd.Parameters.AddWithValue("@image_three", brewery.ImageThree);
 
                 int newBreweryId = Convert.ToInt32(cmd.ExecuteScalar());
                 returnBrewery = GetBrewery(newBreweryId);
@@ -123,7 +125,7 @@ namespace Capstone.DAO
                 conn.Open();
 
                 SqlCommand cmd = new SqlCommand("UPDATE breweries " +
-                    "SET brewery_owner_id = @brewery_owner_id, brewery_name = @brewery_name, email = @email, phone = @phone, website = @website, brewery_description = @brewery_description, image = @image, hours_operations = @hours_operations, address = @address, isActive = @isActive " +
+                    "SET brewery_owner_id = @brewery_owner_id, brewery_name = @brewery_name, email = @email, phone = @phone, website = @website, brewery_description = @brewery_description, image = @image, hours_operations = @hours_operations, address = @address, isActive = @isActive image_two = @image_two, image_three = @image_three " +
                     "WHERE brewery_id = @brewery_id", conn);
 
                 cmd.Parameters.AddWithValue("@brewery_id", brewery.BreweryId);
@@ -137,6 +139,8 @@ namespace Capstone.DAO
                 cmd.Parameters.AddWithValue("@hours_operations", brewery.HoursOfOperation);
                 cmd.Parameters.AddWithValue("@address", brewery.Address);
                 cmd.Parameters.AddWithValue("@isActive", brewery.IsActive);
+                cmd.Parameters.AddWithValue("@image_two", brewery.ImageTwo);
+                cmd.Parameters.AddWithValue("@image_three", brewery.ImageThree);
 
                 cmd.ExecuteNonQuery();
 
@@ -161,6 +165,8 @@ namespace Capstone.DAO
                 Website = Convert.ToString(reader["website"]),
                 Description = Convert.ToString(reader["brewery_description"]),
                 Image = Convert.ToString(reader["image"]),
+                ImageTwo = Convert.ToString(reader["image_two"]),
+                ImageThree = Convert.ToString(reader["image_three"]),
                 Address = Convert.ToString(reader["address"]),
                 HoursOfOperation = Convert.ToString(reader["hours_operations"]),
                 IsActive = Convert.ToBoolean(reader["isActive"]),
