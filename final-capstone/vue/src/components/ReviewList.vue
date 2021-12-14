@@ -1,7 +1,7 @@
 <template>
     <ul id="review-list" class="pa-0">
         <li v-for="review in reviews" :key="review.reviewId">
-            <review-detail :reviewId="review.reviewId"/>
+            <review-detail :reviewId="parseInt(review.reviewId)"/>
         </li>
 
         <div v-if="this.reviews.length === 0">

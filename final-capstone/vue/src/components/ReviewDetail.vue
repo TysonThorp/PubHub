@@ -12,7 +12,7 @@
             readonly
             size="20"
             dense
-            :value="review.rating"
+            :value="parseInt(review.rating)"
             ></v-rating>
         </v-card-subtitle>
         <v-card-text>

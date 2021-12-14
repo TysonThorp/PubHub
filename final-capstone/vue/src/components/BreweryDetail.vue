@@ -59,7 +59,6 @@ export default {
         } 
     },
     created() {
-        //const breweryId = this.$route.params.breweryId;
 
         BreweryService.getBreweryById(this.breweryId).then((response) => {
             this.brewery = response.data;

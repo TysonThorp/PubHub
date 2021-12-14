@@ -1,7 +1,7 @@
 <template>
   <ul id="brewery-list" class="pa-0">
     <li v-for="brewery in breweries" :key="brewery.breweryId">
-      <brewery-detail :breweryId="brewery.breweryId" :showFull="false" />
+      <brewery-detail :breweryId="parseInt(brewery.breweryId)" :showFull="false" />
     </li>
     <div v-if="this.breweries.length === 0">
       <v-card id="missing-brewery" elevation="0" color="fade">
