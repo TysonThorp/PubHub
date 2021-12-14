@@ -1,6 +1,6 @@
 <template>
     <div>
-        <brewery-detail :breweryId="this.$route.params.breweryId" :showFull="true"/>
+        <brewery-detail :breweryId="this.$route.params.breweryId" context="brewery-individual"/>
         <h2>Beers:</h2>
         <beer-list :breweryId="this.$route.params.breweryId"/>
     </div>
