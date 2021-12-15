@@ -1,5 +1,7 @@
 <template>
-    <v-form v-on:submit.prevent='postBeer'>
+<div>
+<v-btn block v-on:click="showForm = !showForm">Add new beer</v-btn>
+    <v-form v-on:submit.prevent='postBeer' v-if="showForm == true">
         <v-row>
         <v-col>
         <v-text-field
@@ -48,6 +50,7 @@
 
         <v-btn type="submit">Submit</v-btn>
     </v-form>
+    </div>
 </template>
 
 <script>
@@ -58,6 +61,7 @@ export default {
     props: ['breweryId'],
     data() {
     return {
+      showForm: false,
       beer: {
         beerName: "",
         description: "",
