@@ -1,6 +1,6 @@
 <template>
   
-  <v-form v-on:submit.prevent='createBrewery'>
+  <v-form v-on:submit.prevent>
       <h3>
           Add Brewery:
       </h3>
@@ -13,7 +13,7 @@
       <v-text-field label="Hours of Operation" v-model="brewery.hoursOfOperation"></v-text-field>
       <v-text-field label="Address" v-model="brewery.address"></v-text-field>
 
-      <v-btn type="submit">Submit</v-btn>
+      <v-btn type="submit" v-on:click="createBrewery">Submit</v-btn>
   </v-form>
 </template>
 
@@ -25,48 +25,45 @@ export default {
     data() {
         return {
             brewery: {
-                breweryName: '',
-                breweryOwnerId: '',
-                emailAddress: '',
-                phoneNumber: '',
-                website: '',
-                description: '',
-                hoursOfOperation: '',
-                address: '',
-                isActive: 1
+                breweryName: 'test',
+                breweryOwnerId: this.breweryOwnerId,
+                emailAddress: 'test',
+                phoneNumber: 'test',
+                website: 'test',
+                description: 'test',
+                hoursOfOperation: 'test',
+                address: 'test',
+                image: 'ListermannExterior.JPG',
+                imageTwo: 'ListermannInterior.JPG', 
+                imageThree: 'ListermannTaproom.JPG',
+                isActive: true
             }
         }
     },
     methods: {
         createBrewery() {
-            const newBrewery = {
-                breweryName: this.brewery.breweryName,
-                breweryOwnerId: this.brewery.breweryOwnerId,
-                emailAddress: this.brewery.emailAddress,
-                phoneNumber: this.brewery.phoneNumber,
-                website: this.brewery.website,
-                description: this.brewery.description,
-                hoursOfOperation: this.brewery.hoursOfOperation,
-                address: this.brewery.address,
-                isActive: this.brewery.isActive
-            }
-            BreweryService.addBrewery(newBrewery).then((response) => {
-                if (response.status === 201) {
-                    this.$router.go();
-                }               
+            // const newBrewery = {
+            //     breweryName: this.brewery.breweryName,
+            //     breweryOwnerId: this.brewery.breweryOwnerId,
+            //     emailAddress: this.brewery.emailAddress,
+            //     phoneNumber: this.brewery.phoneNumber,
+            //     website: this.brewery.website,
+            //     description: this.brewery.description,
+            //     hoursOfOperation: this.brewery.hoursOfOperation,
+            //     address: this.brewery.address,
+            //     isActive: this.brewery.isActive
+            // }
+            BreweryService.addBrewery(this.brewery).then((response) => {
+                if (response.status == 200) {
+                    this.brewery = this.response.data;
+                }
+                               
             })
         }
     },
-    created() {
-        // if (this.breweryId != 0) {
-        //     BreweryService.getBreweryById(this.breweryId).then((response) => {
-        //         this.brewery = response.data;
-        //     })
-        // }
-    }
 }
 </script>
 
 <style>
-
+    
 </style>
