@@ -14,14 +14,15 @@
         </div>
 
         <v-card v-else class="beerItem" :to="link">
-            <div>
-                <v-card-title><h3>{{beer.beerName}}</h3></v-card-title>
+            <div >
+                <v-card-title><h3>{{ beer.beerName }}</h3></v-card-title>
                 <v-card-subtitle>{{ beer.beerType }}</v-card-subtitle>
                 <v-card-text>
-                <p>{{ beer.description }} ABV: {{beer.abv }}</p> 
-                <average-review :beerId="this.beerId" />
+                    <p>{{ beer.description }} ABV: {{beer.abv }}</p> 
+                    <average-review :beerId="this.beerId" />
                 </v-card-text>
-                
+
+                <beer-options v-if="showDelete" :beer="beer"/>
             </div>
             <div style="margin-left: auto; display: flex; align-items: center;">
                 <img :src='"/img/"+ beer.image' class="beer-image">
@@ -35,15 +36,17 @@
 <script>
 import BeerService from '../services/BeerService.js'
 import AverageReview from '../components/AverageReview.vue'
+import BeerOptions from '../components/BeerOptions.vue'
 
 export default {
     name: 'beer-detail',
     components: {
-        AverageReview
+        AverageReview, BeerOptions
     },
     props: {
         beerId: Number,
-        context: String
+        context: String,
+        showDelete: Boolean
     },
     data() {
         return {
@@ -53,7 +56,7 @@ export default {
                 beerType: '',
                 description: '',
                 image: '',
-                abv: ''
+                abv: '',
             },
                       
         }

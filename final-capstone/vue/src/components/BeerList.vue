@@ -1,7 +1,7 @@
 <template>
   <ul id="beer-list" class="pa-0">
     <li v-for="beer in beers" :key="beer.beerId">
-      <beer-detail :beerId="parseInt(beer.beerId)"/>
+      <beer-detail :showDelete="showDelete" :beerId="parseInt(beer.beerId)"/>
     </li>
     <div v-if="this.beers.length === 0">
       <v-card id="missing-beer" elevation="0" color="fade">
@@ -24,6 +24,7 @@ import BeerDetail from '../components/BeerDetail.vue';
         },
         props: {
           breweryId: Number,
+          showDelete: Boolean,
           showAll: Boolean
         },
         data() {
