@@ -1,12 +1,6 @@
 <template>
   <router-link to="/">
-    <div class="d-flex align-center" v-if="$vuetify.theme.dark">
-      <div class="logo">
-        Pub<span class="hub">Hub</span>
-      </div>
-    </div>
-
-    <div class="d-flex align-center" v-if="!$vuetify.theme.dark">
+    <div class="d-flex align-center">
       <span class="logo2">
         <img src="@/assets/logo.svg"/> PubHub 
       </span>

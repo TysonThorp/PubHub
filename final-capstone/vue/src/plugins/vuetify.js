@@ -10,6 +10,9 @@ export default new Vuetify({
             primary: '#ff4424',
             fade: '#eeeeee',
         },
+        dark: {
+            primary: '#ff4424',
+        },
       },
     },
   })

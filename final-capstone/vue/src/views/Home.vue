@@ -6,7 +6,7 @@
       <div v-else>
         <h1>Home</h1>
       </div>
-        <v-container>
+        <!--<v-container>
           <v-layout row wrap>
             <v-flex xs12 md6>
               <v-btn outline block class="primary">HELLO</v-btn>
@@ -29,9 +29,10 @@
               <v-btn outline block class="secondary">testing</v-btn>
             </v-flex>  
           </v-layout>
-        <brewery-list :showAll="true"/>
+        
         </v-layout>
-        </v-container>
+        </v-container>-->
+        <brewery-list :showAll="true"/>
       </div>
 </template>
 
