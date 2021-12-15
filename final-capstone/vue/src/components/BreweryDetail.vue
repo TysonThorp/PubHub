@@ -20,6 +20,8 @@
                 <img v-bind:src='"/img/"+ brewery.imageThree' >
             </div>
             <div v-if="this.$store.state.user.userId == brewery.breweryOwnerId">
+                <h2>Update Brewery:</h2>
+                <update-brewery :breweryId="breweryId"/>
                 <h2>Add a beer:</h2>
                 <create-beer :breweryId="breweryId"/>
             </div> 
@@ -44,6 +46,7 @@
 <script>
 import BreweryService from '../services/BreweryService';
 import CreateBeer from './CreateBeer.vue';
+import UpdateBrewery from './UpdateBrewery.vue';
 
 export default {
     name: 'brewery-detail',
@@ -51,7 +54,7 @@ export default {
         breweryId: Number,
         context: String
     },
-    components: {CreateBeer},
+    components: {CreateBeer, UpdateBrewery},
     data() {
         return {
             brewery: {
