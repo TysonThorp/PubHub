@@ -21,6 +21,7 @@
             </div>
             <div v-if="this.$store.state.user.userId == brewery.breweryOwnerId">
                 <h2>Add a beer:</h2>
+                <create-beer :breweryId="breweryId"/>
             </div> 
         </div>
 
@@ -42,13 +43,15 @@
 
 <script>
 import BreweryService from '../services/BreweryService';
+import CreateBeer from './CreateBeer.vue';
 
 export default {
     name: 'brewery-detail',
-    props: {
+        props: {
         breweryId: Number,
         context: String
     },
+    components: {CreateBeer},
     data() {
         return {
             brewery: {

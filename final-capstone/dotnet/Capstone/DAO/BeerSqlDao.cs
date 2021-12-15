@@ -34,6 +34,15 @@ namespace Capstone.DAO
 
                     int returnBeerId = Convert.ToInt32(cmd.ExecuteScalar());
                     returnBeer = GetBeerById(returnBeerId);
+
+                    if(returnBeerId != 0 && beer.BreweryId != 0)
+                    {
+                        SqlCommand cmd2 = new SqlCommand("INSERT INTO beers_by_brewery (beer_id, brewery_id) VALUES (@beer_id, @brewery_id)", conn);
+
+                        cmd2.Parameters.AddWithValue("@beer_id", returnBeerId);
+                        cmd2.Parameters.AddWithValue("@brewery_id", beer.BreweryId);
+                        cmd2.ExecuteNonQuery();
+                    }
                 }
             }
             catch (SqlException)
