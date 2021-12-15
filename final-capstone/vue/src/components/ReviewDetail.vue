@@ -7,7 +7,6 @@
             <v-rating
             background-color="#eee"
             color="warning"
-            half-increments
             length="5"
             readonly
             size="20"

@@ -2,7 +2,6 @@
     <v-form v-on:submit.prevent='postReview'>
         <v-rating
             color="warning"
-            half-increments
             length="5"
             size="20"
             dense v-model="review.rating"
