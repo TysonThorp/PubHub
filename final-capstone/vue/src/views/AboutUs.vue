@@ -65,16 +65,21 @@
                 <v-card-title>Tyson Thorp</v-card-title>
                 <v-card-text>
                     <p>
-                        A little about me here! This is placeholder text that
-                        fills out the card to give an idea of how it will look
-                        when you've actually completed your bio.
+                        The Brewery Bros. would like to welcome you to PubHub!
+                        Hopefully beer goggles won't prevent you from finding 
+                        all the best craft breweries in the Cincinnati area.
+                        Tap the keg on our stout local beer scene and hop to it!
+                    </p>
+                    <p>
+                        An amateur conniseur of craft beer, wnen I'm not sampling a variety of local brews,
+                        you can find me playing LEGOs with my daughters or taking my dog on long walks. 
                     </p>
                     <div style="display: flex">
-                        <a target="blank" href="https://google.com">
+                        <a target="blank" href="https://github.com/TysonThorp/">
                             <v-icon color="primary">mdi-github</v-icon>
                             GitHub
                         </a>
-                        <a target="blank" href="https://google.com">
+                        <a target="blank" href="https://www.linkedin.com/in/tysonthorp/">
                             <v-icon color="primary">mdi-linkedin</v-icon>
                             LinkedIn
                         </a>
