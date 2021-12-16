@@ -1,11 +1,11 @@
 <template>
     <div>
-        <h1>About PubHub</h1>
+        <!--<h1>About PubHub</h1>
         <v-card class="about-us">
             <v-card-text>
             A little about me here! This is placeholder text that fills out the card to give an idea of how it will look when you've actually completed your bio. A little about me here! This is placeholder text that fills out the card to give an idea of how it will look when you've actually completed your bio.
             </v-card-text>
-        </v-card>
+        </v-card>-->
 
         <h1>About Us</h1>
         <div
@@ -71,7 +71,7 @@
                         Tap the keg on our stout local beer scene and hop to it!
                     </p>
                     <p>
-                        An amateur conniseur of craft beer, wnen I'm not sampling a variety of local brews,
+                        An amateur conniseur of craft beer, when I'm not sampling a variety of local brews,
                         you can find me playing LEGOs with my daughters or taking my dog on long walks. 
                     </p>
                     <div style="display: flex">
@@ -92,18 +92,19 @@
                 <v-card-title>Levi Swartz</v-card-title>
                 <v-card-text>
                     <p>
-                        Hi! Beginning life as a simple 'span' element in 1999, I learned CSS in order to style myself and take on the appearance of a real human being.</p>
+                        Hi! Beginning life as a simple 'span' element, I learned CSS in order to style myself and take on the appearance of a real human being.</p>
                     <p>
-                        When I'm not helping to create the most stylish brewery application the world has ever seen, I enjoy science fiction & fantasy novels, the music of 'NSP', playing ttrpgs with friends, and baking.
+                        Apart from helping to create the most stylish brewery finder the world has ever seen, I enjoy science fiction & fantasy novels, the music of 'NSP', playing ttrpgs with friends, and baking.
                     </p>
+                    <p>Brew on!</p>
                     <div style="display: flex">
                         <a target="blank" href="https://github.com/Iniquit">
                             <v-icon color="primary">mdi-github</v-icon>
-                            iniquit
+                            GitHub
                         </a>
                         <a target="blank" href="https://www.linkedin.com/in/elswartz/">
                             <v-icon color="primary">mdi-linkedin</v-icon>
-                            elswartz
+                            LinkedIn
                         </a>
                     </div>
                 </v-card-text>
