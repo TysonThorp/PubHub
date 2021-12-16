@@ -1,5 +1,5 @@
 <template>
-    <v-card class="breweryItem">
+    <v-card class="breweryItem" :to="this.link">
         <v-card-title>
             <h3>User {{review.userId}} says:</h3>
         </v-card-title>
@@ -16,7 +16,6 @@
         </v-card-subtitle>
         <v-card-text>
             {{ review.reviewText }}
-            <router-link :to="this.link">Go to beer</router-link>
         </v-card-text>
     </v-card>
 </template>
