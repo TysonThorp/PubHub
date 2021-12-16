@@ -3,7 +3,6 @@
         <v-btn block v-on:click="showForm = !showForm">Update Brewery</v-btn>
         <v-form v-on:submit.prevent v-if="showForm == true">
             <v-text-field label="Brewery Name" v-model="brewery.breweryName"></v-text-field>
-            <v-text-field label="Brewery Owner ID" v-model.number="brewery.breweryOwnerId"></v-text-field>
             <v-text-field label="Email" v-model="brewery.emailAddress"></v-text-field>
             <v-text-field label="Phone" v-model="brewery.phoneNumber"></v-text-field>
             <v-text-field label="Website" v-model="brewery.website"></v-text-field>
@@ -13,7 +12,6 @@
             <v-text-field label="Image 1" v-model="brewery.image"></v-text-field>
             <v-text-field label="Image 2" v-model="brewery.imageTwo"></v-text-field>
             <v-text-field label="Image 3" v-model="brewery.imageThree"></v-text-field>
-            <v-text-field label="Active Brewery?" v-model="brewery.isActive"></v-text-field>  
 
             <v-btn type="submit" v-on:click="updateBreweryDetails">Submit</v-btn> 
         </v-form>
@@ -25,11 +23,15 @@ import BreweryService from "../services/BreweryService";
 
 export default {
     name: "update-brewery",
+    props: [
+        "breweryId"
+    ],
     data() {
         return {
             brewery: {
-                breweryName: "",
-                breweryOwnerId: 0,
+                breweryId: this.breweryId,
+                breweryName: '',
+                breweryOwnerId: this.$store.state.user.userId,
                 emailAddress: "",
                 phoneNumber: "",
                 website: "",
