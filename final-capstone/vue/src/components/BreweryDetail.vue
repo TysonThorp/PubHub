@@ -116,8 +116,8 @@ export default {
     grid-auto-flow: column;
     grid-auto-columns: 1fr;
     border-radius: 0px 0px 4px 4px;
-    margin-bottom: -0.5em;
     overflow: hidden;
+    margin-bottom: 1em;
 }
 
 .grid-container-2 img {

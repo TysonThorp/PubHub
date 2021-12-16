@@ -83,6 +83,7 @@ import AppLogo from './components/AppLogo.vue';
         {title: 'Breweries' , icon: 'mdi-home', link: '/breweries'},
         {title: 'Beers' , icon: 'mdi-glass-mug-variant', link: '/beers'},
         {title: 'Reviews' , icon: 'mdi-star', link: '/reviews'},
+        {title: 'About' , icon: 'mdi-account', link: '/about'}
       ],
     }),
     methods:{

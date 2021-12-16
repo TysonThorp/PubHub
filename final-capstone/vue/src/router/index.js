@@ -12,6 +12,7 @@ import NotFound from '../views/NotFound.vue'
 import store from '../store/index'
 import Beers from '../views/Beers.vue'
 import Reviews from '../views/Reviews.vue'
+import AboutUs from '../views/AboutUs.vue'
 
 
 Vue.use(Router)
@@ -53,6 +54,14 @@ const router = new Router({
         requiresAuth: true
       }
     },
+    {
+        path: "/about",
+        name: "about-us",
+        component: AboutUs,
+        meta: {
+          requiresAuth: false
+        }
+      },
     {
       path: "/logout",
       name: "logout",
