@@ -11,8 +11,8 @@
                 <p>{{ brewery.description }}</p>
                 <ul>
                     <li>Phone: {{ brewery.phoneNumber }}</li>
-                    <li>Email: {{ brewery.emailAddress }}</li>
-                    <li>Website: {{ brewery.website }}</li>
+                    <li>Email: <a :href="'mailto:' + brewery.emailAddress">{{brewery.emailAddress}}</a></li>
+                    <li>Website: <a target="blank" :href="brewery.website">{{brewery.website}}</a></li>
                     <li><p>Hours: <span v-html="brewery.hoursOfOperation"></span></p></li>
                 </ul>
                 <div class="grid-container">
