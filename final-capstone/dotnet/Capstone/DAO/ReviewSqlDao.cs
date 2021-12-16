@@ -53,7 +53,7 @@ namespace Capstone.DAO
                 conn.Open();
 
                 SqlCommand cmd = new SqlCommand("SELECT review_id, user_id, beer_id, rating, review_description " +
-                    "FROM reviews", conn);
+                    "FROM reviews ORDER BY rating DESC", conn);
 
                 SqlDataReader reader = cmd.ExecuteReader();
 
