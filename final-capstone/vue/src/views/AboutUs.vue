@@ -20,9 +20,10 @@
                 <v-card-title>Ryan DuPerow</v-card-title>
                 <v-card-text>
                     <p>
-                        A little about me here! This is placeholder text that
-                        fills out the card to give an idea of how it will look
-                        when you've actually completed your bio.
+                        Thanks for checking out PubHub!  My name is Ryan, and when
+                        I'm not sampling some of Cincinnati's finest Craft Beers 
+                        ("market research"), you can find me playing Roblox with my son or 
+                        working to improve my Software Development skills.
                     </p>
                     <div style="display: flex">
                         <a target="blank" href="https://github.com/ryanduperow">
