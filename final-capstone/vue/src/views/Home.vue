@@ -32,7 +32,8 @@
         
         </v-layout>
         </v-container>-->
-        <brewery-list :showAll="true"/>
+        <h2>Brewery of the Month:</h2>
+        <brewery-detail :breweryId="parseInt(2)" :showFull="false" />
       </div>
 </template>
 
@@ -45,12 +46,13 @@
 
 <script>
   import BreweryList from '../components/BreweryList.vue'
+  import BreweryDetail from '../components/BreweryDetail.vue'
 
   export default {
     name: 'home',
 
     components: {
-        BreweryList,
+        BreweryList, BreweryDetail
     },
   }
 </script>
