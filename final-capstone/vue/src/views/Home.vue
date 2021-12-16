@@ -6,7 +6,10 @@
       <div v-else>
         <h1>Home</h1>
       </div>
+        
         <main-page-carousel/>
+        <h2>Brewery of the Month:</h2>
+        <brewery-detail :breweryId="parseInt(2)" :showFull="false" />
         <!--<v-container>
           <v-layout row wrap>
             <v-flex xs12 md6>
@@ -41,11 +44,17 @@
 
 
 import MainPageCarousel from '../components/MainPageCarousel.vue'
+// import BreweryList from '../components/BreweryList.vue'
+import BreweryDetail from '../components/BreweryDetail.vue'
 
 
   export default {
     name: 'home',
-  components: { MainPageCarousel }, 
+    components: { 
+      MainPageCarousel,
+      // BreweryList,
+      BreweryDetail 
+    }, 
     data: () => ({ drawer: null }),
   }
 
