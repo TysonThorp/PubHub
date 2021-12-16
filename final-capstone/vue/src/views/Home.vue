@@ -6,6 +6,7 @@
       <div v-else>
         <h1>Home</h1>
       </div>
+        <main-page-carousel/>
         <!--<v-container>
           <v-layout row wrap>
             <v-flex xs12 md6>
@@ -32,27 +33,23 @@
         
         </v-layout>
         </v-container>-->
-        <brewery-list :showAll="true"/>
+        
       </div>
 </template>
 
 <script>
-  export default {
-    data: () => ({ drawer: null }),
-  }
-</script>
-  
 
-<script>
-  import BreweryList from '../components/BreweryList.vue'
+
+import MainPageCarousel from '../components/MainPageCarousel.vue'
+
 
   export default {
     name: 'home',
-
-    components: {
-        BreweryList,
-    },
+  components: { MainPageCarousel }, 
+    data: () => ({ drawer: null }),
   }
+
+ 
 </script>
 
 <style>
