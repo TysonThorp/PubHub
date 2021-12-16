@@ -87,9 +87,9 @@
                 <v-card-title>Levi Swartz</v-card-title>
                 <v-card-text>
                     <p>
-                        A little about me here! This is placeholder text that
-                        fills out the card to give an idea of how it will look
-                        when you've actually completed your bio.
+                        Beginning life as a simple 'span' element in 1999, Levi learned CSS in order to style himself and take on the appearance of a real human being.</p>
+                    <p>
+                        When he isn't helping to create the most stylish brewery application the world has ever seen, he enjoys science fiction & fantasy novels, the music of 'NSP', playing ttrpgs with friends, and baking.
                     </p>
                     <div style="display: flex">
                         <a target="blank" href="https://github.com/Iniquit">
