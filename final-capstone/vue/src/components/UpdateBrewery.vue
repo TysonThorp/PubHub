@@ -1,7 +1,7 @@
 <template>
     <div>
-        <v-btn v-on:click="showForm = !showForm">Update Brewery</v-btn>
-        <v-form v-if="showForm == true">
+        <v-btn block v-on:click="showForm = !showForm">Update Brewery</v-btn>
+        <v-form v-on:submit.prevent v-if="showForm == true">
             <v-text-field label="Brewery Name" v-model="brewery.breweryName"></v-text-field>
             <v-text-field label="Brewery Owner ID" v-model.number="brewery.breweryOwnerId"></v-text-field>
             <v-text-field label="Email" v-model="brewery.emailAddress"></v-text-field>
