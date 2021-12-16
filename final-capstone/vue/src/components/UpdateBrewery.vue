@@ -46,6 +46,11 @@ export default {
             showForm: false,
         }
     },
+    created() {
+        BreweryService.getBreweryById(this.breweryId).then((response) => {
+            this.brewery = response.data;
+        });
+    },
     methods: {
         updateBreweryDetails() {
             BreweryService.updateBrewery(this.brewery).then((response) => {

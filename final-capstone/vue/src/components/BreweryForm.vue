@@ -36,14 +36,14 @@ export default {
   data() {
     return {
       brewery: {
-        breweryName: "",
-        breweryOwnerId: 0,
-        emailAddress: "",
-        phoneNumber: "",
-        website: "",
-        description: "",
-        hoursOfOperation: "",
-        address: "",
+        breweryName: "Joe's Great Brews",
+        breweryOwnerId: 3,
+        emailAddress: "example@test.com",
+        phoneNumber: "555-555-5555",
+        website: "pubhub.com",
+        description: "The best brews this side of Cinci! Come on down for a taste of our famous 'C# Stout'!",
+        hoursOfOperation: "All day, everyday",
+        address: "TE Cincinnati",
         image: "ListermannExterior.JPG",
         imageTwo: "ListermannInterior.JPG",
         imageThree: "ListermannTaproom.JPG",
