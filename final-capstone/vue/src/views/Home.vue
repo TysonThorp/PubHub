@@ -33,18 +33,12 @@
         
         </v-layout>
         </v-container>-->
-<<<<<<< HEAD
         
-=======
-        <h2>Brewery of the Month:</h2>
-        <brewery-detail :breweryId="parseInt(2)" :showFull="false" />
->>>>>>> fcb43e7c10985fc4a5e1fd74c20fc12587c4a2c8
       </div>
 </template>
 
 <script>
 
-<<<<<<< HEAD
 
 import MainPageCarousel from '../components/MainPageCarousel.vue'
 
@@ -53,18 +47,6 @@ import MainPageCarousel from '../components/MainPageCarousel.vue'
     name: 'home',
   components: { MainPageCarousel }, 
     data: () => ({ drawer: null }),
-=======
-<script>
-  import BreweryList from '../components/BreweryList.vue'
-  import BreweryDetail from '../components/BreweryDetail.vue'
-
-  export default {
-    name: 'home',
-
-    components: {
-        BreweryList, BreweryDetail
-    },
->>>>>>> fcb43e7c10985fc4a5e1fd74c20fc12587c4a2c8
   }
 
  
