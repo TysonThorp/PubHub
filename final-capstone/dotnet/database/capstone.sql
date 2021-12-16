@@ -148,8 +148,9 @@ lactose, oats, and flaked wheat to bring you a refreshing, adults-only treat.',6
 'ListermannSatisfied.jpg')
 
 INSERT INTO reviews (user_id, beer_id, rating, review_description)
-VALUES (1, 1, 2.5, 'Review of Gavel Banger (beerId 1) by user with rating 2.5.'),
-       (1, 2, 5, 'Example review text by user for beer 2 with rating 5'),
+VALUES (1, 1, 4, 'Bright, hoppy, but not excessive. A solid IPA with a great piney, medium body. Light carbonation. A somewhat bitter finish. '),
+(1, 22, 5, 'A nice IPA with a fantastic copper color and a light body. Caramel, citrus, malts; hoppy. Great smell.'),
+       (1, 1, 5, 'Example review text by user for beer 2 with rating 5'),
 	   (2, 3, 3, 'Example review text by admin for beer 3 with rating 3')
 
 INSERT INTO users (username, password_hash, salt, user_role)
