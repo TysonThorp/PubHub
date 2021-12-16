@@ -9,14 +9,22 @@
         <p>You are eligible to become a Brewer. Click the button below to change your role. You will need to log in again.</p>
         <v-btn v-on:click="BecomeBrewer">Brew me up!</v-btn>
     </div>
+
+    <div v-if="this.$store.state.user.role != null">
+      <h1>My Reviews</h1>
+        <review-list :userId="this.$store.state.user.userId"/>
+      </div>
+
+
 </div>
 </template>
 
 <script>
 import UserService from '../services/UserService.js';
+import ReviewList from '../components/ReviewList.vue';
 
 export default {
-  components: {  
+  components: { ReviewList 
   },
   data() {
       return {
