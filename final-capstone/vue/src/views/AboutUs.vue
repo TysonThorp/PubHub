@@ -25,11 +25,11 @@
                         when you've actually completed your bio.
                     </p>
                     <div style="display: flex">
-                        <a target="blank" href="https://google.com">
+                        <a target="blank" href="https://github.com/ryanduperow">
                             <v-icon color="primary">mdi-github</v-icon>
                             GitHub
                         </a>
-                        <a target="blank" href="https://google.com">
+                        <a target="blank" href="https://www.linkedin.com/in/ryanduperow/">
                             <v-icon color="primary">mdi-linkedin</v-icon>
                             LinkedIn
                         </a>
