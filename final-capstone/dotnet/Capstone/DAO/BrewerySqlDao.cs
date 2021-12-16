@@ -125,7 +125,7 @@ namespace Capstone.DAO
                 conn.Open();
 
                 SqlCommand cmd = new SqlCommand("UPDATE breweries " +
-                    "SET brewery_owner_id = @brewery_owner_id, brewery_name = @brewery_name, email = @email, phone = @phone, website = @website, brewery_description = @brewery_description, image = @image, hours_operations = @hours_operations, address = @address, isActive = @isActive image_two = @image_two, image_three = @image_three " +
+                    "SET brewery_owner_id = @brewery_owner_id, brewery_name = @brewery_name, email = @email, phone = @phone, website = @website, brewery_description = @brewery_description, image = @image, hours_operations = @hours_operations, address = @address, isActive = @isActive, image_two = @image_two, image_three = @image_three " +
                     "WHERE brewery_id = @brewery_id", conn);
 
                 cmd.Parameters.AddWithValue("@brewery_id", brewery.BreweryId);
