@@ -59,7 +59,7 @@
      </v-navigation-drawer>
 
     <v-main id="mainsection">
-      <v-container style="max-width: 700px">
+      <v-container style="max-width: 700px" :class="IsDarkMode ? 'bg-dark' : 'bg-light'">
         <router-view />
       </v-container>
        <div class="hero-image"></div>
@@ -93,12 +93,17 @@ import AppLogo from './components/AppLogo.vue';
     computed: {
       loggedIn(){
         return this.$store.state.user.role != null
+      },
+      IsDarkMode(){
+          return this.$vuetify.theme.dark;
       }
     }  
   }
 </script>
 
 <style lang="css">
+
+.conatiner
 
 .logo{
   font-weight: bold;
@@ -120,10 +125,18 @@ import AppLogo from './components/AppLogo.vue';
 
 }
 
-.hub{
-  border-radius:1.75px;
-  background-color: orange;
-  color: #000;
+.container{
+    padding: 1em;
+    border-radius: 0 0 4px 4px;
+    width: 100%;
+}
+
+.bg-light{
+    background-color: rgb(255, 255, 255, 80%);
+}
+
+.bg-dark{
+    background-color: rgb(20, 20, 20, 80%);
 }
 
 .v-navigation-drawer{
