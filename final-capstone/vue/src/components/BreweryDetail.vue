@@ -15,9 +15,17 @@
                     <li>Website: {{ brewery.website }}</li>
                     <li><p>Hours: <span v-html="brewery.hoursOfOperation"></span></p></li>
                 </ul>
-                <img v-bind:src='"/img/"+ brewery.image' >
-                <img v-bind:src='"/img/"+ brewery.imageTwo' >
-                <img v-bind:src='"/img/"+ brewery.imageThree' >
+                <div class="grid-container">
+                    <div>
+                        <img v-bind:src="'/img/' + brewery.image" />
+                    </div>
+                    <div>
+                        <img v-bind:src="'/img/' + brewery.imageTwo" />
+                    </div>
+                    <div>
+                        <img v-bind:src="'/img/' + brewery.imageThree" />
+                    </div>
+                </div>
             </div>
             <div v-if="this.$store.state.user.userId == brewery.breweryOwnerId">
                 <h2>Update Brewery:</h2>
@@ -32,13 +40,22 @@
                 <v-card-title>
                     <h3>{{ brewery.breweryName }}</h3>
                 </v-card-title>
+                
                 <v-card-subtitle><span v-if="this.$store.state.user.userId === brewery.breweryOwnerId">
                     (<v-icon>mdi-heart</v-icon> You own this brewery.)
                 </span> {{ brewery.address }}</v-card-subtitle>
-                <img v-bind:src='"/img/"+ brewery.image' >
-                <img v-bind:src='"/img/"+ brewery.imageTwo' >
-                <img v-bind:src='"/img/"+ brewery.imageThree' >
             </div>
+            <div class="grid-container-2">
+                    <div>
+                        <img v-bind:src="'/img/' + brewery.image" />
+                    </div>
+                    <div>
+                        <img v-bind:src="'/img/' + brewery.imageTwo" />
+                    </div>
+                    <div>
+                        <img v-bind:src="'/img/' + brewery.imageThree" />
+                    </div>
+                </div>
         </v-card>
     </div>
 </template>
@@ -84,12 +101,38 @@ export default {
 </script>
 
 <style scoped>
-    .breweryItem{
-        margin-bottom: 1em;
-    }
-      img{
-        max-width: 25%;  
-        height: auto;  
-    }
+.breweryItem {
+    margin-bottom: 1em;
+}
+.grid-container img {
+    width: 100%;
+    height: 100%;
+    max-height: 200px;
+    object-fit: cover;
+    display: block;
+}
+.grid-container {
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: 1fr;
+    border-radius: 0px 0px 4px 4px;
+    margin-bottom: -0.5em;
+    overflow: hidden;
+}
 
+.grid-container-2 img {
+    width: 100%;
+    height: 100%;
+    max-height: 80px;
+    object-fit: cover;
+    display: block;
+}
+
+.grid-container-2 {
+    display: grid;
+    grid-auto-flow: column;
+    border-radius: 0px 0px 4px 4px;
+    grid-auto-columns: 1fr;
+    overflow: hidden;
+}
 </style>
