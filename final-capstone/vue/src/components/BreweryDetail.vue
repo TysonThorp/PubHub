@@ -13,7 +13,7 @@
                     <li>Phone: {{ brewery.phoneNumber }}</li>
                     <li>Email: {{ brewery.emailAddress }}</li>
                     <li>Website: {{ brewery.website }}</li>
-                    <li><p>Hours: {{ brewery.hoursOfOperation }}</p></li>
+                    <li><p>Hours: <span v-html="brewery.hoursOfOperation"></span></p></li>
                 </ul>
                 <img v-bind:src='"/img/"+ brewery.image' >
                 <img v-bind:src='"/img/"+ brewery.imageTwo' >
