@@ -64,9 +64,9 @@ export default {
       showForm: false,
       beer: {
         beerName: "",
-        description: "",
-        image: "",
-        abv: 0,
+        description: "Compiled with the finest ingredients",
+        image: "example.jpg",
+        abv: 7.3,
         beerType: "",
         breweryId: this.breweryId}
     };
