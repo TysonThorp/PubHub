@@ -29,23 +29,31 @@
         {
           src: require('/public/img/BraxtonTaps.jpg')
         },
-      
-    
+        {
+          src: require('/public/img/MadtreeInterior.jpg')
+        },
+        {
+          src: require('/public/img/MadtreePeople.jpg')
+        },
+        {
+          src: require('/public/img/MadtreeExterior.jpg')
+        },
+        {
+          src: require('/public/img/TaftsLineup.jpg')
+        },
+           {
+          src: require('/public/img/TaftsInterior.jpg')
+        },
         {
           src: require('/public/img/TaftsExterior.jpg')
         },
-       
-         {
-          src: require('/public/img/TaftsLineup.jpg')
-        },
-       
-          
-        
-          {
+        {
           src: require ('/public/img/RhinegeistSign.jpg')
         },
-        
-           {
+        {
+          src: require ('/public/img/RhinegeistInterior.jpg')
+        },
+        {
           src: require('/public/img/RhinegeistBeers.jpg')
         },        
       ]
